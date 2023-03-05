@@ -43,7 +43,6 @@ public class CameraController : MonoBehaviour
     //控制摄像机移动的速率
     public float speed = 1f;
 
-    public Vector3 velocity = Vector3.zero;
 
     public List<Transform> targetPoint;
 
