@@ -11,7 +11,7 @@ public class WebSocketServer : MonoBehaviour
 {
 
     //public string url = "ws://localhost:8080/web1/websocket";
-    public string url = "ws://localhost:8080/web1/ws";
+    public string url = "ws://localhost:8080/ws";
     public InputField msg;
     public Text console;
 
