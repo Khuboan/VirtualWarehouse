@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using UnityEngine;
 // 访问数据的方法：
 // rootObject.warehouse[i].name
@@ -27,11 +28,12 @@ using UnityEngine;
 public class JsonDataAnylize : MonoBehaviour
 {
     public string GetJsonData;
-    public RootObject rootObject;
+    public static RootObject rootObject;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.LogError("测试Json数据转换");
+        rootObject = AnylizeJsonData("{     \"warehouse\":     " + GetJsonData + "}");
     }
 
     // Update is called once per frame

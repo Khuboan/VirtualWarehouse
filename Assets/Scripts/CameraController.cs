@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    /// <summary>
+    /// 单例，需要在Awake中赋值一下
+    /// </summary>
+    public static CameraController instance;
     public enum RotationAxes
     {
         MouseXAndY = 0,
@@ -56,7 +60,10 @@ public class CameraController : MonoBehaviour
             GetComponent<Rigidbody>().freezeRotation = true;
         }
     }
-
+    private void Awake()
+    {
+        instance = this;
+    }
     void Update()
     {
         //按下鼠标左键
@@ -69,7 +76,7 @@ public class CameraController : MonoBehaviour
             CanMove = false;
         }
 
-        CameraZoom();
+        //CameraZoom();
 
         CameraRotation();
 
@@ -110,30 +117,30 @@ public class CameraController : MonoBehaviour
     /// <summary>
     /// 摄像机滚轮先后移动
     /// </summary>
-    private void CameraZoom()
-    {
-        float mouseCenter = Input.GetAxis("Mouse ScrollWheel");
+    //private void CameraZoom()
+    //{
+    //    float mouseCenter = Input.GetAxis("Mouse ScrollWheel");
 
-        //鼠标滑动中键滚轮,实现摄像机的镜头前后滑动
-        //mouseCenter < 0 = 负数 往后滑动
-        if (mouseCenter < 0)
-        {
-            //滑动限制
-            if (transform.position.x <= maxView)
-            {
-                transform.Translate(Vector3.back * speed * Time.deltaTime);
-            }
-            //mouseCenter >0 = 正数 往前滑动
-        }
-        else if (mouseCenter > 0)
-        {
-            //滑动限制
-            if (transform.position.x >= minView)
-            {
-                transform.Translate(Vector3.forward * speed * Time.deltaTime);
-            }
-        }
-    }
+    //    //鼠标滑动中键滚轮,实现摄像机的镜头前后滑动
+    //    //mouseCenter < 0 = 负数 往后滑动
+    //    if (mouseCenter < 0)
+    //    {
+    //        //滑动限制
+    //        if (transform.position.x <= maxView)
+    //        {
+    //            transform.Translate(Vector3.back * speed * Time.deltaTime);
+    //        }
+    //        //mouseCenter >0 = 正数 往前滑动
+    //    }
+    //    else if (mouseCenter > 0)
+    //    {
+    //        //滑动限制
+    //        if (transform.position.x >= minView)
+    //        {
+    //            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+    //        }
+    //    }
+    //}
 
     IEnumerator Ien;
     /// <summary>

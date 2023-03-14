@@ -1,0 +1,314 @@
+[
+    {
+    "name": "A仓库",
+    "position": [
+        "左上角坐标 x,y", "右上角坐标 x,y", "右下角坐标 x,y", "左下角坐标 x,y"
+    ],
+    "door": [
+        {
+            "name": "前门",
+            "position": ["门锁坐标 x,y", "门栓坐标 x,y"]
+        },
+        {
+            "name": "后门",
+            "position": ["门锁坐标 x,y", "门栓坐标 x,y"]
+        }
+    ],
+    "barrier": [
+        {
+            "name": "障碍A",
+            "position": [
+                "左上角坐标 x,y", "右上角坐标 x,y", "右下角坐标 x,y", "左下角坐标 x,y"
+            ]
+        },
+        {
+            "name": "障碍B",
+            "position": [
+                "左上角坐标 x,y", "右上角坐标 x,y", "右下角坐标 x,y", "左下角坐标 x,y"
+            ]
+        }
+    ],
+    "bin": [
+        {
+            "name": "A库位",
+            "position": [
+                "左上角坐标 x,y", "右上角坐标 x,y", "右下角坐标 x,y", "左下角坐标 x,y"
+            ],
+            "material": [
+                {
+                    "name": "cc物料",
+                    "count": 30,
+                    "class": "布料",
+                    "code": "AA0003",
+                    "unit": "打"
+                },
+                {
+                    "name": "bb物料",
+                    "count": 40,
+                    "class": "布料",
+                    "code": "AA0003",
+                    "unit": "打"
+                }
+            ]
+        },
+        {
+            "name": "B库位",
+            "position": [
+                "左上角坐标 x,y", "右上角坐标 x,y", "右下角坐标 x,y", "左下角坐标 x,y"
+            ],
+            "material": [
+                {
+                    "name": "cc物料",
+                    "count": 30,
+                    "class": "布料",
+                    "code": "AA0003",
+                    "unit": "打"
+                },
+                {
+                    "name": "bb物料",
+                    "count": 40,
+                    "class": "布料",
+                    "code": "AA0003",
+                    "unit": "打"
+                }
+            ]
+        }
+    ],
+    "shelf": [
+        {
+            "name": "A货架",
+            "position": [
+                "左上角坐标 x,y", "右上角坐标 x,y", "右下角坐标 x,y", "左下角坐标 x,y"
+            ],
+            "floor": [
+                {
+                    "floor_num": 1,
+                    "material": [
+                        {
+                            "name": "aa物料",
+                            "count": 10,
+                            "class": "易燃物",
+                            "code": "AA0001",
+                            "unit": "瓶"
+                        },
+                        {
+                            "name": "b物料",
+                            "count": 20,
+                            "class": "易爆物",
+                            "code": "AA0002",
+                            "unit": "桶"
+                        }
+                    ]
+                },
+                {
+                    "floor_num": 2,
+                    "material": [
+                        {
+                            "name": "cc物料",
+                            "count": 30,
+                            "class": "布料",
+                            "code": "AA0003",
+                            "unit": "打"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "B货架",
+            "position": [
+                "左上角坐标 x,y", "右上角坐标 x,y", "右下角坐标 x,y", "左下角坐标 x,y"
+            ],
+            "floor": [
+                {
+                    "floor_num": 1,
+                    "material": [
+                        {
+                            "name": "aa物料",
+                            "count": 10,
+                            "class": "易燃物",
+                            "code": "AA0001",
+                            "unit": "瓶"
+                        },
+                        {
+                            "name": "b物料",
+                            "count": 20,
+                            "class": "易爆物",
+                            "code": "AA0002",
+                            "unit": "桶"
+                        }
+                    ]
+                },
+                {
+                    "floor_num": 2,
+                    "material": [
+                        {
+                            "name": "cc物料",
+                            "count": 30,
+                            "class": "布料",
+                            "code": "AA0003",
+                            "unit": "打"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+    },
+    {
+        "name": "B仓库",
+        "position": [
+            "左上角坐标 x,y", "右上角坐标 x,y", "右下角坐标 x,y", "左下角坐标 x,y"
+        ],
+        "door": [
+            {
+                "name": "前门",
+                "position": ["门锁坐标 x,y", "门栓坐标 x,y"]
+            },
+            {
+                "name": "后门",
+                "position": ["门锁坐标 x,y", "门栓坐标 x,y"]
+            }
+        ],
+        "barrier": [
+            {
+                "name": "障碍A",
+                "position": [
+                    "左上角坐标 x,y", "右上角坐标 x,y", "右下角坐标 x,y", "左下角坐标 x,y"
+                ]
+            },
+            {
+                "name": "障碍B",
+                "position": [
+                    "左上角坐标 x,y", "右上角坐标 x,y", "右下角坐标 x,y", "左下角坐标 x,y"
+                ]
+            }
+        ],
+        "bin": [
+            {
+                "name": "A库位",
+                "position": [
+                    "左上角坐标 x,y", "右上角坐标 x,y", "右下角坐标 x,y", "左下角坐标 x,y"
+                ],
+                "material": [
+                    {
+                        "name": "cc物料",
+                        "count": 30,
+                        "class": "布料",
+                        "code": "AA0003",
+                        "unit": "打"
+                    },
+                    {
+                        "name": "bb物料",
+                        "count": 40,
+                        "class": "布料",
+                        "code": "AA0003",
+                        "unit": "打"
+                    }
+                ]
+            },
+            {
+                "name": "B库位",
+                "position": [
+                    "左上角坐标 x,y", "右上角坐标 x,y", "右下角坐标 x,y", "左下角坐标 x,y"
+                ],
+                "material": [
+                    {
+                        "name": "cc物料",
+                        "count": 30,
+                        "class": "布料",
+                        "code": "AA0003",
+                        "unit": "打"
+                    },
+                    {
+                        "name": "bb物料",
+                        "count": 40,
+                        "class": "布料",
+                        "code": "AA0003",
+                        "unit": "打"
+                    }
+                ]
+            }
+        ],
+        "shelf": [
+            {
+                "name": "A货架",
+                "position": [
+                    "左上角坐标 x,y", "右上角坐标 x,y", "右下角坐标 x,y", "左下角坐标 x,y"
+                ],
+                "floor": [
+                    {
+                        "floor_num": 1,
+                        "material": [
+                            {
+                                "name": "aa物料",
+                                "count": 10,
+                                "class": "易燃物",
+                                "code": "AA0001",
+                                "unit": "瓶"
+                            },
+                            {
+                                "name": "b物料",
+                                "count": 20,
+                                "class": "易爆物",
+                                "code": "AA0002",
+                                "unit": "桶"
+                            }
+                        ]
+                    },
+                    {
+                        "floor_num": 2,
+                        "material": [
+                            {
+                                "name": "cc物料",
+                                "count": 30,
+                                "class": "布料",
+                                "code": "AA0003",
+                                "unit": "打"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "B货架",
+                "position": [
+                    "左上角坐标 x,y", "右上角坐标 x,y", "右下角坐标 x,y", "左下角坐标 x,y"
+                ],
+                "floor": [
+                    {
+                        "floor_num": 1,
+                        "material": [
+                            {
+                                "name": "aa物料",
+                                "count": 10,
+                                "class": "易燃物",
+                                "code": "AA0001",
+                                "unit": "瓶"
+                            },
+                            {
+                                "name": "b物料",
+                                "count": 20,
+                                "class": "易爆物",
+                                "code": "AA0002",
+                                "unit": "桶"
+                            }
+                        ]
+                    },
+                    {
+                        "floor_num": 2,
+                        "material": [
+                            {
+                                "name": "cc物料",
+                                "count": 30,
+                                "class": "布料",
+                                "code": "AA0003",
+                                "unit": "打"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
