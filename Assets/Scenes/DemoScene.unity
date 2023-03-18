@@ -1645,7 +1645,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &94970815
 GameObject:
@@ -6814,7 +6814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &578797855
 Transform:
   m_ObjectHideFlags: 0
@@ -20871,7 +20871,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1710086833
 MonoBehaviour:
@@ -27168,6 +27168,10 @@ PrefabInstance:
     - target: {fileID: 6835939416055057757, guid: 6f4401a4fcfd79841b83311adcc5d4b9, type: 3}
       propertyPath: m_BoundingSphereOverride.y
       value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892027598649957625, guid: 6f4401a4fcfd79841b83311adcc5d4b9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6892127833033862867, guid: 6f4401a4fcfd79841b83311adcc5d4b9, type: 3}
       propertyPath: m_Name
