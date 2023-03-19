@@ -1,0 +1,264 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2009774279373497080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2009774279373497079}
+  m_Layer: 0
+  m_Name: Wall2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2009774279373497079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009774279373497080}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2009774280779067191}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2009774279833955872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2009774279833955871}
+  m_Layer: 0
+  m_Name: Wall4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2009774279833955871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009774279833955872}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2009774280779067191}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2009774280133966940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2009774280133966939}
+  m_Layer: 0
+  m_Name: Wall1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2009774280133966939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009774280133966940}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2009774280779067191}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2009774280533970476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2009774280533970475}
+  m_Layer: 0
+  m_Name: Wall3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2009774280533970475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009774280533970476}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2009774280779067191}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2009774280779067193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2009774280779067191}
+  - component: {fileID: 2009774280779067192}
+  m_Layer: 0
+  m_Name: HouseHub
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2009774280779067191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009774280779067193}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2009774280133966939}
+  - {fileID: 2009774279373497079}
+  - {fileID: 2009774280533970475}
+  - {fileID: 2009774279833955871}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2009774280779067192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009774280779067193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bb87da96642cf439a07e2ae795aace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WallPre: {fileID: 6249462403663367011, guid: 5cc3ea4b22b816c42a5eca93fec422fe, type: 3}
+  DoorPre: {fileID: 5803658432876522275, guid: a2aa8fc16b0562e4e9dd654a2e0b27e7, type: 3}
+  wallHubDetails:
+  - wallDetails:
+    - WallType: 0
+      WallPos: 0
+      WallLength: 5.5
+      WallHeight: 5
+      DoorHeight: 0
+      Model: {fileID: 0}
+      DoorModel: {fileID: 0}
+    - WallType: 1
+      WallPos: 0
+      WallLength: 1.5
+      WallHeight: 5
+      DoorHeight: 2.2
+      Model: {fileID: 0}
+      DoorModel: {fileID: 0}
+    - WallType: 0
+      WallPos: 0
+      WallLength: 5
+      WallHeight: 5
+      DoorHeight: 2.2
+      Model: {fileID: 0}
+      DoorModel: {fileID: 0}
+    - WallType: 1
+      WallPos: 0
+      WallLength: 2
+      WallHeight: 5
+      DoorHeight: 4.2
+      Model: {fileID: 0}
+      DoorModel: {fileID: 0}
+    - WallType: 0
+      WallPos: 0
+      WallLength: 5
+      WallHeight: 5
+      DoorHeight: 2.2
+      Model: {fileID: 0}
+      DoorModel: {fileID: 0}
+    WallDir: {x: 0, y: 0, z: 0}
+    WallStartPos: {x: 0, y: 0, z: 0}
+    AllLength: 19
+  - wallDetails:
+    - WallType: 0
+      WallPos: 0
+      WallLength: 19
+      WallHeight: 5
+      DoorHeight: 0
+      Model: {fileID: 0}
+      DoorModel: {fileID: 0}
+    WallDir: {x: 0, y: 90, z: 0}
+    WallStartPos: {x: 0, y: 0, z: 0}
+    AllLength: 19
+  - wallDetails:
+    - WallType: 0
+      WallPos: 0
+      WallLength: 19
+      WallHeight: 5
+      DoorHeight: 0
+      Model: {fileID: 0}
+      DoorModel: {fileID: 0}
+    WallDir: {x: 0, y: 180, z: 0}
+    WallStartPos: {x: 0, y: 0, z: 0}
+    AllLength: 19
+  - wallDetails:
+    - WallType: 0
+      WallPos: 0
+      WallLength: 10
+      WallHeight: 5
+      DoorHeight: 0
+      Model: {fileID: 0}
+      DoorModel: {fileID: 0}
+    - WallType: 1
+      WallPos: 0
+      WallLength: 3
+      WallHeight: 5
+      DoorHeight: 4
+      Model: {fileID: 0}
+      DoorModel: {fileID: 0}
+    - WallType: 0
+      WallPos: 0
+      WallLength: 6
+      WallHeight: 5
+      DoorHeight: 0
+      Model: {fileID: 0}
+      DoorModel: {fileID: 0}
+    WallDir: {x: 0, y: -90, z: 0}
+    WallStartPos: {x: 0, y: 0, z: 0}
+    AllLength: 19
+  HouseHub: {fileID: 2009774280779067191}
+  Wall:
+  - {fileID: 2009774280133966939}
+  - {fileID: 2009774279373497079}
+  - {fileID: 2009774280533970475}
+  - {fileID: 2009774279833955871}
