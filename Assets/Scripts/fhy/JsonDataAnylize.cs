@@ -28,33 +28,38 @@ using UnityEngine;
 public class JsonDataAnylize : MonoBehaviour
 {
     public string GetJsonData;
-    public static RootObject rootObject;
+    public RootObject rootObject;
+    public static JsonDataAnylize instance;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        instance = this; 
+    }
     void Start()
     {
         Debug.LogError("测试Json数据转换");
-        rootObject = AnylizeJsonData("{     \"warehouse\":     " + GetJsonData + "}");
+        //rootObject = AnylizeJsonData("{     \"warehouse\":     " + GetJsonData + "}");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.W))
-        {
-            Debug.LogError("测试Json数据转换");
-            GetJsonData = "[";
-                for(int i = 0;i< rootObject.warehouse.Length;i++)
-                {
-                    GetJsonData += RootDataToJson(rootObject.warehouse[i]);
-                if (i < rootObject.warehouse.Length - 1)
-                    GetJsonData += ",";
-                }
-            GetJsonData +="]";
-        }
+        //if(Input.GetKeyDown(KeyCode.W))
+        //{
+        //    Debug.LogError("测试Json数据转换");
+        //    GetJsonData = "[";
+        //        for(int i = 0;i< rootObject.warehouse.Length;i++)
+        //        {
+        //            GetJsonData += RootDataToJson(rootObject.warehouse[i]);
+        //        if (i < rootObject.warehouse.Length - 1)
+        //            GetJsonData += ",";
+        //        }
+        //    GetJsonData +="]";
+        //}
         if (Input.GetKeyDown(KeyCode.S))
         {
             Debug.LogError("测试Json数据转换");
-            rootObject = AnylizeJsonData("{     \"warehouse\":     " +GetJsonData + "}");
+            rootObject = AnylizeJsonData("{     \"warehouse\":     " + GetJsonData + "}");
         }
     }
     /// <summary>
@@ -67,6 +72,16 @@ public class JsonDataAnylize : MonoBehaviour
         Debug.Log(jsonData);
         //Debug.Log(JsonUtility.FromJson<RootObject>(jsonData).warehouses.Count);
         return JsonUtility.FromJson<RootObject>(jsonData);
+    }
+    /// <summary>
+    /// 传入
+    /// </summary>
+    /// <param name="jsonData"></param>
+    public void JsonData(string jsonData)
+    {
+        if (jsonData == null || jsonData == "") return;
+        GetJsonData = jsonData;
+        rootObject = JsonUtility.FromJson<RootObject>("{     \"warehouse\":     " + GetJsonData + "}");
     }
     /// <summary>
     /// 将数据转换为json
