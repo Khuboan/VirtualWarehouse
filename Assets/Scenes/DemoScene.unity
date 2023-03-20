@@ -3816,6 +3816,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1896584454}
     m_Modifications:
+    - target: {fileID: 2111049918775765988, guid: ab23d38f54c401b49b38b3bbd1f99bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 328627620}
+    - target: {fileID: 2111049918775765988, guid: ab23d38f54c401b49b38b3bbd1f99bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 328627619}
+    - target: {fileID: 2111049918775765988, guid: ab23d38f54c401b49b38b3bbd1f99bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 328627618}
     - target: {fileID: 2111049918775765994, guid: ab23d38f54c401b49b38b3bbd1f99bad, type: 3}
       propertyPath: m_Name
       value: Button
@@ -4015,6 +4027,33 @@ PrefabInstance:
 --- !u!224 &328627617 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2720317130833586829, guid: ff9e1bdfd0f89c340aa0c6f12e037bce, type: 3}
+  m_PrefabInstance: {fileID: 328627616}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &328627618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2605930185836591861, guid: ff9e1bdfd0f89c340aa0c6f12e037bce, type: 3}
+  m_PrefabInstance: {fileID: 328627616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd37d27bd1592f4599e4cd5dfee9d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &328627619 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 505529070, guid: ff9e1bdfd0f89c340aa0c6f12e037bce, type: 3}
+  m_PrefabInstance: {fileID: 328627616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd37d27bd1592f4599e4cd5dfee9d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &328627620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2720317130833586818, guid: ff9e1bdfd0f89c340aa0c6f12e037bce, type: 3}
   m_PrefabInstance: {fileID: 328627616}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &330500086
