@@ -25,8 +25,8 @@ public class minimapMgr : MonoBehaviour
     public void SetRectSize(int index)
     {
         warehouse = JsonDataAnylize.instance.rootObject.warehouse;
-        rectWidth = (float.Parse(warehouse[0].position[1].Split(',')[0]) - float.Parse(warehouse[0].position[0].Split(',')[0])) / 10;
-        rectHeight = (float.Parse(warehouse[0].position[2].Split(',')[1]) - float.Parse(warehouse[0].position[1].Split(',')[1])) / 10;
+        rectWidth = (float.Parse(warehouse[index].position[1].Split(',')[0]) - float.Parse(warehouse[index].position[0].Split(',')[0])) / 10;
+        rectHeight = (float.Parse(warehouse[index].position[2].Split(',')[1]) - float.Parse(warehouse[index].position[1].Split(',')[1])) / 10;
 
         rectLine.GetComponent<RectTransform>().sizeDelta = new Vector2(rectWidth, rectHeight);
         SetPosDoor(index);
@@ -44,6 +44,8 @@ public class minimapMgr : MonoBehaviour
         for (int i = 0; i < doors.Length; i++)
         {
             PosX[i] = (float.Parse(warehouse[index].door[i].position[1].Split(',')[0]) + float.Parse(warehouse[index].door[i].position[0].Split(',')[0])) / 2 / 10 - 100;
+            float sizeX = (float.Parse(warehouse[index].door[i].position[1].Split(',')[0]) - float.Parse(warehouse[index].door[i].position[0].Split(',')[0])) / 10;
+            doors[i].GetComponent<RectTransform>().sizeDelta = new Vector2(sizeX, 7f);
             //PosY[i] = (float.Parse(warehouse[0].door[i].position[1].Split(',')[1]) + float.Parse(warehouse[0].door[i].position[2].Split(',')[1])) / 2 / 10 - 50;
             doors[i].GetComponent<RectTransform>().localPosition = new Vector3(PosX[i], -rectHeight / 2,0);
         }

@@ -3934,10 +3934,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scroll View
       objectReference: {fileID: 0}
-    - target: {fileID: 2720317130833586818, guid: ff9e1bdfd0f89c340aa0c6f12e037bce, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2720317130833586829, guid: ff9e1bdfd0f89c340aa0c6f12e037bce, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -15820,7 +15816,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u623F\u5C4B\u751F\u6210\u6D4B\u8BD5"
+  m_Text: "\u4ED3\u5E93\u751F\u6210\u6D4B\u8BD5"
 --- !u!222 &1267415031
 CanvasRenderer:
   m_ObjectHideFlags: 0
