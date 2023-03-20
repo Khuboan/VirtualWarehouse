@@ -133,8 +133,10 @@ public class CreateNewHouse : MonoBehaviour
         {
             HouseHubDetail newhouseHubDetail = new HouseHubDetail();
             //获取地库数据
+            Debug.Log("地库的数量 = " + JsonDataAnylize.instance.rootObject.warehouse[i].barrier.Count);
             for(int j = 0;j< JsonDataAnylize.instance.rootObject.warehouse[i].barrier.Count; j++)
             {
+                Debug.Log(j);
                 BarrierDetail barrierDetail = new BarrierDetail();
                 barrierDetail.name = JsonDataAnylize.instance.rootObject.warehouse[i].barrier[j].name;
                 float PosX1 = float.Parse (JsonDataAnylize.instance.rootObject.warehouse[i].barrier[j].position[0].Split(',')[0])/ 100;
