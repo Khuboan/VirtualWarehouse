@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2053316e96d2b7742b84963a7c5a85a7, type: 2}
+  - {fileID: 2100000, guid: 793627728fbedcb4394ce2150dc814a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,7 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4854767170315725391}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
