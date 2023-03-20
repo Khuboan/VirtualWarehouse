@@ -7,7 +7,7 @@ public class CreateNewHouse : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    public GameObject HousePre,WallPre, DoorPre, BarrierPre;
+    public GameObject HousePre,WallPre, DoorPre, BarrierPre,BinPre;
     /// <summary>
     /// 获取到的需要生成的墙的信息
     /// </summary>
@@ -44,6 +44,8 @@ public class CreateNewHouse : MonoBehaviour
         {
             houseHubDetails[a].Wall.Add(child);
         }
+
+        //生成障碍
         for(int i = 0;i< houseHubDetails[a].barrierDetails.Count;i++)
         {
             GameObject newBarrier = GameObject.Instantiate(BarrierPre, house.transform);
@@ -51,6 +53,16 @@ public class CreateNewHouse : MonoBehaviour
             newBarrier.transform.localPosition = houseHubDetails[a].barrierDetails[i].pos;
             houseHubDetails[a].barrierDetails[i].model = newBarrier;
         }
+        //生成库位
+        for (int i = 0; i < houseHubDetails[a].binDetails.Count; i++)
+        {
+            GameObject newBin = GameObject.Instantiate(BinPre, house.transform);
+            newBin.transform.localScale = houseHubDetails[a].binDetails[i].scale;
+            newBin.transform.localPosition = houseHubDetails[a].binDetails[i].pos;
+            houseHubDetails[a].binDetails[i].model = newBin;
+        }
+
+        //生成仓库墙壁
         for (int i = 0; i < houseHubDetails[a].wallHubDetails.Count; i++)
         {
 
@@ -130,6 +142,22 @@ public class CreateNewHouse : MonoBehaviour
                 newhouseHubDetail.barrierDetails.Add(barrierDetail);
             }
 
+            for (int j = 0; j < JsonDataAnylize.instance.rootObject.warehouse[i].bin.Count; j++)
+            {
+                BinDetail binDetail = new BinDetail();
+                binDetail.name = JsonDataAnylize.instance.rootObject.warehouse[i].barrier[j].name;
+                float PosX1 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].bin[j].position[0].Split(',')[0]) / 100;
+                float PosY1 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].bin[j].position[0].Split(',')[1]) / 100;
+                float PosX2 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].bin[j].position[1].Split(',')[0]) / 100;
+                float PosY2 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].bin[j].position[1].Split(',')[1]) / 100;
+                float PosX3 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].bin[j].position[2].Split(',')[0]) / 100;
+                float PosY3 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].bin[j].position[2].Split(',')[1]) / 100;
+                float PosX4 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].bin[j].position[3].Split(',')[0]) / 100;
+                float PosY4 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].bin[j].position[3].Split(',')[1]) / 100;
+                binDetail.scale = new Vector3(PosX2 - PosX1, 1, PosY3 - PosY1);
+                binDetail.pos = new Vector3(PosX1, 0, PosY1);
+                newhouseHubDetail.binDetails.Add(binDetail);
+            }
 
 
 
@@ -416,6 +444,7 @@ public class HouseHubDetail
 {
     public List<WallHubDetail> wallHubDetails = new List<WallHubDetail>();
     public List<BarrierDetail> barrierDetails = new List<BarrierDetail>();
+    public List<BinDetail> binDetails = new List<BinDetail>();
     public List<Transform> Wall = new List<Transform>();
     public Vector3 HousePostion;
     public List<Vector4> DoorL = new List<Vector4>();
@@ -429,6 +458,12 @@ public class HouseHubDetail
 }
 [System.Serializable]
 public class BarrierDetail
+{
+    public string name;
+    public Vector3 pos, scale;
+    public GameObject model;
+}
+public class BinDetail
 {
     public string name;
     public Vector3 pos, scale;

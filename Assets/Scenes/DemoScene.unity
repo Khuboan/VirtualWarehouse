@@ -26688,6 +26688,7 @@ MonoBehaviour:
   WallPre: {fileID: 6249462403663367011, guid: 5cc3ea4b22b816c42a5eca93fec422fe, type: 3}
   DoorPre: {fileID: 5803658432876522275, guid: a2aa8fc16b0562e4e9dd654a2e0b27e7, type: 3}
   BarrierPre: {fileID: 6249462403663367011, guid: a57b015def64c414c94b213011271f4b, type: 3}
+  BinPre: {fileID: 3680411655505854917, guid: 6760559d124e7d54aa27e2dbdfb7192e, type: 3}
   HouseHub: {fileID: 2009774281112839657}
   houseHubDetails: []
   housePosLength: 0
