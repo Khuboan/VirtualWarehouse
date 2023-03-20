@@ -7,7 +7,7 @@ public class CreateNewHouse : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    public GameObject HousePre,WallPre, DoorPre, BarrierPre,BinPre;
+    public GameObject HousePre,WallPre, DoorPre, BarrierPre,BinPre, ShelfPre;
     /// <summary>
     /// 获取到的需要生成的墙的信息
     /// </summary>
@@ -61,7 +61,14 @@ public class CreateNewHouse : MonoBehaviour
             newBin.transform.localPosition = houseHubDetails[a].binDetails[i].pos;
             houseHubDetails[a].binDetails[i].model = newBin;
         }
-
+        //生成货架
+        for (int i = 0; i < houseHubDetails[a].shelfDetails.Count; i++)
+        {
+            GameObject newShelf = GameObject.Instantiate(ShelfPre, house.transform);
+            newShelf.transform.GetChild(0).localScale = houseHubDetails[a].shelfDetails[i].scale;
+            newShelf.transform.localPosition = houseHubDetails[a].shelfDetails[i].pos;
+            houseHubDetails[a].shelfDetails[i].model = newShelf;
+        }
         //生成仓库墙壁
         for (int i = 0; i < houseHubDetails[a].wallHubDetails.Count; i++)
         {
@@ -125,6 +132,7 @@ public class CreateNewHouse : MonoBehaviour
         for(int i = 0;i< JsonDataAnylize.instance.rootObject.warehouse.Length;i++)
         {
             HouseHubDetail newhouseHubDetail = new HouseHubDetail();
+            //获取地库数据
             for(int j = 0;j< JsonDataAnylize.instance.rootObject.warehouse[i].barrier.Count; j++)
             {
                 BarrierDetail barrierDetail = new BarrierDetail();
@@ -141,7 +149,26 @@ public class CreateNewHouse : MonoBehaviour
                 barrierDetail.pos = new Vector3(PosX1, 0, PosY1);
                 newhouseHubDetail.barrierDetails.Add(barrierDetail);
             }
+            //获取货架数据
+            for (int j = 0; j < JsonDataAnylize.instance.rootObject.warehouse[i].shelf.Count; j++)
+            {
+                ShelfDetail shelfDetail = new ShelfDetail();
+                shelfDetail.name = JsonDataAnylize.instance.rootObject.warehouse[i].shelf[j].name;
+                float PosX1 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].shelf[j].position[0].Split(',')[0]) / 100;
+                float PosY1 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].shelf[j].position[0].Split(',')[1]) / 100;
+                float PosX2 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].shelf[j].position[1].Split(',')[0]) / 100;
+                float PosY2 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].shelf[j].position[1].Split(',')[1]) / 100;
+                float PosX3 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].shelf[j].position[2].Split(',')[0]) / 100;
+                float PosY3 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].shelf[j].position[2].Split(',')[1]) / 100;
+                float PosX4 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].shelf[j].position[3].Split(',')[0]) / 100;
+                float PosY4 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].shelf[j].position[3].Split(',')[1]) / 100;
+                shelfDetail.scale = new Vector3(PosX2 - PosX1, 1, PosY3 - PosY1);
+                shelfDetail.pos = new Vector3(PosX1, 0, PosY1);
+                newhouseHubDetail.shelfDetails.Add(shelfDetail);
+            }
 
+
+            //获取障碍数据
             for (int j = 0; j < JsonDataAnylize.instance.rootObject.warehouse[i].bin.Count; j++)
             {
                 BinDetail binDetail = new BinDetail();
@@ -161,7 +188,7 @@ public class CreateNewHouse : MonoBehaviour
 
 
 
-
+            //获取墙壁数据
             for (int j = 0;j< JsonDataAnylize.instance.rootObject.warehouse[i].door.Count;j++)
             {
                 float doorx1 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].door[j].position[0].Split(',')[0])/100;
@@ -444,6 +471,7 @@ public class HouseHubDetail
 {
     public List<WallHubDetail> wallHubDetails = new List<WallHubDetail>();
     public List<BarrierDetail> barrierDetails = new List<BarrierDetail>();
+    public List<ShelfDetail> shelfDetails = new List<ShelfDetail>();
     public List<BinDetail> binDetails = new List<BinDetail>();
     public List<Transform> Wall = new List<Transform>();
     public Vector3 HousePostion;
@@ -458,6 +486,12 @@ public class HouseHubDetail
 }
 [System.Serializable]
 public class BarrierDetail
+{
+    public string name;
+    public Vector3 pos, scale;
+    public GameObject model;
+}
+public class ShelfDetail
 {
     public string name;
     public Vector3 pos, scale;
