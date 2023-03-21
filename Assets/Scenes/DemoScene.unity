@@ -17470,7 +17470,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1277589546977095954, guid: 329f5b42c293ad145a4d13e81875482b, type: 3}
       propertyPath: rootObject.warehouse.Array.data[0].bin.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1277589546977095954, guid: 329f5b42c293ad145a4d13e81875482b, type: 3}
       propertyPath: rootObject.warehouse.Array.data[0].barrier.Array.size
@@ -25644,14 +25644,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038984965}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00c0dbeb1df79bc44a71d87a41d1e27a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_axes: 0
-  m_sensitivityX: 3
-  m_sensitivityY: 3
+  m_sensitivityX: 5
+  m_sensitivityY: 5
   CanMove: 0
   m_minimumX: -85
   m_maximumX: -65
@@ -25660,13 +25660,18 @@ MonoBehaviour:
   minView: 5
   maxView: 7.5
   distance: 10
-  speed: 2
+  speed: 50
+  CamHight: 1.7
   targetPoint:
   - {fileID: 984059842}
   - {fileID: 1701401402}
   - {fileID: 1807045249}
   - {fileID: 1540165206}
   moveSpeed: 10
+  LeftMax: -20
+  RightMax: 20
+  UpMax: 20
+  DownMax: -20
 --- !u!20 &2038984969
 Camera:
   m_ObjectHideFlags: 0
@@ -25717,14 +25722,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038984965}
-  m_LocalRotation: {x: 0.26095653, y: -0.01442682, z: 0.0039003685, w: 0.96523494}
-  m_LocalPosition: {x: 15.9, y: 16.3, z: -12}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6100257243333254337}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 30.257, y: -1.713, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2038984971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25732,7 +25737,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038984965}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8383faf20c6294f4399a186792c6ca6e, type: 3}
   m_Name: 

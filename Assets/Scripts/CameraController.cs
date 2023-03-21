@@ -46,12 +46,13 @@ public class CameraController : MonoBehaviour
     public float distance;
     //控制摄像机移动的速率
     public float speed = 1f;
-
+    public float CamHight;
 
     public List<Transform> targetPoint;
 
     [Header("摄像机平移速度")]
     public float moveSpeed = 10f;
+    public float LeftMax, RightMax, UpMax, DownMax;
     void Start()
     {
         // 防止 刚体影响 镜头旋转
@@ -66,6 +67,7 @@ public class CameraController : MonoBehaviour
     }
     void Update()
     {
+        transform.localPosition = new Vector3(transform.localPosition.x, CamHight, transform.localPosition.z);
         //按下鼠标左键
         if (Input.GetMouseButton(0))
         {
@@ -80,7 +82,7 @@ public class CameraController : MonoBehaviour
 
         CameraRotation();
 
-        //CameraMove();
+        CameraMove();
     }
     /// <summary>
     /// 摄像机旋转视角
@@ -94,8 +96,8 @@ public class CameraController : MonoBehaviour
                 m_rotationX += Input.GetAxis("Mouse X") * m_sensitivityX;
                 m_rotationY += Input.GetAxis("Mouse Y") * m_sensitivityY;
                 //旋转幅度限制
-                m_rotationX = Mathf.Clamp(m_rotationX, m_minimumX, m_maximumX);
-                m_rotationY = Mathf.Clamp(m_rotationY, m_minimumY, m_maximumY);
+               // m_rotationX = Mathf.Clamp(m_rotationX, m_minimumX, m_maximumX);
+                //m_rotationY = Mathf.Clamp(m_rotationY, m_minimumY, m_maximumY);
 
                 transform.localEulerAngles = new Vector3(-m_rotationY, m_rotationX, 0);
             }
@@ -120,25 +122,25 @@ public class CameraController : MonoBehaviour
     //private void CameraZoom()
     //{
     //    float mouseCenter = Input.GetAxis("Mouse ScrollWheel");
-
+    //    Debug.Log("mouseCenter=  " + mouseCenter);
     //    //鼠标滑动中键滚轮,实现摄像机的镜头前后滑动
     //    //mouseCenter < 0 = 负数 往后滑动
     //    if (mouseCenter < 0)
     //    {
     //        //滑动限制
-    //        if (transform.position.x <= maxView)
-    //        {
+    //       // if (transform.position.x <= maxView)
+    //        //{
     //            transform.Translate(Vector3.back * speed * Time.deltaTime);
-    //        }
+    //        //}
     //        //mouseCenter >0 = 正数 往前滑动
     //    }
     //    else if (mouseCenter > 0)
     //    {
     //        //滑动限制
-    //        if (transform.position.x >= minView)
-    //        {
+    //        //if (transform.position.x >= minView)
+    //        //{
     //            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-    //        }
+    //        //}
     //    }
     //}
 
@@ -192,9 +194,9 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetMouseButton(1))
         {
-            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -24, 23),
-                Mathf.Clamp(transform.position.y, -24, 23), Mathf.Clamp(transform.position.z, -24, 23));
-            transform.Translate(Vector3.back * Input.GetAxis("Mouse X") * speed * Time.deltaTime, Space.World);
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, LeftMax, RightMax),
+               CamHight, Mathf.Clamp(transform.position.z, DownMax, UpMax));
+            transform.Translate(transform.forward * Input.GetAxis("Mouse X") * speed * Time.deltaTime, Space.World);
             //transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * speed * Time.deltaTime, Space.World);
         }
     }
