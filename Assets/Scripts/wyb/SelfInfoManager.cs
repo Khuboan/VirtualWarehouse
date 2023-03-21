@@ -28,11 +28,11 @@ public class SelfInfoManager : MonoBehaviour
     {
         GameObject Cam = GameObject.Find("Main Camera");   //获取摄像机
         List<Transform> targetPoint = CameraController.instance.targetPoint;
-        Debug.Log("摄像机当前坐标" + Cam.transform.localPosition);
-        Debug.Log(targetPoint[0].position);
+        //Debug.Log("摄像机当前坐标" + Cam.transform.localPosition);
+        //Debug.Log(targetPoint[0].position);
         for (int i = 0; i < targetPoint.Count; i++)
         {
-            Debug.Log(Cam.transform.position == targetPoint[i].position);
+            //Debug.Log(Cam.transform.position == targetPoint[i].position);
             if (Cam.transform.position == targetPoint[i].position)
             {
                 selfNumber = i;    //获取当前货架编号
