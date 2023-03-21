@@ -145,25 +145,45 @@ public class CameraController : MonoBehaviour
     //}
 
     IEnumerator Ien;
+    public int camposIndex;
+    public float CameraMoveTime;
     /// <summary>
     /// µã»÷×ó¼ü°´Å¥
     /// </summary>
     public void CameraLeft()
     {
-        if (Ien != null)
+        
+        
+        Vector3 campos = transform.position;
+        CameraMoveTime = 0;
+        if (camposIndex < targetPoint.Count-1)
         {
-            StopCoroutine(Ien);
+            camposIndex++;
         }
-        float camZ = transform.position.z;
-        for (int i = targetPoint.Count - 1; i >= 0; i--)
+        //float camZ = transform.position.z;
+        //if (Ien != null)
+        //{
+        //    StopCoroutine(Ien);
+        //}
+        //for (int i = targetPoint.Count - 1; i >= 0; i--)
+        //{
+        //    Ien = toLeft(i);
+        //    StartCoroutine(Ien);
+        //    if (transform.position.z != camZ)
+        //    {
+        //        break;
+        //    }
+        //}
+    }
+    public void CamLeft(Vector3 camerapos,int index)
+    {
+        CameraMoveTime+=Time.deltaTime;
+        if (transform.position != targetPoint[index].position)
         {
-            Ien = toLeft(i);
-            StartCoroutine(Ien);
-            if (transform.position.z != camZ)
-            {
-                break;
-            }
+            transform.position = Vector3.Lerp(camerapos, targetPoint[index].position, CameraMoveTime);
+            CamLeft(camerapos, index);
         }
+        
     }
     /// <summary>
     /// µã»÷ÓÒ¼ü°´Å¥
@@ -207,7 +227,7 @@ public class CameraController : MonoBehaviour
     /// <returns></returns>
     IEnumerator toRight(int x)
     {
-        while (targetPoint[x].transform.position.z > transform.position.z)
+        while (targetPoint[x].transform.position != transform.position)
         {
             transform.position = Vector3.Lerp(transform.position, targetPoint[x].position, moveSpeed * Time.deltaTime);
             yield return null;
@@ -220,7 +240,7 @@ public class CameraController : MonoBehaviour
     /// <returns></returns>
     IEnumerator toLeft(int x)
     {
-        while (targetPoint[x].transform.position.z < transform.position.z)
+        while (targetPoint[x].transform.position != transform.position)
         {
             transform.position = Vector3.Lerp(transform.position, targetPoint[x].position, moveSpeed * Time.deltaTime);
             yield return null;

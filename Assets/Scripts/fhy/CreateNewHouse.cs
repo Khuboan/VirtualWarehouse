@@ -122,6 +122,7 @@ public class CreateNewHouse : MonoBehaviour
     }
     public void GetHouseData()
     {
+        CameraController.instance.targetPoint.Clear();
         housePosLength = 0;
             for (int m = 0; m < transform.childCount; m++)
             {
