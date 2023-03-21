@@ -27,7 +27,6 @@ public class WarehousesMgr : MonoBehaviour
         transBarrier = this.transform.Find("Barriers").GetComponent<Transform>();
         transShelfs = this.transform.Find("Shelfs").GetComponent<Transform>();
         transBins = this.transform.Find("Bins").GetComponent<Transform>();
-        Debug.Log(transDoors);
     }
 
     public void SetRectSize(int index)

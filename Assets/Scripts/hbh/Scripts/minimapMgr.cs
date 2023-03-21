@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MinimapMgr : MonoBehaviour
 {
@@ -9,14 +10,29 @@ public class MinimapMgr : MonoBehaviour
     private int wareCount;
     private WarehousesMgr[] warehousesMgrs;
     private float defaultPosY = -51;
+
+    public Button btnReset;
+    public Button btnMiniMap;
     void Start()
     {
         transWarehouses = transform.Find("Warehouses");
         WarehouseMapCreat();
+        btnReset.onClick.AddListener(WarehouseMapCreat);
+        btnReset.onClick.AddListener(WarehousesCreat);
+
+        btnMiniMap.onClick.AddListener(WarehouseMapCreat);
+        btnMiniMap.onClick.AddListener(WarehousesCreat);
     }
 
     public void WarehouseMapCreat()
     {
+        btnReset.onClick.RemoveAllListeners();
+        btnReset.onClick.AddListener(WarehouseMapCreat);
+        btnReset.onClick.AddListener(WarehousesCreat);
+
+        btnMiniMap.onClick.RemoveAllListeners();
+        btnMiniMap.onClick.AddListener(WarehouseMapCreat);
+        btnMiniMap.onClick.AddListener(WarehousesCreat);
         for (int i = 0; i < transWarehouses.childCount; i++)
         {
             if (transWarehouses.GetChild(i).gameObject != null)
@@ -41,8 +57,11 @@ public class MinimapMgr : MonoBehaviour
         defaultPosY = -51;
     }
 
-    void Update()
+    void WarehousesCreat()
     {
-        
+        for (int i = 0; i < warehousesMgrs.Length; i++)
+        {
+            warehousesMgrs[i].SetRectSize(i);
+        }
     }
 }
