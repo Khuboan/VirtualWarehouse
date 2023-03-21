@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -53,6 +54,7 @@ public class CameraController : MonoBehaviour
     [Header("摄像机平移速度")]
     public float moveSpeed = 10f;
     public float LeftMax, RightMax, UpMax, DownMax;
+    bool isMoveDone;
     void Start()
     {
         // 防止 刚体影响 镜头旋转
@@ -81,8 +83,17 @@ public class CameraController : MonoBehaviour
         //CameraZoom();
 
         CameraRotation();
-
         CameraMove();
+
+        if(transform.position != targetPoint[camposIndex].position && !isMoveDone)
+        {
+            CameraMoveTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(campos, targetPoint[camposIndex].position, CameraMoveTime);
+        }
+        else
+        {
+            isMoveDone = true;
+        }
     }
     /// <summary>
     /// 摄像机旋转视角
@@ -147,6 +158,7 @@ public class CameraController : MonoBehaviour
     IEnumerator Ien;
     public int camposIndex;
     public float CameraMoveTime;
+    Vector3 campos;
     /// <summary>
     /// 点击左键按钮
     /// </summary>
@@ -154,11 +166,14 @@ public class CameraController : MonoBehaviour
     {
         
         
-        Vector3 campos = transform.position;
-        CameraMoveTime = 0;
-        if (camposIndex < targetPoint.Count-1)
+        campos = transform.position;
+        //CameraMoveTime = 0;
+        if (camposIndex > 0)
         {
-            camposIndex++;
+            camposIndex--;
+            CameraMoveTime = 0;
+            isMoveDone = false;
+            // CamMove(campos, camposIndex);
         }
         //float camZ = transform.position.z;
         //if (Ien != null)
@@ -175,13 +190,15 @@ public class CameraController : MonoBehaviour
         //    }
         //}
     }
-    public void CamLeft(Vector3 camerapos,int index)
+    public void CamMove(Vector3 camerapos,int index)
     {
-        CameraMoveTime+=Time.deltaTime;
-        if (transform.position != targetPoint[index].position)
+        
+
+        while (transform.position != targetPoint[index].position)
         {
+            CameraMoveTime += Time.deltaTime;
             transform.position = Vector3.Lerp(camerapos, targetPoint[index].position, CameraMoveTime);
-            CamLeft(camerapos, index);
+            CamMove(camerapos, index);
         }
         
     }
@@ -190,22 +207,34 @@ public class CameraController : MonoBehaviour
     /// </summary>
     public void CameraRight()
     {
-        if (Ien != null)
-        {
-            StopCoroutine(Ien);
-        }
-        float camZ = transform.position.z;
-        for (int i = 0; i < targetPoint.Count; i++)
-        {
-            Ien = toRight(i);
-            StartCoroutine(Ien);
-            if (transform.position.z != camZ)
-            {
-                break;
-            }
-        }
-    }
 
+
+        campos = transform.position;
+
+        if (camposIndex < targetPoint.Count - 1)
+        {
+            camposIndex++;
+            CameraMoveTime = 0;
+            isMoveDone = false;
+            // CamMove(campos, camposIndex);
+        }
+
+        
+        //if (Ien != null)
+        //{
+        //    StopCoroutine(Ien);
+        //}
+        //float camZ = transform.position.z;
+        //for (int i = 0; i < targetPoint.Count; i++)
+        //{
+        //    Ien = toRight(i);
+        //    StartCoroutine(Ien);
+        //    if (transform.position.z != camZ)
+        //    {
+        //        break;
+        //    }
+        //}
+    }
 
     /// <summary>
     /// 右键控制摄像机滑动

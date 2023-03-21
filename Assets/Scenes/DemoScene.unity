@@ -20164,7 +20164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a898c320ea115645ae3e5da3cd9bac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropDown: {fileID: 0}
 --- !u!114 &1710086834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23851,7 +23850,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038984965}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00c0dbeb1df79bc44a71d87a41d1e27a, type: 3}
   m_Name: 
@@ -23866,19 +23865,21 @@ MonoBehaviour:
   m_maximumY: 10
   minView: 5
   maxView: 7.5
-  distance: 10
-  speed: 2
-  CamHight: 0
+  distance: 20
+  speed: 30
+  CamHight: 1.7
   targetPoint:
   - {fileID: 984059842}
   - {fileID: 1701401402}
   - {fileID: 1807045249}
   - {fileID: 1540165206}
   moveSpeed: 10
-  LeftMax: 0
-  RightMax: 0
-  UpMax: 0
-  DownMax: 0
+  LeftMax: -20
+  RightMax: 20
+  UpMax: 20
+  DownMax: -20
+  camposIndex: 0
+  CameraMoveTime: 0
 --- !u!20 &2038984969
 Camera:
   m_ObjectHideFlags: 0
@@ -23944,7 +23945,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038984965}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8383faf20c6294f4399a186792c6ca6e, type: 3}
   m_Name: 
