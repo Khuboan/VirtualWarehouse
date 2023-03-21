@@ -530,7 +530,7 @@ MonoBehaviour:
   - wallDetails:
     - WallType: 0
       WallPos: 0
-      WallLength: 3.5
+      WallLength: 5.5
       WallHeight: 5
       DoorHeight: 0
       Model: {fileID: 0}
@@ -549,20 +549,45 @@ MonoBehaviour:
       DoorHeight: 2.2
       Model: {fileID: 0}
       DoorModel: {fileID: 0}
-    WallDir: {x: 0, y: 0, z: 0}
-    WallStartPos: {x: 0, y: 0, z: 0}
-    AllLength: 0
-  - wallDetails:
+    - WallType: 1
+      WallPos: 0
+      WallLength: 2
+      WallHeight: 5
+      DoorHeight: 4.2
+      Model: {fileID: 0}
+      DoorModel: {fileID: 0}
     - WallType: 0
       WallPos: 0
       WallLength: 5
+      WallHeight: 5
+      DoorHeight: 2.2
+      Model: {fileID: 0}
+      DoorModel: {fileID: 0}
+    WallDir: {x: 0, y: 0, z: 0}
+    WallStartPos: {x: 0, y: 0, z: 0}
+    AllLength: 19
+  - wallDetails:
+    - WallType: 0
+      WallPos: 0
+      WallLength: 19
       WallHeight: 5
       DoorHeight: 0
       Model: {fileID: 0}
       DoorModel: {fileID: 0}
     WallDir: {x: 0, y: 90, z: 0}
     WallStartPos: {x: 0, y: 0, z: 0}
-    AllLength: 0
+    AllLength: 19
+  - wallDetails:
+    - WallType: 0
+      WallPos: 0
+      WallLength: 19
+      WallHeight: 5
+      DoorHeight: 0
+      Model: {fileID: 0}
+      DoorModel: {fileID: 0}
+    WallDir: {x: 0, y: 180, z: 0}
+    WallStartPos: {x: 0, y: 0, z: 0}
+    AllLength: 19
   - wallDetails:
     - WallType: 0
       WallPos: 0
@@ -571,20 +596,23 @@ MonoBehaviour:
       DoorHeight: 0
       Model: {fileID: 0}
       DoorModel: {fileID: 0}
-    WallDir: {x: 0, y: 180, z: 0}
-    WallStartPos: {x: 0, y: 0, z: 0}
-    AllLength: 0
-  - wallDetails:
+    - WallType: 1
+      WallPos: 0
+      WallLength: 3
+      WallHeight: 5
+      DoorHeight: 4
+      Model: {fileID: 0}
+      DoorModel: {fileID: 0}
     - WallType: 0
       WallPos: 0
-      WallLength: 5
+      WallLength: 6
       WallHeight: 5
       DoorHeight: 0
       Model: {fileID: 0}
       DoorModel: {fileID: 0}
     WallDir: {x: 0, y: -90, z: 0}
     WallStartPos: {x: 0, y: 0, z: 0}
-    AllLength: 0
+    AllLength: 19
   HouseHub: {fileID: 182831624}
   Wall:
   - {fileID: 1349605732}

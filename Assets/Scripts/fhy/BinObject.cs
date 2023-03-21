@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mktest2 : MonoBehaviour
+public class BinObject : MonoBehaviour
 {
+    public material material = new material();
+    public bool isShow;
     // Start is called before the first frame update
     void Start()
     {

@@ -47,7 +47,7 @@ public class SelfInfoManager : MonoBehaviour
         //货架名字
         GameObject self_Name = selfInfoWindow.transform.Find("Self_Name").GetChild(1).gameObject;
         Text self_Name_Text = self_Name.GetComponent<Text>();
-        self_Name_Text.text = JsonDataAnylize.rootObject.warehouse[0].shelf[selfNumber].name;
+        self_Name_Text.text = JsonDataAnylize.instance.rootObject.warehouse[0].shelf[selfNumber].name;
         //货架编号
         GameObject self_No = selfInfoWindow.transform.Find("Self_No").GetChild(1).gameObject;
         Text self_No_Text = self_No.GetComponent<Text>();
@@ -55,7 +55,7 @@ public class SelfInfoManager : MonoBehaviour
         //货架层数
         GameObject self_Floor = selfInfoWindow.transform.Find("Self_Floor").GetChild(1).gameObject;
         Text self_Floor_Text = self_Floor.GetComponent<Text>();
-        self_Floor_Text.text = JsonDataAnylize.rootObject.warehouse[0].shelf[selfNumber].floor.Count.ToString();
+        self_Floor_Text.text = JsonDataAnylize.instance.rootObject.warehouse[0].shelf[selfNumber].floor.Count.ToString();
         //货架物品
         GameObject self_Goods_info = selfInfoWindow.transform.Find("Self_Goods").GetChild(2).gameObject;
         //Instantiate(floor, self_Goods_info.transform);

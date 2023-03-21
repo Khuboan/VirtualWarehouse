@@ -1,0 +1,647 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1277589546977095955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1277589546977095957}
+  - component: {fileID: 1277589546977095954}
+  m_Layer: 0
+  m_Name: DemoJson
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1277589546977095957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277589546977095955}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.7718086, y: 3.101143, z: -11.94365}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1277589546977095954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277589546977095955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea99c42f86376d408da5045415d9db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootObject:
+    warehouse:
+    - name: demo-warehouse-1
+      position:
+      - 0,0
+      - 2000,0
+      - 2000,1000
+      - 0,1000
+      door:
+      - name: demo-before-door
+        position:
+        - 200,0
+        - 450,0
+      - name: demo-after-door
+        position:
+        - 650,0
+        - 900,0
+      - name: demo-after-door
+        position:
+        - 1000,0
+        - 1250,0
+      barrier:
+      - name: demo-barrier-1
+        position:
+        - 300,250
+        - 400,250
+        - 400,350
+        - 300,350
+      - name: demo-barrier-2
+        position:
+        - 900,250
+        - 1000,250
+        - 1000,350
+        - 900,350
+      - name: demo-barrier-2
+        position:
+        - 1500,250
+        - 1600,250
+        - 1600,350
+        - 1500,350
+      - name: demo-barrier-2
+        position:
+        - 1500,600
+        - 1600,600
+        - 1600,700
+        - 1500,700
+      - name: demo-barrier-2
+        position:
+        - 900,600
+        - 1000,600
+        - 1000,700
+        - 900,700
+      - name: demo-barrier-2
+        position:
+        - 300,600
+        - 400,600
+        - 400,700
+        - 300,700
+      bin:
+      - name: demo-bin-1
+        position:
+        - 50,20
+        - 200,20
+        - 200,170
+        - 50,170
+        material:
+        - name: demo-material-1
+          count: 10
+          class: water
+          code: abc001
+          unit: "\u4E2A"
+        - name: demo-material-2
+          count: 4
+          class: wall
+          code: abc002
+          unit: "\u6253"
+      - name: demo-bin-1
+        position:
+        - 50,400
+        - 200,400
+        - 200,550
+        - 50,550
+        material:
+        - name: demo-material-1
+          count: 10
+          class: water
+          code: abc001
+          unit: "\u4E2A"
+        - name: demo-material-2
+          count: 4
+          class: wall
+          code: abc002
+          unit: "\u6253"
+      - name: demo-bin-1
+        position:
+        - 50,800
+        - 200,800
+        - 200,950
+        - 50,950
+        material:
+        - name: demo-material-1
+          count: 10
+          class: water
+          code: abc001
+          unit: "\u4E2A"
+        - name: demo-material-2
+          count: 4
+          class: wall
+          code: abc002
+          unit: "\u6253"
+      - name: demo-bin-1
+        position:
+        - 1350,800
+        - 1500,800
+        - 1500,950
+        - 1350,950
+        material:
+        - name: demo-material-1
+          count: 10
+          class: water
+          code: abc001
+          unit: "\u4E2A"
+        - name: demo-material-2
+          count: 4
+          class: wall
+          code: abc002
+          unit: "\u6253"
+      - name: demo-bin-1
+        position:
+        - 1350,600
+        - 1500,600
+        - 1500,750
+        - 1350,750
+        material:
+        - name: demo-material-1
+          count: 10
+          class: water
+          code: abc001
+          unit: "\u4E2A"
+        - name: demo-material-2
+          count: 4
+          class: wall
+          code: abc002
+          unit: "\u6253"
+      - name: demo-bin-1
+        position:
+        - 1350,200
+        - 1500,200
+        - 1500,350
+        - 1350,350
+        material:
+        - name: demo-material-1
+          count: 10
+          class: water
+          code: abc001
+          unit: "\u4E2A"
+        - name: demo-material-2
+          count: 4
+          class: wall
+          code: abc002
+          unit: "\u6253"
+      shelf:
+      - name: demo-shelf-1
+        position:
+        - 400,20
+        - 470,20
+        - 470,350
+        - 400,350
+        floor:
+        - floor_num: 1
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+        - floor_num: 2
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+      - name: demo-shelf-1
+        position:
+        - 400,600
+        - 470,600
+        - 470,930
+        - 400,930
+        floor:
+        - floor_num: 1
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+        - floor_num: 2
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+      - name: demo-shelf-1
+        position:
+        - 830,600
+        - 900,600
+        - 900,930
+        - 830,930
+        floor:
+        - floor_num: 1
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+        - floor_num: 2
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+      - name: demo-shelf-1
+        position:
+        - 830,20
+        - 900,20
+        - 900,350
+        - 830,350
+        floor:
+        - floor_num: 1
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+        - floor_num: 2
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+      - name: demo-shelf-1
+        position:
+        - 1000,20
+        - 1070,20
+        - 1070,350
+        - 1000,350
+        floor:
+        - floor_num: 1
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+        - floor_num: 2
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+      - name: demo-shelf-1
+        position:
+        - 1000,600
+        - 1070,600
+        - 1070,930
+        - 1000,930
+        floor:
+        - floor_num: 1
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+        - floor_num: 2
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+      - name: demo-shelf-1
+        position:
+        - 1600,600
+        - 1670,600
+        - 1670,930
+        - 1600,930
+        floor:
+        - floor_num: 1
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+        - floor_num: 2
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+      - name: demo-shelf-1
+        position:
+        - 1930,600
+        - 2000,600
+        - 1930,930
+        - 2000,930
+        floor:
+        - floor_num: 1
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+        - floor_num: 2
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+      - name: demo-shelf-1
+        position:
+        - 1930,20
+        - 2000,20
+        - 1930,350
+        - 2000,350
+        floor:
+        - floor_num: 1
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+        - floor_num: 2
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+      - name: demo-shelf-1
+        position:
+        - 1600,20
+        - 1670,20
+        - 1670,350
+        - 1600,350
+        floor:
+        - floor_num: 1
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+        - floor_num: 2
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+    - name: demo-warehouse-2
+      position:
+      - 0,1000
+      - 2000,1000
+      - 2000,2000
+      - 0,2000
+      door:
+      - name: demo-before-door
+        position:
+        - 200,0
+        - 450,0
+      - name: demo-after-door
+        position:
+        - 650,0
+        - 900,0
+      - name: demo-after-door
+        position:
+        - 1000,0
+        - 1250,0
+      barrier:
+      - name: demo-barrier-1
+        position:
+        - 100,100
+        - 200,100
+        - 200,200
+        - 100,200
+      - name: demo-barrier-2
+        position:
+        - 300,100
+        - 500,100
+        - 500,200
+        - 300,200
+      bin:
+      - name: demo-bin-1
+        position:
+        - 200,200
+        - 400,200
+        - 400,400
+        - 200,400
+        material:
+        - name: demo-material-1
+          count: 10
+          class: water
+          code: abc001
+          unit: "\u4E2A"
+        - name: demo-material-2
+          count: 4
+          class: wall
+          code: abc002
+          unit: "\u6253"
+      - name: demo-bin-2
+        position:
+        - 600,600
+        - 700,600
+        - 700,700
+        - 600,700
+        material:
+        - name: demo-material-2
+          count: 4
+          class: wall
+          code: abc002
+          unit: "\u6253"
+        - name: demo-material-3
+          count: 3
+          class: chicken
+          code: abc003
+          unit: "\u53EA"
+      shelf:
+      - name: demo-shelf-1
+        position:
+        - 200,200
+        - 400,200
+        - 400,400
+        - 200,400
+        floor:
+        - floor_num: 1
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+        - floor_num: 2
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+      - name: demo-shelf-2
+        position:
+        - 200,200
+        - 400,200
+        - 400,400
+        - 200,400
+        floor:
+        - floor_num: 1
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+        - floor_num: 2
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
