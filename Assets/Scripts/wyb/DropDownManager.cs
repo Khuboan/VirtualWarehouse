@@ -16,6 +16,7 @@ public class DropDownManager : MonoBehaviour
         // …Ë÷√º‡Ã˝
         SetDropDownAddListener(OnValueChange);
         SetDropDownItemValue(1);
+        SetDropDownInteractable();
     }
 
     /// <summary>
