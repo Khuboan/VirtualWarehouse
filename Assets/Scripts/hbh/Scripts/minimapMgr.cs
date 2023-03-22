@@ -46,6 +46,7 @@ public class MinimapMgr : MonoBehaviour
         for (int i = 0; i < wareCount; i++)
         {
             gos[i] = GameObject.Instantiate(Resources.Load<GameObject>("Warehouses/rectline"), transWarehouses);
+            gos[i].name = "house" + i;
         }
 
         warehousesMgrs = new WarehousesMgr[wareCount];

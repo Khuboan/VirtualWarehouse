@@ -40,6 +40,7 @@ public class CreateNewHouse : MonoBehaviour
     {
         GameObject house = GameObject.Instantiate(HousePre, transform);
         house.transform.localPosition = houseHubDetails[a].HousePostion;
+        house.name = "House" + a;
         foreach (Transform child in house.transform)
         {
             houseHubDetails[a].Wall.Add(child);
@@ -52,6 +53,7 @@ public class CreateNewHouse : MonoBehaviour
             newBarrier.transform.localScale = houseHubDetails[a].barrierDetails[i].scale;
             newBarrier.transform.localPosition = houseHubDetails[a].barrierDetails[i].pos;
             houseHubDetails[a].barrierDetails[i].model = newBarrier;
+            newBarrier.name = "Barrier" + i;
         }
         //生成库位
         for (int i = 0; i < houseHubDetails[a].binDetails.Count; i++)
@@ -60,6 +62,7 @@ public class CreateNewHouse : MonoBehaviour
             newBin.transform.localScale = houseHubDetails[a].binDetails[i].scale;
             newBin.transform.localPosition = houseHubDetails[a].binDetails[i].pos;
             houseHubDetails[a].binDetails[i].model = newBin;
+            newBin.name = "Bin" + i;
         }
         //生成货架
         for (int i = 0; i < houseHubDetails[a].shelfDetails.Count; i++)

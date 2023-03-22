@@ -68,6 +68,7 @@ public class WarehousesMgr : MonoBehaviour
             sizeX[i] = (float.Parse(warehouse[index].door[i].position[1].Split(',')[0]) - float.Parse(warehouse[index].door[i].position[0].Split(',')[0])) / 10;
             doors[i].GetComponent<RectTransform>().sizeDelta = new Vector2(sizeX[i], 7f);
             doors[i].GetComponent<RectTransform>().localPosition = new Vector3(PosX[i], -rectHeight / 2, 0);
+            doors[i].name = "door" + i;
         }
 
         //fDoor.GetComponent<RectTransform>().localPosition = new Vector3(0, rectHeight / 2, 0); //ио
@@ -101,6 +102,7 @@ public class WarehousesMgr : MonoBehaviour
             sizeY[i] = (float.Parse(warehouse[index].barrier[i].position[2].Split(',')[1]) - float.Parse(warehouse[index].barrier[i].position[1].Split(',')[1])) / 10;
             barriers[i].GetComponent<RectTransform>().sizeDelta = new Vector2(sizeX[i], sizeY[i]);
             barriers[i].GetComponent<RectTransform>().localPosition = new Vector3(PosX[i], PosY[i]);
+            barriers[i].name = "barrier" + i;
         }
     }
 
@@ -130,6 +132,7 @@ public class WarehousesMgr : MonoBehaviour
             sizeY[i] = (float.Parse(warehouse[index].bin[i].position[2].Split(',')[1]) - float.Parse(warehouse[index].bin[i].position[1].Split(',')[1])) / 10;
             bins[i].GetComponent<RectTransform>().sizeDelta = new Vector2(sizeX[i], sizeY[i]);
             bins[i].GetComponent<RectTransform>().localPosition = new Vector3(PosX[i], PosY[i]);
+            bins[i].name = "bin" + i;
         }
     }
 
@@ -159,9 +162,9 @@ public class WarehousesMgr : MonoBehaviour
             sizeY[i] = (float.Parse(warehouse[index].shelf[i].position[2].Split(',')[1]) - float.Parse(warehouse[index].shelf[i].position[1].Split(',')[1])) / 10;
             shelfs[i].GetComponent<RectTransform>().sizeDelta = new Vector2(sizeX[i], sizeY[i]);
             shelfs[i].GetComponent<RectTransform>().localPosition = new Vector3(PosX[i], PosY[i]);
+            shelfs[i].name = "shelf" + i;
         }     
     }
 
     #endregion
-
 }
