@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MinimapMgr : MonoBehaviour
+public class minimapMgr : MonoBehaviour
 {
     private Transform transWarehouses;
     Warehouse[] warehouse;
