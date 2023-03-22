@@ -30,6 +30,8 @@ public class JsonDataAnylize : MonoBehaviour
     public string GetJsonData;
     public RootObject rootObject;
     public static JsonDataAnylize instance;
+    public bool isDemoData;
+    public GameObject DemoData;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -56,6 +58,7 @@ public class JsonDataAnylize : MonoBehaviour
         //        }
         //    GetJsonData +="]";
         //}
+        if(isDemoData) { rootObject = DemoData.GetComponent<DemoJsonData>().rootObject; }
         if (Input.GetKeyDown(KeyCode.S))
         {
             Debug.LogError("²âÊÔJsonÊý¾Ý×ª»»");

@@ -57,7 +57,7 @@ public class MinimapMgr : MonoBehaviour
         defaultPosY = -51;
     }
 
-    void WarehousesCreat()
+    public void WarehousesCreat()
     {
         for (int i = 0; i < warehousesMgrs.Length; i++)
         {

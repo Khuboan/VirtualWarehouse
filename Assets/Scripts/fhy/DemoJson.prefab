@@ -236,6 +236,50 @@ MonoBehaviour:
             class: wall
             code: abc002
             unit: "\u6253"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+        - floor_num: 2
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+        - floor_num: 2
+          material:
+          - name: demo-material-1
+            count: 10
+            class: water
+            code: abc001
+            unit: "\u4E2A"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
+          - name: demo-material-2
+            count: 10
+            class: wall
+            code: abc002
+            unit: "\u6253"
       - name: demo-shelf-1
         position:
         - 400,600

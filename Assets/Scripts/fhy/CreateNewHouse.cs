@@ -68,6 +68,7 @@ public class CreateNewHouse : MonoBehaviour
             newShelf.transform.GetChild(0).localScale = houseHubDetails[a].shelfDetails[i].scale;
             newShelf.transform.localPosition = houseHubDetails[a].shelfDetails[i].pos;
             houseHubDetails[a].shelfDetails[i].model = newShelf;
+            newShelf.GetComponent<ShelfHub>().shelf = houseHubDetails[a].shelfDetails[i].shelf;
             CameraController.instance.targetPoint.Add(newShelf.GetComponent<ShelfHub>().CenterPos);
         }
         //Éú³É²Ö¿âÇ½±Ú
@@ -168,6 +169,7 @@ public class CreateNewHouse : MonoBehaviour
                 float PosY4 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].shelf[j].position[3].Split(',')[1]) / 100;
                 shelfDetail.scale = new Vector3(PosX2 - PosX1, 1, PosY3 - PosY1);
                 shelfDetail.pos = new Vector3(PosX1, 0, PosY1);
+                shelfDetail.shelf = JsonDataAnylize.instance.rootObject.warehouse[i].shelf[j];
                 newhouseHubDetail.shelfDetails.Add(shelfDetail);
             }
 
@@ -500,6 +502,7 @@ public class ShelfDetail
     public string name;
     public Vector3 pos, scale;
     public GameObject model;
+    public Shelf shelf;
 }
 public class BinDetail
 {
