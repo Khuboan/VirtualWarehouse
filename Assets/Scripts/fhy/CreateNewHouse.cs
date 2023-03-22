@@ -69,6 +69,7 @@ public class CreateNewHouse : MonoBehaviour
             newShelf.transform.localPosition = houseHubDetails[a].shelfDetails[i].pos;
             houseHubDetails[a].shelfDetails[i].model = newShelf;
             newShelf.GetComponent<ShelfHub>().shelf = houseHubDetails[a].shelfDetails[i].shelf;
+            newShelf.name = "Shelf" + i;
             CameraController.instance.targetPoint.Add(newShelf.GetComponent<ShelfHub>().CenterPos);
         }
         //Éú³É²Ö¿âÇ½±Ú
