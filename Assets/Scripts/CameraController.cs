@@ -54,7 +54,7 @@ public class CameraController : MonoBehaviour
     [Header("摄像机平移速度")]
     public float moveSpeed = 10f;
     public float LeftMax, RightMax, UpMax, DownMax;
-    bool isMoveDone;
+    public bool isMoveDone;
     void Start()
     {
         // 防止 刚体影响 镜头旋转
@@ -158,7 +158,7 @@ public class CameraController : MonoBehaviour
     IEnumerator Ien;
     public int camposIndex;
     public float CameraMoveTime;
-    Vector3 campos;
+    public Vector3 campos;
     /// <summary>
     /// 点击左键按钮
     /// </summary>
@@ -202,6 +202,7 @@ public class CameraController : MonoBehaviour
         }
         
     }
+
     /// <summary>
     /// 点击右键按钮
     /// </summary>
