@@ -10,8 +10,8 @@ public class CargoInfoFrame : MonoBehaviour
     public float OneExecutePer = 0;
 
     private GameObject HitObj;
-    private bool isCloseTip = false;  //是否要关闭提示板
-    private bool isOpenTip = false;  //是否要打开提示板
+    public bool isCloseTip = false;  //是否要关闭提示板
+    public bool isOpenTip = false;  //是否要打开提示板
 
 
 

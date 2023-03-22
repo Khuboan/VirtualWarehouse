@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShelfHub : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class ShelfHub : MonoBehaviour
     /// </summary>
     public float BoxLength;
     public float floorlength;
+    public Text Shelfname;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +57,8 @@ public class ShelfHub : MonoBehaviour
                 shelfLists[i].shelfObjects.Add(newObject.GetComponent<ShelfObject>());
 
             }
+            Shelfname.text = shelf.name;
+            Shelfname.gameObject.transform.parent.position = new Vector3(CenterPos.position.x, CenterPos.position.y+1, CenterPos.position.z);
         }
     }
 
