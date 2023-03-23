@@ -9,7 +9,9 @@ public class minimapMgr : MonoBehaviour
     Warehouse[] warehouse;
     private int wareCount;
     private WarehousesMgr[] warehousesMgrs;
-    private float defaultPosY = -51;
+
+    private float[] housePosX;
+    private float[] housePosY;
 
     public Button btnReset;
     public Button btnMiniMap;
@@ -45,17 +47,23 @@ public class minimapMgr : MonoBehaviour
 
         for (int i = 0; i < wareCount; i++)
         {
-            gos[i] = GameObject.Instantiate(Resources.Load<GameObject>("Warehouses/rectline"), transWarehouses);
+            gos[i] = GameObject.Instantiate(Resources.Load<GameObject>("Warehouses/house"), transWarehouses);
             gos[i].name = "house" + i;
+            gos[i].transform.Find("txtHouse").GetComponent<Text>().text = "²Ö¿â" + (i+1);
         }
 
         warehousesMgrs = new WarehousesMgr[wareCount];
+        housePosX = new float[wareCount];
+        housePosY = new float[wareCount];
+
         for (int i = 0; i < warehousesMgrs.Length; i++)
         {
+            housePosX[i] = (float.Parse(warehouse[i].position[1].Split(',')[0]) + float.Parse(warehouse[i].position[0].Split(',')[0])) /2;
+            housePosY[i] = (float.Parse(warehouse[i].position[2].Split(',')[1]) + float.Parse(warehouse[i].position[1].Split(',')[1])) /2;
+
             warehousesMgrs[i] = gos[i].GetComponent<WarehousesMgr>();
-            warehousesMgrs[i].GetComponent<RectTransform>().localPosition = new Vector3(0, defaultPosY + i * 100, 0);
+            warehousesMgrs[i].GetComponent<RectTransform>().localPosition = new Vector3(housePosX[i]/10-100, housePosY[i] / 10 - 100, 0);
         }
-        defaultPosY = -51;
     }
 
     public void WarehousesCreat()
