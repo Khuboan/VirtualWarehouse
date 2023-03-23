@@ -53,7 +53,7 @@ public class CameraController : MonoBehaviour
 
     [Header("摄像机平移速度")]
     public float moveSpeed = 10f;
-    public float LeftMax, RightMax, UpMax, DownMax;
+    public float LeftMax, RightMax, UpMax, DownMax,YMax;
     public bool isMoveDone;
     void Start()
     {
@@ -69,7 +69,7 @@ public class CameraController : MonoBehaviour
     }
     void Update()
     {
-        transform.localPosition = new Vector3(transform.localPosition.x, CamHight, transform.localPosition.z);
+        //transform.localPosition = new Vector3(transform.localPosition.x, CamHight, transform.localPosition.z);
         //按下鼠标左键
         if (Input.GetMouseButton(0))
         {
@@ -91,6 +91,12 @@ public class CameraController : MonoBehaviour
             //Debug.Log("相机位置 = " + transform.position + "  目标点位置 = " + targetPoint[camposIndex].position);
             CameraMoveTime += Time.deltaTime;
             transform.position = Vector3.Lerp(campos, targetPoint[camposIndex].position, CameraMoveTime);
+            Vector3 direction = targetPoint[camposIndex].parent.parent.gameObject.GetComponent<ShelfHub>().Shelfname.gameObject.transform.position - transform.position;
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, CameraMoveTime);
+            m_rotationY = -transform.localEulerAngles.x;
+            m_rotationX = transform.localEulerAngles.y;
+            //transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, targetPoint[camposIndex].parent.parent.gameObject.GetComponent<ShelfHub>().Shelfname.gameObject.transform.position - new Vector3(0, 1, 0), CameraMoveTime);
         }
         else
         {
@@ -248,7 +254,7 @@ public class CameraController : MonoBehaviour
         if (Input.GetMouseButton(1))
         {
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, LeftMax, RightMax),
-               CamHight, Mathf.Clamp(transform.position.z, DownMax, UpMax));
+               Mathf.Clamp(transform.position.y, 0, YMax), Mathf.Clamp(transform.position.z, DownMax, UpMax));
             transform.Translate(transform.forward * Input.GetAxis("Mouse X") * speed * Time.deltaTime, Space.World);
             //transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * speed * Time.deltaTime, Space.World);
         }

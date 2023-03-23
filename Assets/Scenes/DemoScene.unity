@@ -17504,11 +17504,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1277589546977095954, guid: 329f5b42c293ad145a4d13e81875482b, type: 3}
       propertyPath: rootObject.warehouse.Array.data[0].barrier.Array.data[0].position.Array.data[1]
-      value: 400,250
+      value: 350,250
       objectReference: {fileID: 0}
     - target: {fileID: 1277589546977095954, guid: 329f5b42c293ad145a4d13e81875482b, type: 3}
       propertyPath: rootObject.warehouse.Array.data[0].barrier.Array.data[0].position.Array.data[2]
-      value: 400,350
+      value: 350,300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277589546977095954, guid: 329f5b42c293ad145a4d13e81875482b, type: 3}
+      propertyPath: rootObject.warehouse.Array.data[0].barrier.Array.data[0].position.Array.data[3]
+      value: 300,300
       objectReference: {fileID: 0}
     - target: {fileID: 1277589546977095954, guid: 329f5b42c293ad145a4d13e81875482b, type: 3}
       propertyPath: rootObject.warehouse.Array.data[0].barrier.Array.data[1].position.Array.data[1]
@@ -25873,6 +25877,7 @@ MonoBehaviour:
   RightMax: 20
   UpMax: 20
   DownMax: -20
+  YMax: 6
   isMoveDone: 0
   camposIndex: 0
   CameraMoveTime: 0
@@ -25902,7 +25907,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -27545,7 +27550,7 @@ MonoBehaviour:
   HouseHub: {fileID: 2009774281112839657}
   houseHubDetails: []
   housePosLength: 0
-  WallHight: 4
+  WallHight: 7
   DoorHight: 3
 --- !u!1 &2009774281112839655
 GameObject:
