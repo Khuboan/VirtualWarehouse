@@ -9,6 +9,7 @@ public class WebSocketExample : MonoBehaviour
     public WebSocket webSocket;
     public string Msg;
     string LastMsg;
+    public minimapMgr minimapMgr;
     public void Update()
     {
         //if(Input.GetKeyDown(KeyCode.P))
@@ -18,8 +19,11 @@ public class WebSocketExample : MonoBehaviour
         if(Msg!=LastMsg)
         {
             JsonDataAnylize.instance.JsonData(Msg);
+            CreateNewHouse.instance.GetHouseData();
+            minimapMgr.WarehouseMapCreat();
+            minimapMgr.WarehousesCreat();
         }
-        LastMsg= Msg;
+        LastMsg = Msg;
     }
 
 
@@ -45,6 +49,7 @@ public class WebSocketExample : MonoBehaviour
     {
         Debug.Log("WebSocket received message: " + message);
         Msg = message;
+
         //GetComponent<JsonDataAnylize>().JsonData(message);
     }
 

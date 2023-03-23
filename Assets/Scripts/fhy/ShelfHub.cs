@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class ShelfHub : MonoBehaviour
 {
-    public Transform StartPos,EndPos,CenterPos;
+    public Transform CenterPos;
     public GameObject[] Floor;
-    public Transform[] FloorStart,FloorEnd;
+    public GameObject[] Floor2;
+    public Transform[] FloorStart, FloorStart2, FloorEnd, FloorEnd2;
+    public bool isY;
     /// <summary>
     /// 该货架存储的总的货物
     /// </summary>
@@ -17,56 +19,180 @@ public class ShelfHub : MonoBehaviour
     /// </summary>
     public List<ShelfList> shelfLists;
     public Shelf shelf;
+    public ShelfDetail shelfDetail = new ShelfDetail();
     /// <summary>
     /// 每个箱子的占地长度，用于计算每层的数量，多余的放到上一层
     /// </summary>
     public float BoxLength;
     public float floorlength;
     public Text Shelfname;
+    public Vector3 WallPos;
+    public Transform[] CameraDir;
+    public ColliderTest[] colliderTests;
     // Start is called before the first frame update
     void Start()
     {
-        floorlength = Vector3.Distance(FloorStart[0].position, FloorEnd[0].position);
-        for (int i = 0; i < Floor.Length; i++)
-        {
-            Floor[i].SetActive((float)shelf.floor.Count / 2 > i);
-        }
-        for (int i = 0; i < shelf.floor.Count; i++)
-        {
-            //   shelfLists[i].
-            float boxleng = BoxLength;
-            float scaleValue = 1;
-            if(BoxLength * shelf.floor[i].material.Count> floorlength)
-            {
-                Debug.Log("floorlength = " + floorlength + "  数量 = " + (float)BoxLength * shelf.floor[i].material.Count);
-                scaleValue = floorlength/((float)(BoxLength * shelf.floor[i].material.Count)) * 0.95f;
-                boxleng = BoxLength * scaleValue*0.95f;
-                Debug.Log("scaleValue=" + scaleValue);
-                Debug.Log("boxleng=" + boxleng);
-            }
-            for (int j = 0; j < shelf.floor[i].material.Count; j++)
-            {
-                GameObject newObject = GameObject.Instantiate(shelfLists[i].MetaModel, this.transform);
-                if (BoxLength * shelf.floor[i].material.Count > floorlength)
-                    newObject.transform.localScale = new Vector3(shelfLists[i].MetaModel.transform.localScale.x * scaleValue, shelfLists[i].MetaModel.transform.localScale.y * scaleValue, shelfLists[i].MetaModel.transform.localScale.z * scaleValue);
-                newObject.transform.position = shelfLists[i].MetaModel.transform.position + new Vector3(0, 0, j * boxleng);
-                newObject.GetComponent<ShelfObject>().material = shelf.floor[i].material[j];
-                newObject.SetActive(true);
-                shelfObjects.Add(newObject.GetComponent<ShelfObject>());
-                shelfLists[i].ShelfModel.Add(newObject);
-                shelfLists[i].shelfObjects.Add(newObject.GetComponent<ShelfObject>());
+        
+        //for(int i = 0;i<CreateNewHouse.in)
+        //{
 
-            }
-            Shelfname.text = shelf.name;
-            Shelfname.gameObject.transform.parent.position = new Vector3(CenterPos.position.x, CenterPos.position.y+1, CenterPos.position.z);
+        //}
+        float PosX1 = float.Parse(shelf.position[0].Split(',')[0]) / 100;
+        float PosY1 = float.Parse(shelf.position[0].Split(',')[1]) / 100;
+        float PosX2 = float.Parse(shelf.position[1].Split(',')[0]) / 100;
+        float PosY2 = float.Parse(shelf.position[1].Split(',')[1]) / 100;
+        float PosX3 = float.Parse(shelf.position[2].Split(',')[0]) / 100;
+        float PosY3 = float.Parse(shelf.position[2].Split(',')[1]) / 100;
+        float PosX4 = float.Parse(shelf.position[3].Split(',')[0]) / 100;
+        float PosY4 = float.Parse(shelf.position[3].Split(',')[1]) / 100;
+        shelfDetail.scale = new Vector3(PosX2 - PosX1, 1, PosY3 - PosY1);
+        if(PosY4 - PosY1 >= PosX2 - PosX1)//竖向排列
+        {
+            transform.GetChild(0).localScale = shelfDetail.scale;
+            transform.GetChild(1).gameObject.SetActive(false);
         }
+        else//横向排列
+        {
+            isY = true;
+            transform.GetChild(1).localScale = shelfDetail.scale;
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
+        if(!isY)
+        {
+            if (colliderTests[0].isObstacle == true)
+            {
+                CenterPos = CameraDir[1];
+            }
+            else
+            {
+                CenterPos = CameraDir[0];
+            }
+            floorlength = Vector3.Distance(FloorStart[0].position, FloorEnd[0].position);
+            for (int i = 0; i < Floor.Length; i++)
+            {
+                Floor[i].SetActive((float)shelf.floor.Count / 2 > i);
+            }
+
+            for (int i = 0; i < shelf.floor.Count; i++)
+            {
+                //   shelfLists[i].
+                float boxleng = BoxLength;
+                float scaleValue = 1;
+                if (BoxLength * shelf.floor[i].material.Count > floorlength)
+                {
+                    Debug.Log("floorlength = " + floorlength + "  数量 = " + (float)BoxLength * shelf.floor[i].material.Count);
+                    scaleValue = floorlength / ((float)(BoxLength * shelf.floor[i].material.Count)) * 0.95f;
+                    boxleng = BoxLength * scaleValue * 0.95f;
+                    Debug.Log("scaleValue=" + scaleValue);
+                    Debug.Log("boxleng=" + boxleng);
+                }
+                for (int j = 0; j < shelf.floor[i].material.Count; j++)
+                {
+                    GameObject newObject = GameObject.Instantiate(shelfLists[i].MetaModel, this.transform);
+                    if (BoxLength * shelf.floor[i].material.Count > floorlength)
+                        newObject.transform.localScale = new Vector3(shelfLists[i].MetaModel.transform.localScale.x * scaleValue, shelfLists[i].MetaModel.transform.localScale.y * scaleValue, shelfLists[i].MetaModel.transform.localScale.z * scaleValue);
+                    newObject.transform.position = shelfLists[i].MetaModel.transform.position + new Vector3(0, 0, j * boxleng);
+                    newObject.GetComponent<ShelfObject>().material = shelf.floor[i].material[j];
+                    newObject.SetActive(true);
+                    shelfObjects.Add(newObject.GetComponent<ShelfObject>());
+                    shelfLists[i].ShelfModel.Add(newObject);
+                    shelfLists[i].shelfObjects.Add(newObject.GetComponent<ShelfObject>());
+
+                }
+                Shelfname.text = shelf.name;
+                
+                Shelfname.gameObject.transform.parent.position = 
+                    new Vector3(Floor[(shelf.floor.Count+1) / 2].transform.position.x, 
+                    Floor[(shelf.floor.Count+1) / 2].transform.position.y+1, 
+                    Floor[(shelf.floor.Count + 1) / 2].transform.position.z);
+            }
+
+
+        }
+        else
+        {
+            if (colliderTests[2].isObstacle == true)
+            {
+                CenterPos = CameraDir[3];
+            }
+            else
+            {
+                CenterPos = CameraDir[2];
+            }
+
+
+            floorlength = Vector3.Distance(FloorStart2[0].position, FloorEnd2[0].position);
+            for (int i = 0; i < Floor.Length; i++)
+            {
+                Floor2[i].SetActive((float)shelf.floor.Count / 2 > i);
+            }
+
+
+
+            for (int i = 0; i < shelf.floor.Count; i++)
+            {
+                //   shelfLists[i].
+                float boxleng = BoxLength;
+                float scaleValue = 1;
+                if (BoxLength * shelf.floor[i].material.Count > floorlength)
+                {
+                    Debug.Log("floorlength = " + floorlength + "  数量 = " + (float)BoxLength * shelf.floor[i].material.Count);
+                    scaleValue = floorlength / ((float)(BoxLength * shelf.floor[i].material.Count)) * 0.95f;
+                    boxleng = BoxLength * scaleValue * 0.95f;
+                    Debug.Log("scaleValue=" + scaleValue);
+                    Debug.Log("boxleng=" + boxleng);
+                }
+                for (int j = 0; j < shelf.floor[i].material.Count; j++)
+                {
+                    GameObject newObject = GameObject.Instantiate(shelfLists[i].MetaModel, this.transform);
+                    if (BoxLength * shelf.floor[i].material.Count > floorlength)
+                        newObject.transform.localScale = new Vector3(shelfLists[i].MetaModel.transform.localScale.x * scaleValue, shelfLists[i].MetaModel.transform.localScale.y * scaleValue, shelfLists[i].MetaModel.transform.localScale.z * scaleValue);
+                    newObject.transform.localEulerAngles = Vector3.zero;
+                    newObject.transform.position = shelfLists[i].MetaModel.transform.position + new Vector3(j * boxleng + 0.3f, 0, 0);
+                    newObject.GetComponent<ShelfObject>().material = shelf.floor[i].material[j];
+                    newObject.SetActive(true);
+                    shelfObjects.Add(newObject.GetComponent<ShelfObject>());
+                    shelfLists[i].ShelfModel.Add(newObject);
+                    shelfLists[i].shelfObjects.Add(newObject.GetComponent<ShelfObject>());
+
+                }
+                Shelfname.text = shelf.name;
+                Shelfname.gameObject.transform.parent.position = new Vector3(CenterPos.position.x, CenterPos.position.y + 1, CenterPos.position.z);
+            }
+
+
+        }
+        
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
+        if (!isY)
+        {
+            if (colliderTests[0].isObstacle == true)
+            {
+                CenterPos.position = CameraDir[1].position;
+            }
+            else
+            {
+                CenterPos.position = CameraDir[0].position;
+            }
+        }
+        else
+        {
+            if (colliderTests[2].isObstacle == true)
+            {
+                CenterPos.position = CameraDir[3].position;
+            }
+            else
+            {
+                CenterPos.position = CameraDir[2].position;
+            }
+        }
+     }
 }
 [System.Serializable]
 public class ShelfList

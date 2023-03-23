@@ -8,6 +8,7 @@ public class CreateNewHouse : MonoBehaviour
     /// 
     /// </summary>
     public GameObject HousePre,WallPre, DoorPre, BarrierPre,BinPre, ShelfPre;
+    //public List<GameObject> z;
     /// <summary>
     /// 获取到的需要生成的墙的信息
     /// </summary>
@@ -25,6 +26,11 @@ public class CreateNewHouse : MonoBehaviour
     public float housePosLength;
     public float WallHight;
     public float DoorHight;
+    public static CreateNewHouse instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -55,26 +61,7 @@ public class CreateNewHouse : MonoBehaviour
             houseHubDetails[a].barrierDetails[i].model = newBarrier;
             newBarrier.name = "Barrier" + i;
         }
-        //生成库位
-        for (int i = 0; i < houseHubDetails[a].binDetails.Count; i++)
-        {
-            GameObject newBin = GameObject.Instantiate(BinPre, house.transform);
-            newBin.transform.localScale = houseHubDetails[a].binDetails[i].scale;
-            newBin.transform.localPosition = houseHubDetails[a].binDetails[i].pos;
-            houseHubDetails[a].binDetails[i].model = newBin;
-            newBin.name = "Bin" + i;
-        }
-        //生成货架
-        for (int i = 0; i < houseHubDetails[a].shelfDetails.Count; i++)
-        {
-            GameObject newShelf = GameObject.Instantiate(ShelfPre, house.transform);
-            newShelf.transform.GetChild(0).localScale = houseHubDetails[a].shelfDetails[i].scale;
-            newShelf.transform.localPosition = houseHubDetails[a].shelfDetails[i].pos;
-            houseHubDetails[a].shelfDetails[i].model = newShelf;
-            newShelf.GetComponent<ShelfHub>().shelf = houseHubDetails[a].shelfDetails[i].shelf;
-            newShelf.name = "Shelf" + i;
-            CameraController.instance.targetPoint.Add(newShelf.GetComponent<ShelfHub>().CenterPos);
-        }
+       
         //生成仓库墙壁
         for (int i = 0; i < houseHubDetails[a].wallHubDetails.Count; i++)
         {
@@ -124,6 +111,26 @@ public class CreateNewHouse : MonoBehaviour
         //houseHubDetails[a].Wall[3].localPosition = houseHubDetails[a].wallHubDetails[3].WallStartPos;
         //houseHubDetails[a].Wall[2].localPosition = new Vector3(-houseHubDetails[a].wallHubDetails[1].AllLength, 0, houseHubDetails[a].wallHubDetails[2].AllLength);
         //houseHubDetails[a].Wall[3].localPosition = new Vector3(0, 0, houseHubDetails[a].wallHubDetails[2].AllLength);
+        //生成库位
+        for (int i = 0; i < houseHubDetails[a].binDetails.Count; i++)
+        {
+            GameObject newBin = GameObject.Instantiate(BinPre, house.transform);
+            newBin.transform.localScale = houseHubDetails[a].binDetails[i].scale;
+            newBin.transform.localPosition = houseHubDetails[a].binDetails[i].pos;
+            houseHubDetails[a].binDetails[i].model = newBin;
+            newBin.name = "Bin" + i;
+        }
+        //生成货架
+        for (int i = 0; i < houseHubDetails[a].shelfDetails.Count; i++)
+        {
+            GameObject newShelf = GameObject.Instantiate(ShelfPre, house.transform);
+            //newShelf.transform.GetChild(0).localScale = houseHubDetails[a].shelfDetails[i].scale;
+            newShelf.transform.localPosition = houseHubDetails[a].shelfDetails[i].pos;
+            houseHubDetails[a].shelfDetails[i].model = newShelf;
+            newShelf.GetComponent<ShelfHub>().shelf = houseHubDetails[a].shelfDetails[i].shelf;
+            newShelf.name = "Shelf" + i;
+            CameraController.instance.targetPoint.Add(newShelf.GetComponent<ShelfHub>().CenterPos);
+        }
     }
     public void GetHouseData()
     {
