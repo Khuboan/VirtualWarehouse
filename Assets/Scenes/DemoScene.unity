@@ -1541,6 +1541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Msg: 
+  minimapMgr: {fileID: 1941868580}
 --- !u!1 &94970815
 GameObject:
   m_ObjectHideFlags: 0
@@ -25602,7 +25603,7 @@ MonoBehaviour:
   maxView: 7.5
   distance: 20
   speed: 30
-  CamHight: 1.7
+  CamHight: 4
   targetPoint:
   - {fileID: 984059842}
   - {fileID: 1701401402}
@@ -27133,7 +27134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1365605220000339340, guid: d0557f96684693044a146e5a0ff450ea, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1365605220000339343, guid: d0557f96684693044a146e5a0ff450ea, type: 3}
       propertyPath: m_Pivot.x

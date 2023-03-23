@@ -47,7 +47,7 @@ public class CameraController : MonoBehaviour
     public float distance;
     //控制摄像机移动的速率
     public float speed = 1f;
-    public float CamHight;
+    float CamHight = 4;
 
     public List<Transform> targetPoint;
 
@@ -87,11 +87,14 @@ public class CameraController : MonoBehaviour
 
         if(transform.position != targetPoint[camposIndex].position && !isMoveDone)
         {
+            //Debug.Log("移动中");
+            //Debug.Log("相机位置 = " + transform.position + "  目标点位置 = " + targetPoint[camposIndex].position);
             CameraMoveTime += Time.deltaTime;
             transform.position = Vector3.Lerp(campos, targetPoint[camposIndex].position, CameraMoveTime);
         }
         else
         {
+           // Debug.Log("移动完成");
             isMoveDone = true;
         }
     }
