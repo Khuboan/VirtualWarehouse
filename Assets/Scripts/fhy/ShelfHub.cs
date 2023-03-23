@@ -10,6 +10,7 @@ public class ShelfHub : MonoBehaviour
     public GameObject[] Floor2;
     public Transform[] FloorStart, FloorStart2, FloorEnd, FloorEnd2;
     public bool isY;
+    public bool isL;
     /// <summary>
     /// 该货架存储的总的货物
     /// </summary>
@@ -61,11 +62,13 @@ public class ShelfHub : MonoBehaviour
         {
             if (colliderTests[0].isObstacle == true)
             {
-                CenterPos = CameraDir[1];
+                CenterPos.position = CameraDir[1].position;
+                isL = true;
             }
             else
             {
-                CenterPos = CameraDir[0];
+                CenterPos.position = CameraDir[0].position;
+                isL = false;
             }
             floorlength = Vector3.Distance(FloorStart[0].position, FloorEnd[0].position);
             for (int i = 0; i < Floor.Length; i++)
@@ -113,11 +116,13 @@ public class ShelfHub : MonoBehaviour
         {
             if (colliderTests[2].isObstacle == true)
             {
-                CenterPos = CameraDir[3];
+                CenterPos.position = CameraDir[3].position;
+                isL = true;
             }
             else
             {
-                CenterPos = CameraDir[2];
+                CenterPos.position = CameraDir[2].position;
+                isL = false;
             }
 
 
@@ -157,7 +162,11 @@ public class ShelfHub : MonoBehaviour
 
                 }
                 Shelfname.text = shelf.name;
-                Shelfname.gameObject.transform.parent.position = new Vector3(CenterPos.position.x, CenterPos.position.y + 1, CenterPos.position.z);
+                //Shelfname.gameObject.transform.parent.localEulerAngles = Vector3.zero;
+                Shelfname.gameObject.transform.parent.position =
+                    new Vector3(Floor2[(shelf.floor.Count + 1) / 2].transform.position.x,
+                    Floor2[(shelf.floor.Count + 1) / 2].transform.position.y + 1,
+                    Floor2[(shelf.floor.Count + 1) / 2].transform.position.z);
             }
 
 
@@ -174,22 +183,33 @@ public class ShelfHub : MonoBehaviour
         {
             if (colliderTests[0].isObstacle == true)
             {
+                Shelfname.gameObject.transform.parent.localEulerAngles = new Vector3(0, -90, 0);
+
                 CenterPos.position = CameraDir[1].position;
+                isL = true;
             }
             else
             {
+                Shelfname.gameObject.transform.parent.localEulerAngles = new Vector3(0, 90, 0);
+
                 CenterPos.position = CameraDir[0].position;
+                isL = false;
             }
         }
         else
         {
             if (colliderTests[2].isObstacle == true)
             {
+                Shelfname.gameObject.transform.parent.localEulerAngles = new Vector3(0, 180, 0);
                 CenterPos.position = CameraDir[3].position;
+                isL = true;
             }
             else
             {
+                Shelfname.gameObject.transform.parent.localEulerAngles = new Vector3(0, 0, 0);
+
                 CenterPos.position = CameraDir[2].position;
+                isL = false;
             }
         }
      }

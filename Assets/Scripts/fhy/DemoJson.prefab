@@ -236,9 +236,9 @@ MonoBehaviour:
             unit: "\u6253"
       - name: demo-shelf-2
         position:
-        - 400,600
-        - 470,600
-        - 470,930
+        - 400,850
+        - 770,850
+        - 770,930
         - 400,930
         floor:
         - floor_num: 1
