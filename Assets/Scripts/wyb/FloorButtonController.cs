@@ -5,7 +5,7 @@ public class FloorButtonController : MonoBehaviour
 {
     private GameObject targetObject;   // 需要控制的GameObject
     private GameObject table;
-    public static string buttonText;
+    public static string floorButtonText;
 
     private void Start()
     {
@@ -18,7 +18,7 @@ public class FloorButtonController : MonoBehaviour
     public void ClickButton()
     {
         //层数按钮原名字
-        buttonText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
+        floorButtonText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
 
         //将列表显示在所点击的按钮下方
         targetObject.transform.position = gameObject.transform.position - new Vector3(0, 20, 0);

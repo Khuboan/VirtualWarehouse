@@ -16,7 +16,8 @@ public class SelfInfoGet : MonoBehaviour
 
     void Start()
     {
-        
+        GameObject titleGoButton = GameObject.Find("UI/ShelfInfoWindow/Shelf_Goods/FloorInfo/Panel/Table/Title/GoButton");
+        Destroy(titleGoButton.gameObject);
     }
     private void Awake()
     {
@@ -72,13 +73,10 @@ public class SelfInfoGet : MonoBehaviour
     public void CreateTable(ShelfHub shelfHub)
     {
         //获取到当前鼠标点击按钮，即要查看的层数
-        string[] arry = FloorButtonController.buttonText.Trim().Split('层');
+        string[] arry = FloorButtonController.floorButtonText.Trim().Split('层');
         int nowFloor = int.Parse(arry[0]);
-        //Debug.LogError("内容 = " + FloorButtonController.buttonText.Trim() + "  长度= " + arry.Length + "层数 = " + shelfHub.shelf.floor.Count  + "当前层级 = " + nowFloor);
-        //Debug.LogError("货物数量 = " + shelfHub.shelf.floor[nowFloor].material.Count);
 
         //生成列表数据
-
         for (int i = 0; i < shelfHub.shelf.floor[nowFloor-1].material.Count; i++)
         {
             GameObject table = GameObject.Find("UI/ShelfInfoWindow/Shelf_Goods/FloorInfo/Panel/Table");
@@ -92,6 +90,7 @@ public class SelfInfoGet : MonoBehaviour
             FindChildGameObject(row.gameObject, "Cell").GetComponent<Text>().text = material.name;
             FindChildGameObject(row.gameObject, "Cell1").GetComponent<Text>().text = material.code;
             FindChildGameObject(row.gameObject, "Cell2").GetComponent<Text>().text = material.count.ToString() + material.unit;
+            FindChildGameObject(row.gameObject, "GoButton").transform.GetChild(1).GetComponent<Text>().text = (i+1).ToString();
         }
     }
 
