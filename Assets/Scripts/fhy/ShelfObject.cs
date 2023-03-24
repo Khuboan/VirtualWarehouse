@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShelfObject : MonoBehaviour
 {
     public material material;
+    public int CamPosIndex, Floor, Num;
     // Start is called before the first frame update
     void Start()
     {

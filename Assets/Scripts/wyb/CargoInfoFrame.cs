@@ -5,8 +5,8 @@ using UnityEngine.EventSystems;
 
 public class CargoInfoFrame : MonoBehaviour
 {
-    public GameObject TipUI;
-    public LineRenderer Line;
+    //public GameObject TipUI;
+    //public LineRenderer Line;
     public float OneExecutePer = 0;
 
     private GameObject HitObj;
@@ -17,33 +17,33 @@ public class CargoInfoFrame : MonoBehaviour
 
     private void Update()
     {
-        if (HitObj != null)
-        {
-            //实时划线
-            DrawLine(HitObj.transform.position, TipUI.transform.position + new Vector3(0, 0, 1.8f));
-        }
+        //if (HitObj != null)
+        //{
+        //    //实时划线
+        //    DrawLine(HitObj.transform.position, TipUI.transform.position + new Vector3(0, 0, 1.8f));
+        //}
 
-        //提示框放大
-        if (isOpenTip == true)
-        {
-            Vector3 endScale = new Vector3(7, 7, 7);
-            AdjustTip(TipUI.transform.localScale, endScale, OneExecutePer);
-            if (TipUI.transform.localScale == endScale)
-            {
-                isOpenTip = false;
-            }
-        }
-        //提示框缩小
-        if (isCloseTip == true)
-        {
-            Vector3 endScale = new Vector3(7, 0, 0);
-            AdjustTip(TipUI.transform.localScale, endScale, OneExecutePer);
-            if (TipUI.transform.localScale == endScale)
-            {
-                isCloseTip = false;
-                TipUI.SetActive(false);
-            }
-        }
+        ////提示框放大
+        //if (isOpenTip == true)
+        //{
+        //    Vector3 endScale = new Vector3(7, 7, 7);
+        //    AdjustTip(TipUI.transform.localScale, endScale, OneExecutePer);
+        //    if (TipUI.transform.localScale == endScale)
+        //    {
+        //        isOpenTip = false;
+        //    }
+        //}
+        ////提示框缩小
+        //if (isCloseTip == true)
+        //{
+        //    Vector3 endScale = new Vector3(7, 0, 0);
+        //    AdjustTip(TipUI.transform.localScale, endScale, OneExecutePer);
+        //    if (TipUI.transform.localScale == endScale)
+        //    {
+        //        isCloseTip = false;
+        //        TipUI.SetActive(false);
+        //    }
+        //}
 
 
         if (Input.GetMouseButtonDown(0))
@@ -69,16 +69,25 @@ public class CargoInfoFrame : MonoBehaviour
                     {
                         isOpenTip = true;
                         //打开提示牌
-                        TipUI.SetActive(true);
+                       // TipUI.SetActive(true);
                         if (HitObj != null)
                         {
                             //关闭高亮
                             HitObj.GetComponent<Outline>().enabled = false;
                         }
                         //显示高亮
+                        Debug.Log("点击到箱子了");
                         hitInfo.collider.gameObject.GetComponent<Outline>().enabled = true;
+                        Debug.Log("箱子的数 = " + hitInfo.collider.gameObject.GetComponent<ShelfObject>().CamPosIndex + "   相机的数 = " + CameraController.instance.camposIndex);
+                        if(hitInfo.collider.gameObject.GetComponent<ShelfObject>().CamPosIndex!=CameraController.instance.camposIndex)
+                        {
+                            CameraController.instance.camposIndex = CameraController.instance.camposIndex = hitInfo.collider.gameObject.GetComponent<ShelfObject>().CamPosIndex;
+                            CameraController.instance.CameraMoveTime = 0;
+                            CameraController.instance.isMoveDone = false;
+                            CameraController.instance.campos = CameraController.instance.transform.position;
+                        }
                         //提示板和货箱间划线
-                        Line.enabled = true;
+                        // Line.enabled = true;
                     }
                     
                     //存储点击的Box
@@ -93,7 +102,7 @@ public class CargoInfoFrame : MonoBehaviour
                         //关闭提示牌
                         isCloseTip = true;
                         //删除线
-                        Line.enabled = false;
+                       // Line.enabled = false;
                     }
                     HitObj = null;
                 }
@@ -107,10 +116,10 @@ public class CargoInfoFrame : MonoBehaviour
     private void DrawLine(Vector3 startPos, Vector3 endPos)
     {
         //是否使用世界坐标
-        Line.useWorldSpace = true;
+        //Line.useWorldSpace = true;
         //设置开始和结束位置0代表第一个点，1代表第二个点
-        Line.SetPosition(0, startPos);
-        Line.SetPosition(1, endPos);
+       // Line.SetPosition(0, startPos);
+       // Line.SetPosition(1, endPos);
         //开始和结束位置的颜色
         //Line.startColor = new Color(1, 0.8F, 0.1F, 0);
         //Line.endColor = Color.red;
@@ -128,7 +137,7 @@ public class CargoInfoFrame : MonoBehaviour
     /// <returns></returns>
     private void AdjustTip(Vector3 startScale, Vector3 endScale, float oneExecutePer)
     {
-        TipUI.transform.localScale = Vector3.Lerp(startScale, endScale, oneExecutePer);
+       // TipUI.transform.localScale = Vector3.Lerp(startScale, endScale, oneExecutePer);
         //yield return null;
     }
 }

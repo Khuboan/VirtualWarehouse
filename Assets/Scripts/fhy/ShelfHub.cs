@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ShelfHub : MonoBehaviour
 {
     public Transform CenterPos;
+    public int CenterPosNum;
     public GameObject[] Floor;
     public GameObject[] Floor2;
     public Transform[] FloorStart, FloorStart2, FloorEnd, FloorEnd2;
@@ -96,6 +97,9 @@ public class ShelfHub : MonoBehaviour
                         newObject.transform.localScale = new Vector3(shelfLists[i].MetaModel.transform.localScale.x * scaleValue, shelfLists[i].MetaModel.transform.localScale.y * scaleValue, shelfLists[i].MetaModel.transform.localScale.z * scaleValue);
                     newObject.transform.position = shelfLists[i].MetaModel.transform.position + new Vector3(0, 0, j * boxleng);
                     newObject.GetComponent<ShelfObject>().material = shelf.floor[i].material[j];
+                    newObject.GetComponent<ShelfObject>().CamPosIndex = CenterPosNum;
+                    newObject.GetComponent<ShelfObject>().Floor = i;
+                    newObject.GetComponent<ShelfObject>().Num = j;
                     newObject.SetActive(true);
                     shelfObjects.Add(newObject.GetComponent<ShelfObject>());
                     shelfLists[i].ShelfModel.Add(newObject);
@@ -156,6 +160,9 @@ public class ShelfHub : MonoBehaviour
                     newObject.transform.position = shelfLists[i].MetaModel.transform.position + new Vector3(j * boxleng + 0.3f, 0, 0);
                     newObject.GetComponent<ShelfObject>().material = shelf.floor[i].material[j];
                     newObject.SetActive(true);
+                    newObject.GetComponent<ShelfObject>().CamPosIndex = CenterPosNum;
+                    newObject.GetComponent<ShelfObject>().Floor = i;
+                    newObject.GetComponent<ShelfObject>().Num = j;
                     shelfObjects.Add(newObject.GetComponent<ShelfObject>());
                     shelfLists[i].ShelfModel.Add(newObject);
                     shelfLists[i].shelfObjects.Add(newObject.GetComponent<ShelfObject>());
