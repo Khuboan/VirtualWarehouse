@@ -22,7 +22,7 @@ public class ColliderTest : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("碰撞到了" + other.gameObject.name);
+        //Debug.Log("碰撞到了" + other.gameObject.name);
         if (other.gameObject.tag == "Wall")
         {
             isObstacle = true;

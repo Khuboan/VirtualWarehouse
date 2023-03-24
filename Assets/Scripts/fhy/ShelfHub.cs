@@ -84,11 +84,11 @@ public class ShelfHub : MonoBehaviour
                 float scaleValue = 1;
                 if (BoxLength * shelf.floor[i].material.Count > floorlength)
                 {
-                    Debug.Log("floorlength = " + floorlength + "  数量 = " + (float)BoxLength * shelf.floor[i].material.Count);
+                    //Debug.Log("floorlength = " + floorlength + "  数量 = " + (float)BoxLength * shelf.floor[i].material.Count);
                     scaleValue = floorlength / ((float)(BoxLength * shelf.floor[i].material.Count)) * 0.95f;
                     boxleng = BoxLength * scaleValue * 0.95f;
-                    Debug.Log("scaleValue=" + scaleValue);
-                    Debug.Log("boxleng=" + boxleng);
+                    //Debug.Log("scaleValue=" + scaleValue);
+                   // Debug.Log("boxleng=" + boxleng);
                 }
                 for (int j = 0; j < shelf.floor[i].material.Count; j++)
                 {

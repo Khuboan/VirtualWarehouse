@@ -147,11 +147,10 @@ public class CreateNewHouse : MonoBehaviour
         for(int i = 0;i< JsonDataAnylize.instance.rootObject.warehouse.Length;i++)
         {
             HouseHubDetail newhouseHubDetail = new HouseHubDetail();
-            //获取地库数据
-            Debug.Log("地库的数量 = " + JsonDataAnylize.instance.rootObject.warehouse[i].barrier.Count);
+            //获取障碍数据
             for(int j = 0;j< JsonDataAnylize.instance.rootObject.warehouse[i].barrier.Count; j++)
             {
-                Debug.Log(j);
+                //Debug.Log(j);
                 BarrierDetail barrierDetail = new BarrierDetail();
                 barrierDetail.name = JsonDataAnylize.instance.rootObject.warehouse[i].barrier[j].name;
                 float PosX1 = float.Parse (JsonDataAnylize.instance.rootObject.warehouse[i].barrier[j].position[0].Split(',')[0])/ 100;
@@ -186,11 +185,12 @@ public class CreateNewHouse : MonoBehaviour
             }
 
 
-            //获取障碍数据
+            ////获取地库数据
+            Debug.Log("仓库" + i + "的地库的数量为" + JsonDataAnylize.instance.rootObject.warehouse[i].bin.Count);
             for (int j = 0; j < JsonDataAnylize.instance.rootObject.warehouse[i].bin.Count; j++)
             {
                 BinDetail binDetail = new BinDetail();
-                binDetail.name = JsonDataAnylize.instance.rootObject.warehouse[i].barrier[j].name;
+                binDetail.name = JsonDataAnylize.instance.rootObject.warehouse[i].bin[j].name;
                 float PosX1 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].bin[j].position[0].Split(',')[0]) / 100;
                 float PosY1 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].bin[j].position[0].Split(',')[1]) / 100;
                 float PosX2 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].bin[j].position[1].Split(',')[0]) / 100;
@@ -262,8 +262,8 @@ public class CreateNewHouse : MonoBehaviour
                 WallHubDetail wallHubDetail = new WallHubDetail();///首先生成第一面墙，墙的长度等于第一个门的x1
                 WallDetail wallDetail = new WallDetail();
                 wallHubDetail.AllLength = newhouseHubDetail.WallL;
-                Debug.LogError("下方的门的数量为" + newhouseHubDetail.DoorL.Count);
-                Debug.LogError("第一个门的坐标为" + newhouseHubDetail.DoorL[0]);
+                //Debug.LogError("下方的门的数量为" + newhouseHubDetail.DoorL.Count);
+                //Debug.LogError("第一个门的坐标为" + newhouseHubDetail.DoorL[0]);
                 wallDetail.WallLength = newhouseHubDetail.DoorL[0].y;
                 wallDetail.WallHeight = WallHight;
                 wallHubDetail.wallDetails.Add(wallDetail);
@@ -316,8 +316,8 @@ public class CreateNewHouse : MonoBehaviour
                 WallHubDetail wallHubDetail = new WallHubDetail();///首先生成第一面墙，墙的长度等于第一个门的x1
                 WallDetail wallDetail = new WallDetail();
                 wallHubDetail.AllLength = newhouseHubDetail.WallR;
-                Debug.LogError("下方的门的数量为" + newhouseHubDetail.DoorR.Count);
-                Debug.LogError("第一个门的坐标为" + newhouseHubDetail.DoorR[0]);
+                //Debug.LogError("下方的门的数量为" + newhouseHubDetail.DoorR.Count);
+                //Debug.LogError("第一个门的坐标为" + newhouseHubDetail.DoorR[0]);
                 wallDetail.WallLength = newhouseHubDetail.DoorR[0].y;
                 wallDetail.WallHeight = WallHight;
                 wallHubDetail.wallDetails.Add(wallDetail);
@@ -429,8 +429,8 @@ public class CreateNewHouse : MonoBehaviour
                 WallHubDetail wallHubDetail = new WallHubDetail();///首先生成第一面墙，墙的长度等于第一个门的x1
                 WallDetail wallDetail = new WallDetail();
                 wallHubDetail.AllLength = newhouseHubDetail.WallD;
-                Debug.LogError("下方的门的数量为" + newhouseHubDetail.DoorD.Count);
-                Debug.LogError("第一个门的坐标为" + newhouseHubDetail.DoorD[0]);
+                //Debug.LogError("下方的门的数量为" + newhouseHubDetail.DoorD.Count);
+                //Debug.LogError("第一个门的坐标为" + newhouseHubDetail.DoorD[0]);
                 wallDetail.WallLength = newhouseHubDetail.DoorD[0].x;
                 wallDetail.WallHeight = WallHight;
                 wallHubDetail.wallDetails.Add(wallDetail);
