@@ -3252,8 +3252,8 @@ MonoBehaviour:
   MaterialIndex: {fileID: 1750933297}
   MaterialClass: {fileID: 1497631045}
   MaterialCount: {fileID: 1659905663}
-  ShelfWin: {fileID: 0}
-  MaterialWin: {fileID: 0}
+  ShelfWin: {fileID: 2080331646}
+  MaterialWin: {fileID: 231272996}
 --- !u!114 &231272999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4156,6 +4156,9 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+  CamPosIndex: 0
+  Floor: 0
+  Num: 0
 --- !u!1001 &330500086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6898,6 +6901,9 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+  CamPosIndex: 0
+  Floor: 0
+  Num: 0
 --- !u!1 &578797854
 GameObject:
   m_ObjectHideFlags: 0
@@ -10903,6 +10909,9 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+  CamPosIndex: 0
+  Floor: 0
+  Num: 0
 --- !u!1001 &896598033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14672,6 +14681,9 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+  CamPosIndex: 0
+  Floor: 0
+  Num: 0
 --- !u!1001 &1179178127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17412,19 +17424,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1277589546977095954, guid: 329f5b42c293ad145a4d13e81875482b, type: 3}
       propertyPath: rootObject.warehouse.Array.data[0].shelf.Array.data[2].floor.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1277589546977095954, guid: 329f5b42c293ad145a4d13e81875482b, type: 3}
       propertyPath: rootObject.warehouse.Array.data[0].shelf.Array.data[4].floor.Array.size
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1277589546977095954, guid: 329f5b42c293ad145a4d13e81875482b, type: 3}
       propertyPath: rootObject.warehouse.Array.data[0].shelf.Array.data[8].floor.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1277589546977095954, guid: 329f5b42c293ad145a4d13e81875482b, type: 3}
       propertyPath: rootObject.warehouse.Array.data[0].bin.Array.data[2].material.Array.size
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1277589546977095954, guid: 329f5b42c293ad145a4d13e81875482b, type: 3}
       propertyPath: rootObject.warehouse.Array.data[0].bin.Array.data[2].position.Array.size
@@ -17504,15 +17516,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1277589546977095954, guid: 329f5b42c293ad145a4d13e81875482b, type: 3}
       propertyPath: rootObject.warehouse.Array.data[0].barrier.Array.data[0].position.Array.data[1]
-      value: 350,250
+      value: 400,250
       objectReference: {fileID: 0}
     - target: {fileID: 1277589546977095954, guid: 329f5b42c293ad145a4d13e81875482b, type: 3}
       propertyPath: rootObject.warehouse.Array.data[0].barrier.Array.data[0].position.Array.data[2]
-      value: 350,300
+      value: 400,350
       objectReference: {fileID: 0}
     - target: {fileID: 1277589546977095954, guid: 329f5b42c293ad145a4d13e81875482b, type: 3}
       propertyPath: rootObject.warehouse.Array.data[0].barrier.Array.data[0].position.Array.data[3]
-      value: 300,300
+      value: 300,350
       objectReference: {fileID: 0}
     - target: {fileID: 1277589546977095954, guid: 329f5b42c293ad145a4d13e81875482b, type: 3}
       propertyPath: rootObject.warehouse.Array.data[0].barrier.Array.data[1].position.Array.data[1]
@@ -18937,6 +18949,9 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+  CamPosIndex: 0
+  Floor: 0
+  Num: 0
 --- !u!1001 &1512186913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21548,6 +21563,9 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+  CamPosIndex: 0
+  Floor: 0
+  Num: 0
 --- !u!1001 &1700668801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22584,6 +22602,9 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+  CamPosIndex: 0
+  Floor: 0
+  Num: 0
 --- !u!1001 &1794439430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24602,6 +24623,9 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+  CamPosIndex: 0
+  Floor: 0
+  Num: 0
 --- !u!1 &1935978152
 GameObject:
   m_ObjectHideFlags: 0
@@ -25581,6 +25605,9 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+  CamPosIndex: 0
+  Floor: 0
+  Num: 0
 --- !u!1 &2006167566
 GameObject:
   m_ObjectHideFlags: 0
@@ -25979,6 +26006,9 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+  CamPosIndex: 0
+  Floor: 0
+  Num: 0
 --- !u!1001 &2060468776
 PrefabInstance:
   m_ObjectHideFlags: 0

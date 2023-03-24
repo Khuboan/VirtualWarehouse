@@ -56,6 +56,7 @@ public class CargoInfoFrame : MonoBehaviour
                         
                         try
                         {
+
                             if (hitInfo.collider.gameObject.GetComponent<ShelfObject>().CamPosIndex != CameraController.instance.camposIndex)
                             {
                                 CameraController.instance.camposIndex = CameraController.instance.camposIndex = hitInfo.collider.gameObject.GetComponent<ShelfObject>().CamPosIndex;

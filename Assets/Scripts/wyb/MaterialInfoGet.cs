@@ -32,6 +32,10 @@ public class MaterialInfoGet : MonoBehaviour
     public void GetInfo( int nowMaterial)
     {
         //显示货物名字，编号，种类，数量
+        SelfInfoGet.binHub = CameraController.instance.targetPoint[CameraController.instance.camposIndex].parent.GetComponent<BinHub>();
+        Debug.Log(SelfInfoGet.binHub.gameObject.name);
+        Debug.Log("数量为" + SelfInfoGet.binHub.bin.material.Count + "  当前选择 " + (nowMaterial - 1));
+
         material targetMaterial = SelfInfoGet.binHub.bin.material[nowMaterial - 1];
         MaterialName.text = targetMaterial.name.ToString();
         MaterialIndex.text = targetMaterial.code.ToString();

@@ -119,6 +119,11 @@ MonoBehaviour:
           class: wall
           code: abc002
           unit: "\u6253"
+        - name: demo-material-2
+          count: 4
+          class: wall
+          code: abc002
+          unit: "\u6253"
       - name: demo-bin-1
         position:
         - 50,400
@@ -136,6 +141,16 @@ MonoBehaviour:
           class: wall
           code: abc002
           unit: "\u6253"
+        - name: demo-material-2
+          count: 4
+          class: wall
+          code: abc002
+          unit: "\u6253"
+        - name: demo-material-2
+          count: 4
+          class: wall
+          code: abc002
+          unit: "\u6253"
       - name: demo-bin-1
         position:
         - 50,800
@@ -148,6 +163,26 @@ MonoBehaviour:
           class: water
           code: abc001
           unit: "\u4E2A"
+        - name: demo-material-2
+          count: 4
+          class: wall
+          code: abc002
+          unit: "\u6253"
+        - name: demo-material-2
+          count: 4
+          class: wall
+          code: abc002
+          unit: "\u6253"
+        - name: demo-material-2
+          count: 4
+          class: wall
+          code: abc002
+          unit: "\u6253"
+        - name: demo-material-2
+          count: 4
+          class: wall
+          code: abc002
+          unit: "\u6253"
         - name: demo-material-2
           count: 4
           class: wall
