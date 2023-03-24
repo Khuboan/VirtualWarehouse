@@ -22,7 +22,7 @@ public class CargoInfoFrame : MonoBehaviour
     private void Update()
     {
        
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)&& !EventSystem.current.IsPointerOverGameObject())
         {
             //从摄像机发出到点击坐标的射线
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

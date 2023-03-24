@@ -84,23 +84,23 @@ public class BinHub : MonoBehaviour
         // Update is called once per frame
         void Update()
     {
-        if (CameraController.instance.targetPoint[CameraController.instance.camposIndex] == CenterPos)
-        {
-            for (int i = 0; i < gameObjects.Count; i++)
-            {
-                binmodel.GetComponent<Outline>().enabled = true;
-                binmodel2.GetComponent<Outline>().enabled = true;
-            }
+        //if (CameraController.instance.targetPoint[CameraController.instance.camposIndex] == CenterPos)
+        //{
+        //    for (int i = 0; i < gameObjects.Count; i++)
+        //    {
+        //        binmodel.GetComponent<Outline>().enabled = true;
+        //        binmodel2.GetComponent<Outline>().enabled = true;
+        //    }
 
-        }
-        else
-        {
-            for (int i = 0; i < gameObjects.Count; i++)
-            {
-                binmodel.GetComponent<Outline>().enabled = false;
-                binmodel2.GetComponent<Outline>().enabled = false;
-            }
-        }
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < gameObjects.Count; i++)
+        //    {
+        //        binmodel.GetComponent<Outline>().enabled = false;
+        //        binmodel2.GetComponent<Outline>().enabled = false;
+        //    }
+        //}
         if (!isY)
         {
             if (colliderTests[0].isObstacle == true)

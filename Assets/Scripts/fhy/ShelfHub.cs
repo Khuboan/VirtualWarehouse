@@ -186,23 +186,23 @@ public class ShelfHub : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CameraController.instance.targetPoint[CameraController.instance.camposIndex]==CenterPos)
-        {
-            for(int i = 0;i<Floor.Length;i++)
-            {
-                Floor[i].gameObject.GetComponent<Outline>().enabled = true;
-                Floor2[i].gameObject.GetComponent<Outline>().enabled = true;
-            }
+        //if (CameraController.instance.targetPoint[CameraController.instance.camposIndex]==CenterPos)
+        //{
+        //    for(int i = 0;i<Floor.Length;i++)
+        //    {
+        //        Floor[i].gameObject.GetComponent<Outline>().enabled = true;
+        //        Floor2[i].gameObject.GetComponent<Outline>().enabled = true;
+        //    }
             
-        }
-        else
-        {
-            for (int i = 0; i < Floor.Length; i++)
-            {
-                Floor[i].gameObject.GetComponent<Outline>().enabled = false;
-                Floor2[i].gameObject.GetComponent<Outline>().enabled = false;
-            }
-        }
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < Floor.Length; i++)
+        //    {
+        //        Floor[i].gameObject.GetComponent<Outline>().enabled = false;
+        //        Floor2[i].gameObject.GetComponent<Outline>().enabled = false;
+        //    }
+        //}
 
 
         if (!isY)
