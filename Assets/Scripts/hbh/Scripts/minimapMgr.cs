@@ -49,7 +49,7 @@ public class minimapMgr : MonoBehaviour
         {
             gos[i] = GameObject.Instantiate(Resources.Load<GameObject>("Warehouses/house"), transWarehouses);
             gos[i].name = "house" + i;
-            gos[i].transform.Find("txtHouse").GetComponent<Text>().text = "²Ö¿â" + (i+1);
+            gos[i].transform.Find("txtHouse").GetComponent<Text>().text = warehouse[i].name;
         }
 
         warehousesMgrs = new WarehousesMgr[wareCount];
