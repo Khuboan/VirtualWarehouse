@@ -111,15 +111,6 @@ public class CreateNewHouse : MonoBehaviour
         //houseHubDetails[a].Wall[3].localPosition = houseHubDetails[a].wallHubDetails[3].WallStartPos;
         //houseHubDetails[a].Wall[2].localPosition = new Vector3(-houseHubDetails[a].wallHubDetails[1].AllLength, 0, houseHubDetails[a].wallHubDetails[2].AllLength);
         //houseHubDetails[a].Wall[3].localPosition = new Vector3(0, 0, houseHubDetails[a].wallHubDetails[2].AllLength);
-        //生成库位
-        for (int i = 0; i < houseHubDetails[a].binDetails.Count; i++)
-        {
-            GameObject newBin = GameObject.Instantiate(BinPre, house.transform);
-            newBin.transform.localScale = houseHubDetails[a].binDetails[i].scale;
-            newBin.transform.localPosition = houseHubDetails[a].binDetails[i].pos;
-            houseHubDetails[a].binDetails[i].model = newBin;
-            newBin.name = "Bin" + i;
-        }
         //生成货架
         for (int i = 0; i < houseHubDetails[a].shelfDetails.Count; i++)
         {
@@ -132,6 +123,21 @@ public class CreateNewHouse : MonoBehaviour
             newShelf.GetComponent<ShelfHub>().CenterPosNum = CameraController.instance.targetPoint.Count;
             CameraController.instance.targetPoint.Add(newShelf.GetComponent<ShelfHub>().CenterPos);
         }
+
+        //生成库位
+        for (int i = 0; i < houseHubDetails[a].binDetails.Count; i++)
+        {
+            GameObject newBin = GameObject.Instantiate(BinPre, house.transform);
+            //newBin.transform.localScale = houseHubDetails[a].binDetails[i].scale;
+            newBin.transform.localPosition = houseHubDetails[a].binDetails[i].pos;
+            houseHubDetails[a].binDetails[i].model = newBin;
+            newBin.name = "Bin" + i;
+            newBin.GetComponent<BinHub>().bin = houseHubDetails[a].binDetails[i].bin;
+            newBin.GetComponent<BinHub>().CenterPosNum = CameraController.instance.targetPoint.Count;
+            CameraController.instance.targetPoint.Add(newBin.GetComponent<BinHub>().CenterPos);
+
+        }
+        
     }
     public void GetHouseData()
     {
@@ -201,6 +207,7 @@ public class CreateNewHouse : MonoBehaviour
                 float PosY4 = float.Parse(JsonDataAnylize.instance.rootObject.warehouse[i].bin[j].position[3].Split(',')[1]) / 100;
                 binDetail.scale = new Vector3(PosX2 - PosX1, 1, PosY3 - PosY1);
                 binDetail.pos = new Vector3(PosX1, 0, PosY1);
+                binDetail.bin = JsonDataAnylize.instance.rootObject.warehouse[i].bin[j];
                 newhouseHubDetail.binDetails.Add(binDetail);
             }
 
@@ -521,6 +528,7 @@ public class BinDetail
     public string name;
     public Vector3 pos, scale;
     public GameObject model;
+    public Bin bin;
 }
 
 

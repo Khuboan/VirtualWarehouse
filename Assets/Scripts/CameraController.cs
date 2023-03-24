@@ -91,7 +91,30 @@ public class CameraController : MonoBehaviour
             //Debug.Log("相机位置 = " + transform.position + "  目标点位置 = " + targetPoint[camposIndex].position);
             CameraMoveTime += Time.deltaTime;
             transform.position = Vector3.Lerp(campos, targetPoint[camposIndex].position, CameraMoveTime);
-            Vector3 direction = new Vector3(targetPoint[camposIndex].parent.parent.gameObject.GetComponent<ShelfHub>().Shelfname.gameObject.transform.position.x, targetPoint[camposIndex].parent.parent.gameObject.GetComponent<ShelfHub>().Shelfname.gameObject.transform.position.y/3 * 2, targetPoint[camposIndex].parent.parent.gameObject.GetComponent<ShelfHub>().Shelfname.gameObject.transform.position.z)  - transform.position;
+            Vector3 direction = Vector3.zero;
+            try
+            {
+                direction =
+              new Vector3(targetPoint[camposIndex].parent.parent.gameObject.GetComponent<ShelfHub>().Shelfname.gameObject.transform.position.x,
+              targetPoint[camposIndex].parent.parent.gameObject.GetComponent<ShelfHub>().Shelfname.gameObject.transform.position.y / 3 * 2,
+              targetPoint[camposIndex].parent.parent.gameObject.GetComponent<ShelfHub>().Shelfname.gameObject.transform.position.z) - transform.position;
+            }
+            catch
+            {
+                direction =
+              new Vector3(targetPoint[camposIndex].parent.gameObject.GetComponent<BinHub>().BinName.gameObject.transform.position.x,
+              targetPoint[camposIndex].parent.gameObject.GetComponent<BinHub>().BinName.gameObject.transform.position.y / 3 * 2,
+              targetPoint[camposIndex].parent.gameObject.GetComponent<BinHub>().BinName.gameObject.transform.position.z) - transform.position;
+            }
+            //if (targetPoint[camposIndex].parent.parent.gameObject.GetComponent<ShelfHub>()!=null)
+            //{
+               
+            //}
+            //if(targetPoint[camposIndex].parent.parent.gameObject.GetComponent<BinHub>() != null)
+            //{
+               
+            //}
+           
             Quaternion rotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, CameraMoveTime);
             m_rotationY = -transform.localEulerAngles.x;

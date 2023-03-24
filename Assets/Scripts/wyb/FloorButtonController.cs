@@ -29,7 +29,10 @@ public class FloorButtonController : MonoBehaviour
             targetObject.SetActive(true);
 
             //创建列表信息
-            SelfInfoGet.selfInfoGet.CreateTable(SelfInfoGet.shelfHub);
+            if (CameraController.instance.targetPoint[CameraController.instance.camposIndex].parent.parent.GetComponent<ShelfHub>() != null)
+                SelfInfoGet.selfInfoGet.CreateTable(SelfInfoGet.shelfHub);
+            else
+                SelfInfoGet.selfInfoGet.CreateTable(SelfInfoGet.binHub);
         }
         else
         {

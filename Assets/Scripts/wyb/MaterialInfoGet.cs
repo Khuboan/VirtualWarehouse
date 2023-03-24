@@ -29,4 +29,13 @@ public class MaterialInfoGet : MonoBehaviour
         MaterialClass.text = targetMaterial.@class.ToString();
         MaterialCount.text = targetMaterial.count.ToString() + targetMaterial.unit.ToString();
     }
+    public void GetInfo( int nowMaterial)
+    {
+        //显示货物名字，编号，种类，数量
+        material targetMaterial = SelfInfoGet.binHub.bin.material[nowMaterial - 1];
+        MaterialName.text = targetMaterial.name.ToString();
+        MaterialIndex.text = targetMaterial.code.ToString();
+        MaterialClass.text = targetMaterial.@class.ToString();
+        MaterialCount.text = targetMaterial.count.ToString() + targetMaterial.unit.ToString();
+    }
 }
