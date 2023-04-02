@@ -95,6 +95,24 @@ public class JsonDataAnylize : MonoBehaviour
         if (jsonData == null || jsonData == "") return;
         GetJsonData = jsonData;
         rootObject = JsonUtility.FromJson<RootObject>("{     \"warehouse\":     " + GetJsonData + "}");
+        for(int i=0;i<rootObject.warehouse.Length;i++)
+        {
+            rootObject.warehouse[i].position = RestartPos(rootObject.warehouse[i].position);
+            Debug.LogError("仓库" + i + "的位置是" + rootObject.warehouse[i].position);
+            for (int j = 0;j< rootObject.warehouse[i].barrier.Count;j++)
+            {
+                rootObject.warehouse[i].barrier[j].position = RestartPos(rootObject.warehouse[i].barrier[j].position);
+                
+            }
+            for (int j = 0; j < rootObject.warehouse[i].bin.Count; j++)
+            {
+                rootObject.warehouse[i].bin[j].position = RestartPos(rootObject.warehouse[i].bin[j].position);
+            }
+            for (int j = 0; j < rootObject.warehouse[i].shelf.Count; j++)
+            {
+                rootObject.warehouse[i].shelf[j].position = RestartPos(rootObject.warehouse[i].shelf[j].position);
+            }
+        }
     }
     /// <summary>
     /// 将数据转换为json
@@ -105,6 +123,65 @@ public class JsonDataAnylize : MonoBehaviour
     {
         return JsonUtility.ToJson(warehouse);
     }
+    public List<string> RestartPos(List<string> position)
+    {
+        List<string> list = new List<string>();
+        string[] temp = new string[4];
+        for(int i = 0;i<4;i++)
+        {
+            if (int.Parse(position[i].Split(',')[0]) <= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[0].Split(',')[0])
+                && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[1].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[1].Split(',')[0])
+            && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[2].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[2].Split(',')[0])
+             && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[3].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[3].Split(',')[0]))
+            {
+                list.Add(position[i]);
+            }
+
+
+
+        }
+        for(int i = 0;i<4;i++)
+        {
+
+            if (int.Parse(position[i].Split(',')[0]) <= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[0].Split(',')[0])
+                && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[1].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[1].Split(',')[0])
+            && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[2].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[2].Split(',')[0])
+             && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[3].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[3].Split(',')[0]))
+            {
+                list.Add(position[i]);
+            }
+        }
+
+
+        for (int i = 0; i < 4; i++)
+        {
+
+            if (int.Parse(position[i].Split(',')[0]) >= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[0].Split(',')[0])
+                && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[1].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[1].Split(',')[0])
+            && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[2].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[2].Split(',')[0])
+             && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[3].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[3].Split(',')[0]))
+            {
+                list.Add(position[i]);
+            }
+        }
+        for (int i = 0; i < 4; i++)
+        {
+
+            if (int.Parse(position[i].Split(',')[0]) >= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[0].Split(',')[0])
+                && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[1].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[1].Split(',')[0])
+            && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[2].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[2].Split(',')[0])
+             && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[3].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[3].Split(',')[0]))
+            {
+                list.Add(position[i]);
+            }
+        }
+
+        return list;
+    }
+}
+public class PosXY
+{
+
 }
 
 [System.Serializable]

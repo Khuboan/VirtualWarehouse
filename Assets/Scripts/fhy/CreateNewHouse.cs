@@ -289,7 +289,8 @@ public class CreateNewHouse : MonoBehaviour
                     if (k < newhouseHubDetail.DoorL.Count - 1)
                     {
                         WallDetail dwallDetail = new WallDetail();//生成门与门之间的墙，长度等于后面的门的x减去前面的门的x
-                        dwallDetail.WallLength = Mathf.Abs(newhouseHubDetail.DoorL[k + 1].y - newhouseHubDetail.DoorL[k].y);
+                        dwallDetail.WallLength = Mathf.Abs(newhouseHubDetail.DoorL[k + 1].y - newhouseHubDetail.DoorL[k].w);
+                        Debug.LogError("L方向第" + k + "面墙的长度为" + dwallDetail.WallLength);
                         dwallDetail.WallHeight = WallHight;
                         wallHubDetail.wallDetails.Add(dwallDetail);
                         alllength += dwallDetail.WallLength;
@@ -343,7 +344,8 @@ public class CreateNewHouse : MonoBehaviour
                     if (k < newhouseHubDetail.DoorR.Count - 1)
                     {
                         WallDetail dwallDetail = new WallDetail();//生成门与门之间的墙，长度等于后面的门的x减去前面的门的x
-                        dwallDetail.WallLength = Mathf.Abs(newhouseHubDetail.DoorR[k + 1].y - newhouseHubDetail.DoorR[k].y);
+                        dwallDetail.WallLength = Mathf.Abs(newhouseHubDetail.DoorR[k + 1].y - newhouseHubDetail.DoorR[k].w);
+                        Debug.LogError("R方向第" + k + "面墙的长度为" + dwallDetail.WallLength);
                         dwallDetail.WallHeight = WallHight;
                         wallHubDetail.wallDetails.Add(dwallDetail);
                         alllength += dwallDetail.WallLength;
@@ -399,7 +401,8 @@ public class CreateNewHouse : MonoBehaviour
                     if (k < newhouseHubDetail.DoorU.Count - 1)
                     {
                         WallDetail dwallDetail = new WallDetail();//生成门与门之间的墙，长度等于后面的门的x减去前面的门的x
-                        dwallDetail.WallLength = Mathf.Abs(newhouseHubDetail.DoorU[k + 1].x - newhouseHubDetail.DoorU[k].x);
+                        dwallDetail.WallLength = Mathf.Abs(newhouseHubDetail.DoorU[k + 1].x - newhouseHubDetail.DoorU[k].z);
+                        Debug.LogError("U方向第" + k + "面墙的长度为" + dwallDetail.WallLength);
                         dwallDetail.WallHeight = WallHight;
                         wallHubDetail.wallDetails.Add(dwallDetail);
                         alllength += dwallDetail.WallLength;
@@ -456,7 +459,8 @@ public class CreateNewHouse : MonoBehaviour
                     if (k < newhouseHubDetail.DoorD.Count - 1)
                     {
                         WallDetail dwallDetail = new WallDetail();//生成门与门之间的墙，长度等于后面的门的x减去前面的门的x
-                        dwallDetail.WallLength = Mathf.Abs(newhouseHubDetail.DoorD[k + 1].x - newhouseHubDetail.DoorD[k].x);
+                        dwallDetail.WallLength = Mathf.Abs(newhouseHubDetail.DoorD[k + 1].x - newhouseHubDetail.DoorD[k].z);
+                        Debug.LogError("D方向第" + k + "面墙的长度为" + dwallDetail.WallLength);
                         dwallDetail.WallHeight = WallHight;
                         wallHubDetail.wallDetails.Add(dwallDetail);
                         alllength += dwallDetail.WallLength;
