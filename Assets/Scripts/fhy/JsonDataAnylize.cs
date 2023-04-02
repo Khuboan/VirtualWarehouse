@@ -32,6 +32,14 @@ public class JsonDataAnylize : MonoBehaviour
     public static JsonDataAnylize instance;
     public bool isDemoData;
     public GameObject DemoData;
+    public void UseDemoData(bool a)
+    {
+        isDemoData = a;
+        if(!isDemoData)
+        {
+            JsonData(GetJsonData);
+        }
+    }
     // Start is called before the first frame update
     private void Awake()
     {
@@ -46,19 +54,21 @@ public class JsonDataAnylize : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.W))
-        //{
-        //    Debug.LogError("测试Json数据转换");
-        //    GetJsonData = "[";
-        //        for(int i = 0;i< rootObject.warehouse.Length;i++)
-        //        {
-        //            GetJsonData += RootDataToJson(rootObject.warehouse[i]);
-        //        if (i < rootObject.warehouse.Length - 1)
-        //            GetJsonData += ",";
-        //        }
-        //    GetJsonData +="]";
-        //}
-        if(isDemoData) { rootObject = DemoData.GetComponent<DemoJsonData>().rootObject; }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Debug.LogError("测试Json数据转换");
+            GetJsonData = "[";
+            for (int i = 0; i < rootObject.warehouse.Length; i++)
+            {
+                GetJsonData += RootDataToJson(rootObject.warehouse[i]);
+                if (i < rootObject.warehouse.Length - 1)
+                    GetJsonData += ",";
+            }
+            GetJsonData += "]";
+        }
+        if (isDemoData)
+        { rootObject = DemoData.GetComponent<DemoJsonData>().rootObject; }
+
         if (Input.GetKeyDown(KeyCode.S))
         {
             Debug.LogError("测试Json数据转换");

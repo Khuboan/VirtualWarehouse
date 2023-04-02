@@ -27,6 +27,7 @@ public class SelfInfoGet : MonoBehaviour
 
     void Update()
     {
+        if (JsonDataAnylize.instance.rootObject.warehouse.Length == 0) return;
         string shelfName = ShelfName.text;
         if (CameraController.instance.targetPoint[CameraController.instance.camposIndex].parent.parent.GetComponent<ShelfHub>()!=null)
         {

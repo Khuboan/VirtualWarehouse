@@ -3,6 +3,7 @@ using BestHTTP.WebSocket;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 public class WebSocketExample : MonoBehaviour
 {
@@ -10,13 +11,17 @@ public class WebSocketExample : MonoBehaviour
     public string Msg;
     string LastMsg;
     public minimapMgr minimapMgr;
+    public bool isLink;
+    public GameObject linkUI, nolinkUI;
     public void Update()
     {
         //if(Input.GetKeyDown(KeyCode.P))
         //{
         //    Login();
         //}
-        if(Msg!=LastMsg)
+        linkUI.SetActive(isLink);
+        nolinkUI.SetActive(!isLink);
+        if (Msg != LastMsg)
         {
             JsonDataAnylize.instance.JsonData(Msg);
             CreateNewHouse.instance.GetHouseData();
@@ -30,7 +35,8 @@ public class WebSocketExample : MonoBehaviour
     public void Login()
     {
         string token = GetComponent<PostMsg>().token;
-        string url = $"ws://116.62.71.145:8888/vw/ws/{token}/";
+        string ServerUrl = GetComponent<PostMsg>().ServerUrl.Split('/')[GetComponent<PostMsg>().ServerUrl.Split('/').Length-1];
+        string url = "ws://" + ServerUrl + $"/vw/ws/{token}/";
 
         webSocket = new WebSocket(new System.Uri(url));
         webSocket.OnOpen += OnWebSocketOpen;
@@ -42,11 +48,14 @@ public class WebSocketExample : MonoBehaviour
 
     void OnWebSocketOpen(WebSocket webSocket)
     {
+        isLink = true;
         Debug.Log("WebSocket connected!");
     }
 
     void OnWebSocketMessage(WebSocket webSocket, string message)
     {
+        isLink = true;
+
         Debug.Log("WebSocket received message: " + message);
         Msg = message;
 
@@ -55,6 +64,8 @@ public class WebSocketExample : MonoBehaviour
 
     void OnWebSocketError(WebSocket webSocket, string error)
     {
+        isLink = false;
+
         Debug.Log("WebSocket error: " + error);
         webSocket.Close();
         StartCoroutine(ReconnectAfterDelay(5));

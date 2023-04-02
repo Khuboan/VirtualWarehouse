@@ -10,7 +10,7 @@ public class minimapMgr : MonoBehaviour
     Warehouse[] warehouse;
     private int wareCount;
     private WarehousesMgr[] warehousesMgrs;
-
+    public static minimapMgr instance;
     private float[] housePosX;
     private float[] housePosY;
 
@@ -19,6 +19,10 @@ public class minimapMgr : MonoBehaviour
 
     private float mapWidth;
     private float mapHeight;
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         transWarehouses = transform.Find("Warehouses");
@@ -32,6 +36,7 @@ public class minimapMgr : MonoBehaviour
 
     public void WarehouseMapCreat()
     {
+        if (JsonDataAnylize.instance.rootObject.warehouse.Length == 0) return;
         btnReset.onClick.RemoveAllListeners();
         btnReset.onClick.AddListener(WarehouseMapCreat);
         btnReset.onClick.AddListener(WarehousesCreat);
@@ -69,7 +74,7 @@ public class minimapMgr : MonoBehaviour
 
         //小地图大小
         this.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2(mapWidth / 10 + 200, mapHeight / 10 + 200);
-        this.transform.parent.GetComponent<RectTransform>().localPosition = new Vector3(-(mapWidth / 10 + 200) / 2, (mapHeight / 10 + 200) / 2);
+        //this.transform.parent.GetComponent<RectTransform>().localPosition = new Vector3(-(mapWidth / 10 + 200) / 2, (mapHeight / 10 + 200) / 2);
 
         warehousesMgrs = new WarehousesMgr[wareCount];
         housePosX = new float[wareCount];
@@ -91,6 +96,7 @@ public class minimapMgr : MonoBehaviour
 
     public void WarehousesCreat()
     {
+        if (JsonDataAnylize.instance.rootObject.warehouse.Length == 0) return;
         for (int i = 0; i < warehousesMgrs.Length; i++)
         {
             warehousesMgrs[i].SetRectSize(i);

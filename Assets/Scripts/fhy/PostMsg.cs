@@ -9,13 +9,19 @@ using System.IO;
 using System;
 using BestHTTP.JSON.LitJson;
 
-    public class PostMsg:MonoBehaviour
-    {
+public class PostMsg : MonoBehaviour
+{
     public static PostMsg instance;
     public string token;
+    public string ServerUrl;
+    private void Awake()
+    {
+        instance = this;
+        ServerUrl = Login.instance.ServerUrl;
+    }
     IEnumerator Start()
     {
-        string url = "http://116.62.71.145:8888/vw/get_token/";
+        string url = ServerUrl + "/vw/get_token/";
 
         var request = new UnityWebRequest(url, "POST");
         request.downloadHandler = new DownloadHandlerBuffer();
@@ -35,9 +41,9 @@ using BestHTTP.JSON.LitJson;
         }
     }
 
-    }
-    public class GetToken
-    {
+}
+public class GetToken
+{
     public string msg;
     public string token;
-    }
+}

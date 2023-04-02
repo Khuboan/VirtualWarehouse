@@ -7,10 +7,11 @@ public class ShelfToMaterial : MonoBehaviour
 {
     private Animator WindowAnimator;
     public static string goButtonText;
-
+    //public GameObject MateriaWindow;
     private void Start()
     {
         WindowAnimator = GameObject.Find("UI").GetComponent<Animator>();
+        //MateriaWindow = GameObject.Find("MateriaWindow");
     }
     /// <summary>
     /// 点击按钮跳转至货物信息窗口
@@ -23,9 +24,19 @@ public class ShelfToMaterial : MonoBehaviour
         //获取到当前鼠标点击的Go按钮，即要查看的货物信息
         goButtonText = this.gameObject.transform.GetChild(1).GetComponent<Text>().text;
         int nowMaterial = int.Parse(goButtonText);
-        MaterialInfoGet.materialInfoGet.GetInfo(nowFloor,nowMaterial);
+        try
+        {
+            MaterialInfoGet.materialInfoGet.GetInfo(nowFloor, nowMaterial);
+
+        }
+        catch
+        {
+            MaterialInfoGet.materialInfoGet.GetInfo( nowMaterial);
+
+        }
 
         //货架信息窗口关闭，货物信息窗口开启
         WindowAnimator.SetBool("isClose", true);
+        //MateriaWindow.
     }
 }

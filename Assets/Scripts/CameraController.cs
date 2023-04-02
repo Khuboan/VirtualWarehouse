@@ -69,6 +69,7 @@ public class CameraController : MonoBehaviour
     }
     void Update()
     {
+        if (JsonDataAnylize.instance.rootObject.warehouse.Length == 0) return;
         //transform.localPosition = new Vector3(transform.localPosition.x, CamHight, transform.localPosition.z);
         //°´ÏÂÊó±ê×ó¼ü
         if (Input.GetMouseButton(0))
