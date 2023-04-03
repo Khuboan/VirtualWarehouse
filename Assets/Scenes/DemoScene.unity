@@ -1591,7 +1591,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7184b64f92889f34f9004e561ede1878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GetJsonData: 
+  GetJsonData: '[{"name": "Center Warehouse(superadmin)", "position": ["0,0", "0,3300",
+    "1750,0", "1750,3300"], "door": [{"name": "right_door", "position": ["1750,0",
+    "1750,250"]}, {"name": "main_door", "position": ["1750,1400", "1750,1650"]},
+    {"name": "left_door", "position": ["1750,3050", "1750,3300"]}], "barrier": [{"name":
+    "wall", "position": ["0,0", "0,300", "300,0", "300,300"]}], "bin": [{"name":
+    "Damage", "position": ["0,0", "0,0", "0,0", "0,0"], "material": []}, {"name":
+    "B030102", "position": ["0,0", "0,0", "0,0", "0,0"], "material": []}, {"name":
+    "B030101", "position": ["0,0", "0,0", "0,0", "0,0"], "material": []}, {"name":
+    "B020103", "position": ["0,0", "0,0", "0,0", "0,0"], "material": []}, {"name":
+    "B020102", "position": ["0,0", "0,0", "0,0", "0,0"], "material": []}, {"name":
+    "B020101", "position": ["0,0", "0,0", "0,0", "0,0"], "material": []}, {"name":
+    "B010103", "position": ["0,0", "0,0", "0,0", "0,0"], "material": []}, {"name":
+    "B010102", "position": ["0,0", "0,0", "0,0", "0,0"], "material": []}, {"name":
+    "B010101", "position": ["0,0", "0,0", "0,0", "0,0"], "material": []}, {"name":
+    "A010103", "position": ["0,0", "0,0", "0,0", "0,0"], "material": []}, {"name":
+    "A010102", "position": ["0,0", "0,0", "0,0", "0,0"], "material": []}, {"name":
+    "A010101", "position": ["0,0", "0,0", "0,0", "0,0"], "material": []}], "shelf":
+    []}]'
   rootObject:
     warehouse: []
   isDemoData: 0
@@ -10015,9 +10032,9 @@ RectTransform:
   m_Father: {fileID: 786597269}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 84.08356, y: -7.708333}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 84.08356, y: 0}
   m_SizeDelta: {x: 158.16711, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &735311549

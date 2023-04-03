@@ -73,6 +73,24 @@ public class JsonDataAnylize : MonoBehaviour
         {
             Debug.LogError("测试Json数据转换");
             rootObject = AnylizeJsonData("{     \"warehouse\":     " + GetJsonData + "}");
+            for (int i = 0; i < rootObject.warehouse.Length; i++)
+            {
+                rootObject.warehouse[i].position = RestartPos(rootObject.warehouse[i].position);
+                Debug.LogError("仓库" + i + "的位置是" + rootObject.warehouse[i].position[0] + "    " + rootObject.warehouse[i].position[1] + "    " + rootObject.warehouse[i].position[2] + "    " + rootObject.warehouse[i].position[3]);
+                //for (int j = 0; j < rootObject.warehouse[i].barrier.Count; j++)
+                //{
+                //    rootObject.warehouse[i].barrier[j].position = RestartPos(rootObject.warehouse[i].barrier[j].position);
+
+                //}
+                //for (int j = 0; j < rootObject.warehouse[i].bin.Count; j++)
+                //{
+                //    rootObject.warehouse[i].bin[j].position = RestartPos(rootObject.warehouse[i].bin[j].position);
+                //}
+                //for (int j = 0; j < rootObject.warehouse[i].shelf.Count; j++)
+                //{
+                //    rootObject.warehouse[i].shelf[j].position = RestartPos(rootObject.warehouse[i].shelf[j].position);
+                //}
+            }
         }
     }
     /// <summary>
@@ -84,7 +102,10 @@ public class JsonDataAnylize : MonoBehaviour
     {
         Debug.Log(jsonData);
         //Debug.Log(JsonUtility.FromJson<RootObject>(jsonData).warehouses.Count);
+
         return JsonUtility.FromJson<RootObject>(jsonData);
+
+
     }
     /// <summary>
     /// 传入
@@ -95,24 +116,7 @@ public class JsonDataAnylize : MonoBehaviour
         if (jsonData == null || jsonData == "") return;
         GetJsonData = jsonData;
         rootObject = JsonUtility.FromJson<RootObject>("{     \"warehouse\":     " + GetJsonData + "}");
-        for(int i=0;i<rootObject.warehouse.Length;i++)
-        {
-            rootObject.warehouse[i].position = RestartPos(rootObject.warehouse[i].position);
-            Debug.LogError("仓库" + i + "的位置是" + rootObject.warehouse[i].position);
-            for (int j = 0;j< rootObject.warehouse[i].barrier.Count;j++)
-            {
-                rootObject.warehouse[i].barrier[j].position = RestartPos(rootObject.warehouse[i].barrier[j].position);
-                
-            }
-            for (int j = 0; j < rootObject.warehouse[i].bin.Count; j++)
-            {
-                rootObject.warehouse[i].bin[j].position = RestartPos(rootObject.warehouse[i].bin[j].position);
-            }
-            for (int j = 0; j < rootObject.warehouse[i].shelf.Count; j++)
-            {
-                rootObject.warehouse[i].shelf[j].position = RestartPos(rootObject.warehouse[i].shelf[j].position);
-            }
-        }
+        
     }
     /// <summary>
     /// 将数据转换为json
@@ -125,6 +129,7 @@ public class JsonDataAnylize : MonoBehaviour
     }
     public List<string> RestartPos(List<string> position)
     {
+        Debug.Log("重置位置前  " + position[0] + "    " + position[1] + "    " + position[2] + "    " + position[3]);
         List<string> list = new List<string>();
         string[] temp = new string[4];
         for(int i = 0;i<4;i++)
@@ -135,6 +140,7 @@ public class JsonDataAnylize : MonoBehaviour
              && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[3].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[3].Split(',')[0]))
             {
                 list.Add(position[i]);
+                Debug.Log("重置后的第一个为" + position[i]);
             }
 
 
@@ -143,12 +149,14 @@ public class JsonDataAnylize : MonoBehaviour
         for(int i = 0;i<4;i++)
         {
 
-            if (int.Parse(position[i].Split(',')[0]) <= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[0].Split(',')[0])
-                && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[1].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[1].Split(',')[0])
-            && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[2].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[2].Split(',')[0])
-             && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[3].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[3].Split(',')[0]))
+            if (int.Parse(position[i].Split(',')[0]) >= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[0].Split(',')[0])
+                && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[1].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[1].Split(',')[0])
+            && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[2].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[2].Split(',')[0])
+             && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[3].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[3].Split(',')[0]))
             {
                 list.Add(position[i]);
+                Debug.Log("重置后的第2个为" + position[i]);
+
             }
         }
 
@@ -162,20 +170,24 @@ public class JsonDataAnylize : MonoBehaviour
              && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[3].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[3].Split(',')[0]))
             {
                 list.Add(position[i]);
+                Debug.Log("重置后的第3个为" + position[i]);
+
             }
         }
         for (int i = 0; i < 4; i++)
         {
 
-            if (int.Parse(position[i].Split(',')[0]) >= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[0].Split(',')[0])
-                && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[1].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[1].Split(',')[0])
-            && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[2].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[2].Split(',')[0])
-             && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[3].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[3].Split(',')[0]))
+            if (int.Parse(position[i].Split(',')[0]) <= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[0].Split(',')[0])
+                && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[1].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[1].Split(',')[0])
+            && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[2].Split(',')[0])
+             && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[3].Split(',')[0]))
             {
                 list.Add(position[i]);
+                Debug.Log("重置后的第4个为" + position[i]);
+
             }
         }
-
+        Debug.Log("重置位置后  " + list[0] + "    " + list[1] + "    " + list[2] + "    " + list[3]);
         return list;
     }
 }
