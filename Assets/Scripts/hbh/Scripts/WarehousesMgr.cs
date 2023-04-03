@@ -65,9 +65,20 @@ public class WarehousesMgr : MonoBehaviour
             gos[i] = GameObject.Instantiate(Resources.Load<GameObject>("Warehouses/door"), transDoors);
             doors[i] = gos[i].GetComponent<Image>();
             PosX[i] = (float.Parse(warehouse[index].door[i].position[1].Split(',')[0]) + float.Parse(warehouse[index].door[i].position[0].Split(',')[0])) / 2 / 10 - rectWidth / 2;
+            PosY[i] = (float.Parse(warehouse[index].door[i].position[1].Split(',')[1]) + float.Parse(warehouse[index].door[i].position[0].Split(',')[1])) / 2 / 10 - rectHeight / 2;
             sizeX[i] = (float.Parse(warehouse[index].door[i].position[1].Split(',')[0]) - float.Parse(warehouse[index].door[i].position[0].Split(',')[0])) / 10;
-            doors[i].GetComponent<RectTransform>().sizeDelta = new Vector2(sizeX[i], 7f);
-            doors[i].GetComponent<RectTransform>().localPosition = new Vector3(PosX[i], -rectHeight / 2, 0);
+            sizeY[i] = (float.Parse(warehouse[index].door[i].position[1].Split(',')[1]) - float.Parse(warehouse[index].door[i].position[0].Split(',')[1])) / 10;
+            if (sizeX[i]==0)
+            {
+                sizeX[i] = 7;
+            }
+           
+            if (sizeY[i]==0)
+            {
+                sizeY[i] = 7;
+            }
+            doors[i].GetComponent<RectTransform>().sizeDelta = new Vector2(sizeX[i], sizeY[i]);
+            doors[i].GetComponent<RectTransform>().localPosition = new Vector3(PosX[i], PosY[i]);
             doors[i].name = "door" + i;
         }
 
