@@ -127,66 +127,55 @@ public class JsonDataAnylize : MonoBehaviour
     {
         return JsonUtility.ToJson(warehouse);
     }
+    public List<Vector2> pos;
     public List<string> RestartPos(List<string> position)
     {
         Debug.Log("重置位置前  " + position[0] + "    " + position[1] + "    " + position[2] + "    " + position[3]);
         List<string> list = new List<string>();
+        List<Vector2> postemp = new List<Vector2>();
+        List<Vector2> postemp2 = new List<Vector2>();
         string[] temp = new string[4];
-        for(int i = 0;i<4;i++)
+        for (int i = 0;i<4;i++)
         {
-            if (int.Parse(position[i].Split(',')[0]) <= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[0].Split(',')[0])
-                && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[1].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[1].Split(',')[0])
-            && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[2].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[2].Split(',')[0])
-             && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[3].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[3].Split(',')[0]))
-            {
-                list.Add(position[i]);
-                Debug.Log("重置后的第一个为" + position[i]);
-            }
-
-
-
+            postemp.Add(new Vector2(int.Parse(position[i].Split(',')[0]), int.Parse(position[i].Split(',')[1])));
         }
         for(int i = 0;i<4;i++)
         {
-
-            if (int.Parse(position[i].Split(',')[0]) >= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[0].Split(',')[0])
-                && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[1].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[1].Split(',')[0])
-            && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[2].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[2].Split(',')[0])
-             && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[3].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) <= int.Parse(position[3].Split(',')[0]))
+             if(postemp[i].x<= postemp[0].x && postemp[i].x <= postemp[1].x && postemp[i].x <= postemp[2].x && postemp[i].x <= postemp[3].x
+                && postemp[i].y <= postemp[0].y && postemp[i].y <= postemp[1].y && postemp[i].y <= postemp[2].y && postemp[i].y <= postemp[3].y
+                )
             {
-                list.Add(position[i]);
-                Debug.Log("重置后的第2个为" + position[i]);
-
+                postemp2.Add(postemp[i]);
             }
         }
-
+        for(int i = 0;i<4;i++)
+        {
+            if(postemp[i].y == postemp2[0].y && postemp[i].x != postemp2[0].x)
+            {
+                postemp2.Add(postemp[i]);
+            }
+        }
 
         for (int i = 0; i < 4; i++)
         {
-
-            if (int.Parse(position[i].Split(',')[0]) >= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[0].Split(',')[0])
-                && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[1].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[1].Split(',')[0])
-            && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[2].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[2].Split(',')[0])
-             && int.Parse(position[i].Split(',')[0]) >= int.Parse(position[3].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[3].Split(',')[0]))
+            if (postemp[i].y != postemp2[0].y && postemp[i].x != postemp2[0].x)
             {
-                list.Add(position[i]);
-                Debug.Log("重置后的第3个为" + position[i]);
+                postemp2.Add(postemp[i]);
+            }
+        }
 
+        for (int i = 0; i < 4; i++)
+        {
+            if (postemp[i].y != postemp2[0].y && postemp[i].x == postemp2[0].x)
+            {
+                postemp2.Add(postemp[i]);
             }
         }
         for (int i = 0; i < 4; i++)
         {
-
-            if (int.Parse(position[i].Split(',')[0]) <= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[0].Split(',')[0])
-                && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[1].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[1].Split(',')[0])
-            && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[2].Split(',')[0])
-             && int.Parse(position[i].Split(',')[0]) <= int.Parse(position[0].Split(',')[0]) && int.Parse(position[0].Split(',')[0]) >= int.Parse(position[3].Split(',')[0]))
-            {
-                list.Add(position[i]);
-                Debug.Log("重置后的第4个为" + position[i]);
-
-            }
-        }
+            list.Add(postemp2[i].x + "," + postemp2[i].y);
+            Debug.Log(list[i]);
+        }       
         Debug.Log("重置位置后  " + list[0] + "    " + list[1] + "    " + list[2] + "    " + list[3]);
         return list;
     }
