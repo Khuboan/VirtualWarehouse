@@ -64,7 +64,7 @@ public class WarehousesMgr : MonoBehaviour
             GameObject[] gos=new GameObject[initCount];
             gos[i] = GameObject.Instantiate(Resources.Load<GameObject>("Warehouses/door"), transDoors);
             doors[i] = gos[i].GetComponent<Image>();
-            PosX[i] = (float.Parse(warehouse[index].door[i].position[1].Split(',')[0]) + float.Parse(warehouse[index].door[i].position[0].Split(',')[0])) / 2 / 10 - 100;
+            PosX[i] = (float.Parse(warehouse[index].door[i].position[1].Split(',')[0]) + float.Parse(warehouse[index].door[i].position[0].Split(',')[0])) / 2 / 10 - rectWidth / 2;
             sizeX[i] = (float.Parse(warehouse[index].door[i].position[1].Split(',')[0]) - float.Parse(warehouse[index].door[i].position[0].Split(',')[0])) / 10;
             doors[i].GetComponent<RectTransform>().sizeDelta = new Vector2(sizeX[i], 7f);
             doors[i].GetComponent<RectTransform>().localPosition = new Vector3(PosX[i], -rectHeight / 2, 0);
@@ -96,8 +96,8 @@ public class WarehousesMgr : MonoBehaviour
             GameObject[] gos = new GameObject[initCount];
             gos[i] = GameObject.Instantiate(Resources.Load<GameObject>("Warehouses/barrier"), transBarrier);
             barriers[i] = gos[i].GetComponent<Image>();
-            PosX[i] = (float.Parse(warehouse[index].barrier[i].position[1].Split(',')[0]) + float.Parse(warehouse[index].barrier[i].position[0].Split(',')[0])) / 2 / 10 - 100;
-            PosY[i] = (float.Parse(warehouse[index].barrier[i].position[1].Split(',')[1]) + float.Parse(warehouse[index].barrier[i].position[2].Split(',')[1])) / 2 / 10 - 50;
+            PosX[i] = (float.Parse(warehouse[index].barrier[i].position[1].Split(',')[0]) + float.Parse(warehouse[index].barrier[i].position[0].Split(',')[0])) / 2 / 10 - rectWidth/2;
+            PosY[i] = (float.Parse(warehouse[index].barrier[i].position[1].Split(',')[1]) + float.Parse(warehouse[index].barrier[i].position[2].Split(',')[1])) / 2 / 10 - rectHeight/2;
             sizeX[i] = (float.Parse(warehouse[index].barrier[i].position[1].Split(',')[0]) - float.Parse(warehouse[index].barrier[i].position[0].Split(',')[0])) / 10;
             sizeY[i] = (float.Parse(warehouse[index].barrier[i].position[2].Split(',')[1]) - float.Parse(warehouse[index].barrier[i].position[1].Split(',')[1])) / 10;
             barriers[i].GetComponent<RectTransform>().sizeDelta = new Vector2(sizeX[i], sizeY[i]);
@@ -126,8 +126,8 @@ public class WarehousesMgr : MonoBehaviour
             GameObject[] gos = new GameObject[initCount];
             gos[i] = GameObject.Instantiate(Resources.Load<GameObject>("Warehouses/bin"), transBins);
             bins[i] = gos[i].GetComponent<Image>();
-            PosX[i] = (float.Parse(warehouse[index].bin[i].position[1].Split(',')[0]) + float.Parse(warehouse[index].bin[i].position[0].Split(',')[0])) / 2 / 10 - 100;
-            PosY[i] = (float.Parse(warehouse[index].bin[i].position[1].Split(',')[1]) + float.Parse(warehouse[index].bin[i].position[2].Split(',')[1])) / 2 / 10 - 50;
+            PosX[i] = (float.Parse(warehouse[index].bin[i].position[1].Split(',')[0]) + float.Parse(warehouse[index].bin[i].position[0].Split(',')[0])) / 2 / 10 - rectWidth / 2;
+            PosY[i] = (float.Parse(warehouse[index].bin[i].position[1].Split(',')[1]) + float.Parse(warehouse[index].bin[i].position[2].Split(',')[1])) / 2 / 10 - rectHeight / 2;
             sizeX[i] = (float.Parse(warehouse[index].bin[i].position[1].Split(',')[0]) - float.Parse(warehouse[index].bin[i].position[0].Split(',')[0])) / 10;
             sizeY[i] = (float.Parse(warehouse[index].bin[i].position[2].Split(',')[1]) - float.Parse(warehouse[index].bin[i].position[1].Split(',')[1])) / 10;
             bins[i].GetComponent<RectTransform>().sizeDelta = new Vector2(sizeX[i], sizeY[i]);
@@ -156,8 +156,8 @@ public class WarehousesMgr : MonoBehaviour
             GameObject[] gos = new GameObject[initCount];
             gos[i] = GameObject.Instantiate(Resources.Load<GameObject>("Warehouses/shelf"), transShelfs);
             shelfs[i] = gos[i].GetComponent<Image>();
-            PosX[i] = (float.Parse(warehouse[index].shelf[i].position[1].Split(',')[0]) + float.Parse(warehouse[index].shelf[i].position[0].Split(',')[0])) / 2 / 10 - 100;
-            PosY[i] = (float.Parse(warehouse[index].shelf[i].position[1].Split(',')[1]) + float.Parse(warehouse[index].shelf[i].position[2].Split(',')[1])) / 2 / 10 - 50;
+            PosX[i] = (float.Parse(warehouse[index].shelf[i].position[1].Split(',')[0]) + float.Parse(warehouse[index].shelf[i].position[0].Split(',')[0])) / 2 / 10 - rectWidth / 2;
+            PosY[i] = (float.Parse(warehouse[index].shelf[i].position[1].Split(',')[1]) + float.Parse(warehouse[index].shelf[i].position[2].Split(',')[1])) / 2 / 10 - rectHeight / 2;
             sizeX[i] = (float.Parse(warehouse[index].shelf[i].position[1].Split(',')[0]) - float.Parse(warehouse[index].shelf[i].position[0].Split(',')[0])) / 10;
             sizeY[i] = (float.Parse(warehouse[index].shelf[i].position[2].Split(',')[1]) - float.Parse(warehouse[index].shelf[i].position[1].Split(',')[1])) / 10;
             shelfs[i].GetComponent<RectTransform>().sizeDelta = new Vector2(sizeX[i], sizeY[i]);
