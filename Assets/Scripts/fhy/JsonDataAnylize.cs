@@ -77,19 +77,19 @@ public class JsonDataAnylize : MonoBehaviour
             {
                 rootObject.warehouse[i].position = RestartPos(rootObject.warehouse[i].position);
                 Debug.LogError("≤÷ø‚" + i + "µƒŒª÷√ «" + rootObject.warehouse[i].position[0] + "    " + rootObject.warehouse[i].position[1] + "    " + rootObject.warehouse[i].position[2] + "    " + rootObject.warehouse[i].position[3]);
-                //for (int j = 0; j < rootObject.warehouse[i].barrier.Count; j++)
-                //{
-                //    rootObject.warehouse[i].barrier[j].position = RestartPos(rootObject.warehouse[i].barrier[j].position);
+                for (int j = 0; j < rootObject.warehouse[i].barrier.Count; j++)
+                {
+                    rootObject.warehouse[i].barrier[j].position = RestartPos(rootObject.warehouse[i].barrier[j].position);
 
-                //}
-                //for (int j = 0; j < rootObject.warehouse[i].bin.Count; j++)
-                //{
-                //    rootObject.warehouse[i].bin[j].position = RestartPos(rootObject.warehouse[i].bin[j].position);
-                //}
-                //for (int j = 0; j < rootObject.warehouse[i].shelf.Count; j++)
-                //{
-                //    rootObject.warehouse[i].shelf[j].position = RestartPos(rootObject.warehouse[i].shelf[j].position);
-                //}
+                }
+                for (int j = 0; j < rootObject.warehouse[i].bin.Count; j++)
+                {
+                    rootObject.warehouse[i].bin[j].position = RestartPos(rootObject.warehouse[i].bin[j].position);
+                }
+                for (int j = 0; j < rootObject.warehouse[i].shelf.Count; j++)
+                {
+                    rootObject.warehouse[i].shelf[j].position = RestartPos(rootObject.warehouse[i].shelf[j].position);
+                }
             }
         }
     }
