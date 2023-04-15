@@ -5,6 +5,7 @@ using UnityEngine;
 public class ColliderTest : MonoBehaviour
 {
     public bool isObstacle;
+    public string collname;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class ColliderTest : MonoBehaviour
         //Debug.Log("Åö×²µ½ÁË" + other.gameObject.name);
         if (other.gameObject.tag == "Wall")
         {
+            collname = other.gameObject.transform.parent.gameObject.name;
             isObstacle = true;
         }
     }

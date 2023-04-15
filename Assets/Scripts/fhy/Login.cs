@@ -36,7 +36,7 @@ public class Login : MonoBehaviour
         }
         else
         {
-            Debug.Log(www.downloadHandler.text);
+            //Debug.Log(www.downloadHandler.text);
             string jsonStr = www.downloadHandler.text;
             Url.text = jsonStr;
         }

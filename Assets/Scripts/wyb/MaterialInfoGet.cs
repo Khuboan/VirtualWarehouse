@@ -7,7 +7,7 @@ public class MaterialInfoGet : MonoBehaviour
 {
     public static MaterialInfoGet materialInfoGet;
 
-    public Text MaterialName, MaterialIndex, MaterialClass, MaterialCount;
+    public Text MaterialName, MaterialIndex, MaterialClass, MaterialCount, MaterialBin;
     public GameObject ShelfWin;
     public GameObject MaterialWin;
 
@@ -28,6 +28,7 @@ public class MaterialInfoGet : MonoBehaviour
         MaterialIndex.text = targetMaterial.code.ToString();
         MaterialClass.text = targetMaterial.@class.ToString();
         MaterialCount.text = targetMaterial.count.ToString() + targetMaterial.unit.ToString();
+        MaterialBin.text = targetMaterial.bin.ToString();
     }
     public void GetInfo( int nowMaterial)
     {
@@ -41,5 +42,6 @@ public class MaterialInfoGet : MonoBehaviour
         MaterialIndex.text = targetMaterial.code.ToString();
         MaterialClass.text = targetMaterial.@class.ToString();
         MaterialCount.text = targetMaterial.count.ToString() + targetMaterial.unit.ToString();
+        MaterialBin.text = targetMaterial.bin.ToString();
     }
 }

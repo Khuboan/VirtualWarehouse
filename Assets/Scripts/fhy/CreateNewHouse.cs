@@ -192,7 +192,7 @@ public class CreateNewHouse : MonoBehaviour
 
 
             ////获取地库数据
-            Debug.Log("仓库" + i + "的地库的数量为" + JsonDataAnylize.instance.rootObject.warehouse[i].bin.Count);
+            //Debug.Log("仓库" + i + "的地库的数量为" + JsonDataAnylize.instance.rootObject.warehouse[i].bin.Count);
             for (int j = 0; j < JsonDataAnylize.instance.rootObject.warehouse[i].bin.Count; j++)
             {
                 BinDetail binDetail = new BinDetail();
@@ -290,7 +290,7 @@ public class CreateNewHouse : MonoBehaviour
                     {
                         WallDetail dwallDetail = new WallDetail();//生成门与门之间的墙，长度等于后面的门的x减去前面的门的x
                         dwallDetail.WallLength = Mathf.Abs(newhouseHubDetail.DoorL[k + 1].y - newhouseHubDetail.DoorL[k].w);
-                        Debug.LogError("L方向第" + k + "面墙的长度为" + dwallDetail.WallLength);
+                        //Debug.LogError("L方向第" + k + "面墙的长度为" + dwallDetail.WallLength);
                         dwallDetail.WallHeight = WallHight;
                         wallHubDetail.wallDetails.Add(dwallDetail);
                         alllength += dwallDetail.WallLength;
@@ -345,7 +345,7 @@ public class CreateNewHouse : MonoBehaviour
                     {
                         WallDetail dwallDetail = new WallDetail();//生成门与门之间的墙，长度等于后面的门的x减去前面的门的x
                         dwallDetail.WallLength = Mathf.Abs(newhouseHubDetail.DoorR[k + 1].y - newhouseHubDetail.DoorR[k].w);
-                        Debug.LogError("R方向第" + k + "面墙的长度为" + dwallDetail.WallLength);
+                       // Debug.LogError("R方向第" + k + "面墙的长度为" + dwallDetail.WallLength);
                         dwallDetail.WallHeight = WallHight;
                         wallHubDetail.wallDetails.Add(dwallDetail);
                         alllength += dwallDetail.WallLength;
@@ -381,8 +381,8 @@ public class CreateNewHouse : MonoBehaviour
                 WallHubDetail wallHubDetail = new WallHubDetail();///首先生成第一面墙，墙的长度等于第一个门的x1
                 WallDetail wallDetail = new WallDetail();
                 wallHubDetail.AllLength = newhouseHubDetail.WallU;
-                Debug.LogError("下方的门的数量为" + newhouseHubDetail.DoorU.Count);
-                Debug.LogError("第一个门的坐标为" + newhouseHubDetail.DoorU[0]);
+             //   Debug.LogError("下方的门的数量为" + newhouseHubDetail.DoorU.Count);
+             //   Debug.LogError("第一个门的坐标为" + newhouseHubDetail.DoorU[0]);
                 wallDetail.WallLength = newhouseHubDetail.DoorU[0].x;
                 wallDetail.WallHeight = WallHight;
                 wallHubDetail.wallDetails.Add(wallDetail);
@@ -402,7 +402,7 @@ public class CreateNewHouse : MonoBehaviour
                     {
                         WallDetail dwallDetail = new WallDetail();//生成门与门之间的墙，长度等于后面的门的x减去前面的门的x
                         dwallDetail.WallLength = Mathf.Abs(newhouseHubDetail.DoorU[k + 1].x - newhouseHubDetail.DoorU[k].z);
-                        Debug.LogError("U方向第" + k + "面墙的长度为" + dwallDetail.WallLength);
+                     //   Debug.LogError("U方向第" + k + "面墙的长度为" + dwallDetail.WallLength);
                         dwallDetail.WallHeight = WallHight;
                         wallHubDetail.wallDetails.Add(dwallDetail);
                         alllength += dwallDetail.WallLength;
@@ -460,7 +460,7 @@ public class CreateNewHouse : MonoBehaviour
                     {
                         WallDetail dwallDetail = new WallDetail();//生成门与门之间的墙，长度等于后面的门的x减去前面的门的x
                         dwallDetail.WallLength = Mathf.Abs(newhouseHubDetail.DoorD[k + 1].x - newhouseHubDetail.DoorD[k].z);
-                        Debug.LogError("D方向第" + k + "面墙的长度为" + dwallDetail.WallLength);
+                     //   Debug.LogError("D方向第" + k + "面墙的长度为" + dwallDetail.WallLength);
                         dwallDetail.WallHeight = WallHight;
                         wallHubDetail.wallDetails.Add(dwallDetail);
                         alllength += dwallDetail.WallLength;
@@ -520,6 +520,7 @@ public class BarrierDetail
     public Vector3 pos, scale;
     public GameObject model;
 }
+[System.Serializable]
 public class ShelfDetail
 {
     public string name;
@@ -527,6 +528,7 @@ public class ShelfDetail
     public GameObject model;
     public Shelf shelf;
 }
+[System.Serializable]
 public class BinDetail
 {
     public string name;

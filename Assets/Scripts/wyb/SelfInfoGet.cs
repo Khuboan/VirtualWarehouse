@@ -52,7 +52,7 @@ public class SelfInfoGet : MonoBehaviour
             binHub = CameraController.instance.targetPoint[CameraController.instance.camposIndex].parent.GetComponent<BinHub>();
             ShelfName.text = binHub.bin.name;
             ShelfIndex.text = CameraController.instance.camposIndex.ToString();
-            ShelfFloor.text = "1";
+            ShelfFloor.text = binHub.bin.floor.ToString();
             //如果货架名字发生变化
             if (ShelfName.text != shelfName)
             {
@@ -72,7 +72,7 @@ public class SelfInfoGet : MonoBehaviour
     /// </summary>
     public void CreateButton(ShelfHub shelfHub)
     {
-        Debug.Log("货架创建层数按钮");
+       // Debug.Log("货架创建层数按钮");
         //获取货架层数
         int shelfFloor = shelfHub.shelf.floor.Count;
         //生成按钮

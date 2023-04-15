@@ -29,7 +29,7 @@
   </style> 
   <body style="text-align: center">
     <canvas id="unity-canvas" width=1920 height=937 style="width: 1920px; height: 937px; background: #231F20"></canvas>
-    <script src="Build/VirtualWarehouse2.loader.js"></script>
+    <script src="Build/VirtualWarehouseWeb.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -40,9 +40,9 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/VirtualWarehouse2.data",
-        frameworkUrl: "Build/VirtualWarehouse2.framework.js",
-        codeUrl: "Build/VirtualWarehouse2.wasm",
+        dataUrl: "Build/VirtualWarehouseWeb.data",
+        frameworkUrl: "Build/VirtualWarehouseWeb.framework.js",
+        codeUrl: "Build/VirtualWarehouseWeb.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "VirtualWarehouse",

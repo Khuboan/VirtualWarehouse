@@ -31,7 +31,7 @@ public class CargoInfoFrame : MonoBehaviour
             {
                 Vector3 TipPos = hitInfo.transform.position + new Vector3(0.3f, 0.8f, 0);
                 Quaternion hitRot = hitInfo.transform.rotation;
-
+                Debug.Log(hitInfo.collider.gameObject.name);
                 //当射线碰撞目标为Box类型的物品
                 if (hitInfo.collider.tag == "Box")
                 {
@@ -54,8 +54,8 @@ public class CargoInfoFrame : MonoBehaviour
                         hitInfo.collider.gameObject.GetComponent<Outline>().enabled = true;
                        // Debug.Log("箱子的数 = " + hitInfo.collider.gameObject.GetComponent<ShelfObject>().CamPosIndex + "   相机的数 = " + CameraController.instance.camposIndex);
                         
-                        try
-                        {
+                        //try
+                        //{
 
                             if (hitInfo.collider.gameObject.GetComponent<ShelfObject>().CamPosIndex != CameraController.instance.camposIndex)
                             {
@@ -66,19 +66,19 @@ public class CargoInfoFrame : MonoBehaviour
                             }
                             MaterialInfoGet.materialInfoGet.GetInfo(hitInfo.collider.gameObject.GetComponent<ShelfObject>().Floor + 1, hitInfo.collider.gameObject.GetComponent<ShelfObject>().Num + 1);
 
-                        }
-                        catch
-                        {
-                            if (hitInfo.collider.gameObject.GetComponent<BinObject>().CamPosIndex != CameraController.instance.camposIndex)
-                            {
-                                CameraController.instance.camposIndex = CameraController.instance.camposIndex = hitInfo.collider.gameObject.GetComponent<BinObject>().CamPosIndex;
-                                CameraController.instance.CameraMoveTime = 0;
-                                CameraController.instance.isMoveDone = false;
-                                CameraController.instance.campos = CameraController.instance.transform.position;
-                            }
-                            MaterialInfoGet.materialInfoGet.GetInfo(hitInfo.collider.gameObject.GetComponent<BinObject>().Num + 1);
+                        //}
+                        //catch
+                        //{
+                        //    if (hitInfo.collider.gameObject.GetComponent<BinObject>().CamPosIndex != CameraController.instance.camposIndex)
+                        //    {
+                        //        CameraController.instance.camposIndex = CameraController.instance.camposIndex = hitInfo.collider.gameObject.GetComponent<BinObject>().CamPosIndex;
+                        //        CameraController.instance.CameraMoveTime = 0;
+                        //        CameraController.instance.isMoveDone = false;
+                        //        CameraController.instance.campos = CameraController.instance.transform.position;
+                        //    }
+                        //    MaterialInfoGet.materialInfoGet.GetInfo(hitInfo.collider.gameObject.GetComponent<BinObject>().Num + 1);
 
-                        }
+                        //}
 
 
 

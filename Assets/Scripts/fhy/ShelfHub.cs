@@ -94,8 +94,20 @@ public class ShelfHub : MonoBehaviour
                 {
                     GameObject newObject = GameObject.Instantiate(shelfLists[i].MetaModel, this.transform);
                     if (BoxLength * shelf.floor[i].material.Count > floorlength)
-                        newObject.transform.localScale = new Vector3(shelfLists[i].MetaModel.transform.localScale.x * scaleValue, shelfLists[i].MetaModel.transform.localScale.y * scaleValue, shelfLists[i].MetaModel.transform.localScale.z * scaleValue);
-                    newObject.transform.position = shelfLists[i].MetaModel.transform.position + new Vector3(0, 0, j * boxleng);
+                        newObject.transform.localScale = new Vector3(shelfLists[i].MetaModel.transform.localScale.x * scaleValue, shelfLists[i].MetaModel.transform.localScale.y * scaleValue, shelfLists[i].MetaModel.transform.localScale.z * scaleValue );
+                    //Debug.Log("调整前Scale = " + newObject.transform.localScale);
+                    newObject.transform.localScale = new Vector3(shelfLists[i].MetaModel.transform.localScale.x * scaleValue, shelfLists[i].MetaModel.transform.localScale.y * scaleValue, shelfLists[i].MetaModel.transform.localScale.z * scaleValue * shelfDetail.scale.x*2);
+                   // Debug.Log("调整后Scale = " + newObject.transform.localScale);
+                    if (!isL)
+                    {
+                       // Debug.Log(gameObject.name+"  " + shelf.name +"   " + "!isY && !isL");
+                        newObject.transform.position = shelfLists[i].MetaModel.transform.position + new Vector3(shelfDetail.scale.x/2-0.3f, 0, j * boxleng);
+                    }
+                    else
+                    {
+                        //Debug.Log(gameObject.name + "  " + shelf.name + "   " + "!isY && isL");
+                             newObject.transform.position = shelfLists[i].MetaModel.transform.position + new Vector3(-shelfDetail.scale.x, 0, j * boxleng);
+                    }
                     newObject.GetComponent<ShelfObject>().material = shelf.floor[i].material[j];
                     newObject.GetComponent<ShelfObject>().CamPosIndex = CenterPosNum;
                     newObject.GetComponent<ShelfObject>().Floor = i;
@@ -145,11 +157,11 @@ public class ShelfHub : MonoBehaviour
                 float scaleValue = 1;
                 if (BoxLength * shelf.floor[i].material.Count > floorlength)
                 {
-                    Debug.Log("floorlength = " + floorlength + "  数量 = " + (float)BoxLength * shelf.floor[i].material.Count);
+                    //Debug.Log("floorlength = " + floorlength + "  数量 = " + (float)BoxLength * shelf.floor[i].material.Count);
                     scaleValue = floorlength / ((float)(BoxLength * shelf.floor[i].material.Count)) * 0.95f;
                     boxleng = BoxLength * scaleValue * 0.95f;
-                    Debug.Log("scaleValue=" + scaleValue);
-                    Debug.Log("boxleng=" + boxleng);
+                    //Debug.Log("scaleValue=" + scaleValue);
+                    //Debug.Log("boxleng=" + boxleng);
                 }
                 for (int j = 0; j < shelf.floor[i].material.Count; j++)
                 {
@@ -157,7 +169,22 @@ public class ShelfHub : MonoBehaviour
                     if (BoxLength * shelf.floor[i].material.Count > floorlength)
                         newObject.transform.localScale = new Vector3(shelfLists[i].MetaModel.transform.localScale.x * scaleValue, shelfLists[i].MetaModel.transform.localScale.y * scaleValue, shelfLists[i].MetaModel.transform.localScale.z * scaleValue);
                     newObject.transform.localEulerAngles = Vector3.zero;
-                    newObject.transform.position = shelfLists[i].MetaModel.transform.position + new Vector3(j * boxleng + 0.3f, 0, 0);
+                    //Debug.Log("竖向");
+                    //Debug.Log(this.gameObject.name+ "isY = " + isY);
+                    if(!isL)
+                    {
+                        // Debug.Log("竖向!isL");
+                        //Debug.Log(gameObject.name + "  " + shelf.name + "   " + "isY && !isL");
+                        newObject.transform.localScale = new Vector3(shelfLists[i].MetaModel.transform.localScale.x * scaleValue, shelfLists[i].MetaModel.transform.localScale.y * scaleValue, shelfLists[i].MetaModel.transform.localScale.z * scaleValue * shelfDetail.scale.z *2);
+                        newObject.transform.position = shelfLists[i].MetaModel.transform.position + new Vector3(j * boxleng + 0.3f, 0, shelfDetail.scale.z/2-0.45f);
+
+                    }
+                    else
+                    {
+                        //Debug.Log("竖向isL");
+                        //Debug.Log(gameObject.name + "  " + shelf.name + "   " + "isY && isL");
+                        newObject.transform.position = shelfLists[i].MetaModel.transform.position + new Vector3(j * boxleng + 0.3f, 0, 0);
+                    }
                     newObject.GetComponent<ShelfObject>().material = shelf.floor[i].material[j];
                     newObject.SetActive(true);
                     newObject.GetComponent<ShelfObject>().CamPosIndex = CenterPosNum;
@@ -207,35 +234,68 @@ public class ShelfHub : MonoBehaviour
 
         if (!isY)
         {
-            if (colliderTests[0].isObstacle == true)
+            if (colliderTests[0].isObstacle == true && colliderTests[1].isObstacle == false)
             {
                 Shelfname.gameObject.transform.parent.localEulerAngles = new Vector3(0, -90, 0);
 
                 CenterPos.position = CameraDir[1].position;
                 isL = true;
             }
-            else
+            if (colliderTests[0].isObstacle == false && colliderTests[1].isObstacle == true || colliderTests[0].isObstacle == false && colliderTests[1].isObstacle == false)
             {
                 Shelfname.gameObject.transform.parent.localEulerAngles = new Vector3(0, 90, 0);
 
                 CenterPos.position = CameraDir[0].position;
                 isL = false;
             }
+            if(colliderTests[0].isObstacle == true && colliderTests[1].isObstacle == true)
+            {
+                if (colliderTests[0].collname.Contains("Wall"))
+                {
+                    Shelfname.gameObject.transform.parent.localEulerAngles = new Vector3(0, -90, 0);
+
+                    CenterPos.position = CameraDir[1].position;
+                    isL = true;
+                }
+                if (colliderTests[1].collname.Contains("Wall"))
+                {
+                    Shelfname.gameObject.transform.parent.localEulerAngles = new Vector3(0, 90, 0);
+
+                    CenterPos.position = CameraDir[0].position;
+                    isL = false;
+                }
+            }
         }
         else
         {
-            if (colliderTests[2].isObstacle == true)
+            if (colliderTests[2].isObstacle == true&& colliderTests[3].isObstacle == false)
             {
                 Shelfname.gameObject.transform.parent.localEulerAngles = new Vector3(0, 180, 0);
                 CenterPos.position = CameraDir[3].position;
                 isL = true;
             }
-            else
+            if (colliderTests[2].isObstacle == false && colliderTests[3].isObstacle == true || colliderTests[2].isObstacle == false && colliderTests[3].isObstacle == false)
             {
                 Shelfname.gameObject.transform.parent.localEulerAngles = new Vector3(0, 0, 0);
 
                 CenterPos.position = CameraDir[2].position;
                 isL = false;
+            }
+            if (colliderTests[2].isObstacle == true && colliderTests[3].isObstacle == true)
+            {
+                if (colliderTests[2].collname.Contains("Wall"))
+                {
+                    Shelfname.gameObject.transform.parent.localEulerAngles = new Vector3(0, 180, 0);
+                    CenterPos.position = CameraDir[3].position;
+                    isL = true;
+                }
+                if (colliderTests[3].collname.Contains("Wall"))
+                {
+                    Shelfname.gameObject.transform.parent.localEulerAngles = new Vector3(0, 0, 0);
+
+                    CenterPos.position = CameraDir[2].position;
+                    isL = false;
+                }
             }
         }
      }

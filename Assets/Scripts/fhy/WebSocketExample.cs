@@ -23,7 +23,7 @@ public class WebSocketExample : MonoBehaviour
         nolinkUI.SetActive(!isLink);
         if (Msg != LastMsg)
         {
-            JsonDataAnylize.instance.JsonData(Msg);
+            JsonDataAnylize.instance.JsonData(Msg,"");
             CreateNewHouse.instance.GetHouseData();
             minimapMgr.WarehouseMapCreat();
             minimapMgr.WarehousesCreat();
