@@ -52,10 +52,10 @@ public class CargoInfoFrame : MonoBehaviour
                         //显示高亮
                        // Debug.Log("点击到箱子了");
                         hitInfo.collider.gameObject.GetComponent<Outline>().enabled = true;
-                       // Debug.Log("箱子的数 = " + hitInfo.collider.gameObject.GetComponent<ShelfObject>().CamPosIndex + "   相机的数 = " + CameraController.instance.camposIndex);
-                        
-                        //try
-                        //{
+                        // Debug.Log("箱子的数 = " + hitInfo.collider.gameObject.GetComponent<ShelfObject>().CamPosIndex + "   相机的数 = " + CameraController.instance.camposIndex);
+
+                        try
+                        {
 
                             if (hitInfo.collider.gameObject.GetComponent<ShelfObject>().CamPosIndex != CameraController.instance.camposIndex)
                             {
@@ -66,23 +66,23 @@ public class CargoInfoFrame : MonoBehaviour
                             }
                             MaterialInfoGet.materialInfoGet.GetInfo(hitInfo.collider.gameObject.GetComponent<ShelfObject>().Floor + 1, hitInfo.collider.gameObject.GetComponent<ShelfObject>().Num + 1);
 
-                        //}
-                        //catch
-                        //{
-                        //    if (hitInfo.collider.gameObject.GetComponent<BinObject>().CamPosIndex != CameraController.instance.camposIndex)
-                        //    {
-                        //        CameraController.instance.camposIndex = CameraController.instance.camposIndex = hitInfo.collider.gameObject.GetComponent<BinObject>().CamPosIndex;
-                        //        CameraController.instance.CameraMoveTime = 0;
-                        //        CameraController.instance.isMoveDone = false;
-                        //        CameraController.instance.campos = CameraController.instance.transform.position;
-                        //    }
-                        //    MaterialInfoGet.materialInfoGet.GetInfo(hitInfo.collider.gameObject.GetComponent<BinObject>().Num + 1);
+                    }
+                        catch
+                        {
+                        if (hitInfo.collider.gameObject.GetComponent<BinObject>().CamPosIndex != CameraController.instance.camposIndex)
+                        {
+                            CameraController.instance.camposIndex = CameraController.instance.camposIndex = hitInfo.collider.gameObject.GetComponent<BinObject>().CamPosIndex;
+                            CameraController.instance.CameraMoveTime = 0;
+                            CameraController.instance.isMoveDone = false;
+                            CameraController.instance.campos = CameraController.instance.transform.position;
+                        }
+                        MaterialInfoGet.materialInfoGet.GetInfo(hitInfo.collider.gameObject.GetComponent<BinObject>().Num + 1);
 
-                        //}
+                    }
 
 
 
-                        WindowAnimator.SetBool("isClose", true);
+                    WindowAnimator.SetBool("isClose", true);
                     }
                     
                     //存储点击的Box

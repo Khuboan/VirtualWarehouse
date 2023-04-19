@@ -113,7 +113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2126848512449845238
 Transform:
   m_ObjectHideFlags: 0
@@ -198,6 +198,7 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+    bin: 
   CamPosIndex: 0
   Floor: 0
   Num: 0
@@ -344,7 +345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5466660469409155833
 Transform:
   m_ObjectHideFlags: 0
@@ -489,6 +490,7 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+    bin: 
   CamPosIndex: 0
   Floor: 0
   Num: 0
@@ -1158,6 +1160,7 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+    bin: 
   CamPosIndex: 0
   Floor: 0
   Num: 0
@@ -1271,6 +1274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObstacle: 0
+  collname: 
 --- !u!1 &2058893320533906575
 GameObject:
   m_ObjectHideFlags: 0
@@ -2196,6 +2200,7 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+    bin: 
   CamPosIndex: 0
   Floor: 0
   Num: 0
@@ -2360,7 +2365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5664960946496473709
 Transform:
   m_ObjectHideFlags: 0
@@ -2589,6 +2594,15 @@ MonoBehaviour:
     name: 
     position: []
     floor: []
+  shelfDetail:
+    name: 
+    pos: {x: 0, y: 0, z: 0}
+    scale: {x: 0, y: 0, z: 0}
+    model: {fileID: 0}
+    shelf:
+      name: 
+      position: []
+      floor: []
   BoxLength: 0.8
   floorlength: 0
   Shelfname: {fileID: 2588120318986735030}
@@ -2777,6 +2791,7 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+    bin: 
   CamPosIndex: 0
   Floor: 0
   Num: 0
@@ -2828,6 +2843,7 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+    bin: 
   CamPosIndex: 0
   Floor: 0
   Num: 0
@@ -2971,6 +2987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObstacle: 0
+  collname: 
 --- !u!1 &4594919071845242328
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,6 +3254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObstacle: 0
+  collname: 
 --- !u!1 &4885243064110590386
 GameObject:
   m_ObjectHideFlags: 0
@@ -3380,7 +3398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &435267349939122151
 Transform:
   m_ObjectHideFlags: 0
@@ -3721,6 +3739,7 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+    bin: 
   CamPosIndex: 0
   Floor: 0
   Num: 0
@@ -3833,6 +3852,7 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+    bin: 
   CamPosIndex: 0
   Floor: 0
   Num: 0
@@ -4340,6 +4360,7 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+    bin: 
   CamPosIndex: 0
   Floor: 0
   Num: 0
@@ -4483,6 +4504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObstacle: 0
+  collname: 
 --- !u!1 &7702431782255187914
 GameObject:
   m_ObjectHideFlags: 0
@@ -5157,6 +5179,7 @@ MonoBehaviour:
     class: 
     code: 
     unit: 
+    bin: 
   CamPosIndex: 0
   Floor: 0
   Num: 0

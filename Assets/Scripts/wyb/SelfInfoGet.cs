@@ -84,7 +84,7 @@ public class SelfInfoGet : MonoBehaviour
             row.transform.localScale = Vector3.one;   //设置缩放比例1,1,1，不然默认的比例非常大
 
             //设置预设实例中的各个子物体的文本内容
-            FindChildGameObject(row.gameObject, "Button").transform.GetChild(0).GetComponent<Text>().text = (i + 1) + " 层";
+            FindChildGameObject(row.gameObject, "Button").transform.GetChild(0).GetComponent<Text>().text = (i + 1) + " " + JsonDataAnylize.instance.template_info.goods_info.unit;
         }
     }
     /// <summary>
@@ -102,7 +102,7 @@ public class SelfInfoGet : MonoBehaviour
             row.transform.SetParent(ButtonGroup.transform);
             row.transform.localScale = Vector3.one;   //设置缩放比例1,1,1，不然默认的比例非常大
             //设置预设实例中的各个子物体的文本内容
-            FindChildGameObject(row.gameObject, "Button").transform.GetChild(0).GetComponent<Text>().text = 1 + " 层";
+            FindChildGameObject(row.gameObject, "Button").transform.GetChild(0).GetComponent<Text>().text = 1 +" "+ JsonDataAnylize.instance.template_info.goods_info.unit;
     }
 
     /// <summary>
@@ -112,7 +112,7 @@ public class SelfInfoGet : MonoBehaviour
     public void CreateTable(ShelfHub shelfHub)
     {
         //获取到当前鼠标点击按钮，即要查看的层数
-        string[] arry = FloorButtonController.floorButtonText.Trim().Split('层');
+        string[] arry = FloorButtonController.floorButtonText.Trim().Split(' ');
         int nowFloor = int.Parse(arry[0]);
 
         //生成列表数据
@@ -140,7 +140,7 @@ public class SelfInfoGet : MonoBehaviour
     public void CreateTable(BinHub shelfHub)
     {
         //获取到当前鼠标点击按钮，即要查看的层数
-        string[] arry = FloorButtonController.floorButtonText.Trim().Split('层');
+        string[] arry = FloorButtonController.floorButtonText.Trim().Split(' ');
         int nowFloor = int.Parse(arry[0]);
 
         //生成列表数据
@@ -156,7 +156,10 @@ public class SelfInfoGet : MonoBehaviour
             material material = shelfHub.bin.material[i];
             FindChildGameObject(row.gameObject, "Cell").GetComponent<Text>().text = material.name;
             FindChildGameObject(row.gameObject, "Cell1").GetComponent<Text>().text = material.code;
+            if(JsonDataAnylize.instance.template_info.goods_info.unit_determine==1)
             FindChildGameObject(row.gameObject, "Cell2").GetComponent<Text>().text = material.count.ToString() + material.unit;
+            else
+                FindChildGameObject(row.gameObject, "Cell2").GetComponent<Text>().text = material.count.ToString();
             FindChildGameObject(row.gameObject, "GoButton").transform.GetChild(1).GetComponent<Text>().text = (i + 1).ToString();
         }
     }

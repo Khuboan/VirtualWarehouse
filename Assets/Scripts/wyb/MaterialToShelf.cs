@@ -16,5 +16,7 @@ public class MaterialToShelf : MonoBehaviour
     public void ClickBackButton()
     {
         WindowAnimator.SetBool("isClose", false);
+        Outline[] boxs = FindObjectsOfType<Outline>();
+        foreach (Outline outline in boxs) { outline.enabled = false; }
     }
 }

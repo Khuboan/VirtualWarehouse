@@ -27,7 +27,10 @@ public class MaterialInfoGet : MonoBehaviour
         MaterialName.text = targetMaterial.name.ToString();
         MaterialIndex.text = targetMaterial.code.ToString();
         MaterialClass.text = targetMaterial.@class.ToString();
-        MaterialCount.text = targetMaterial.count.ToString() + targetMaterial.unit.ToString();
+        if (JsonDataAnylize.instance.template_info.goods_info.unit_determine == 1)
+            MaterialCount.text = targetMaterial.count.ToString() + targetMaterial.unit.ToString();
+        else
+            MaterialCount.text = targetMaterial.count.ToString();
         MaterialBin.text = targetMaterial.bin.ToString();
     }
     public void GetInfo( int nowMaterial)
@@ -41,7 +44,10 @@ public class MaterialInfoGet : MonoBehaviour
         MaterialName.text = targetMaterial.name.ToString();
         MaterialIndex.text = targetMaterial.code.ToString();
         MaterialClass.text = targetMaterial.@class.ToString();
-        MaterialCount.text = targetMaterial.count.ToString() + targetMaterial.unit.ToString();
+        if (JsonDataAnylize.instance.template_info.goods_info.unit_determine == 1)
+            MaterialCount.text = targetMaterial.count.ToString() + targetMaterial.unit.ToString();
+        else
+            MaterialCount.text = targetMaterial.count.ToString();
         MaterialBin.text = targetMaterial.bin.ToString();
     }
 }

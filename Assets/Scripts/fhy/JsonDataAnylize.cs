@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 // 访问数据的方法：
 // rootObject.warehouse[i].name
 // rootObject.warehouse[i].position[j]
@@ -39,6 +40,8 @@ public class JsonDataAnylize : MonoBehaviour
     public bool isDemoData;
     public GameObject DemoData;
     public Floor Floors;
+    public TemplateInfo template_info;
+    public TitleTText GameTitle;
     public void UseDemoData(bool a)
     {
         isDemoData = a;
@@ -64,6 +67,28 @@ public class JsonDataAnylize : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(newRootObject.warehouse.Length>0)
+        {
+            GameTitle.title_name.text = template_info.title_name;
+            GameTitle.reset_button.text = template_info.reset_button;
+            GameTitle.ShelfInfo_name_info.text = template_info.shelf_info_display.name_info;
+            GameTitle.ShelfInfo_number_info.text = template_info.shelf_info_display.number_info;
+            GameTitle.ShelfInfo_level_info.text = template_info.shelf_info_display.level_info;
+            GameTitle.ShelfInfo_GoodsInfo_name.text = template_info.goods_info.name;
+            GameTitle.ShelfInfo_GoodsInfo_initialization_info[0].text = template_info.goods_info.initialization_info[0];
+            GameTitle.ShelfInfo_GoodsInfo_initialization_info[1].text = template_info.goods_info.initialization_info[1];
+            GameTitle.ShelfInfo_GoodsInfo_initialization_info[2].text = template_info.goods_info.initialization_info[2];
+            GameTitle.ShelfInfo_GoodsInfodisplay_name.text = template_info.goods_info_display.name;
+            GameTitle.ShelfInfo_GoodsInfodisplay_close_button.text = template_info.goods_info_display.close_button;
+            GameTitle.ShelfInfo_GoodsInfodisplay_name_info.text = template_info.goods_info_display.name_info;
+            GameTitle.ShelfInfo_GoodsInfodisplay_num_info.text = template_info.goods_info_display.num_info;
+            GameTitle.ShelfInfo_GoodsInfodisplay_type_info.text = template_info.goods_info_display.type_info;
+            GameTitle.ShelfInfo_GoodsInfodisplay_number_info.text = template_info.goods_info_display.number_info;
+            GameTitle.ShelfInfo_GoodsInfodisplay_shelf_info.text = template_info.goods_info_display.shelf_info;
+            GameTitle.ShelfInfo_Event_info_display_name.text = template_info.event_info_display.name;
+        }
+        
+
         //if (Input.GetKeyDown(KeyCode.W))
         //{
         //    Debug.LogError("测试Json数据转换");
@@ -162,7 +187,7 @@ public class JsonDataAnylize : MonoBehaviour
         GetJsonData = jsonData;
         //Debug.Log("{     \"warehouse\":     " + GetJsonData + "}");
         newRootObject = JsonUtility.FromJson<NewRootObject>("{     \"warehouse\":     " + GetJsonData + "}");
-        
+        template_info = newRootObject.warehouse[0].template_info;
         rootObject.warehouse = new Warehouse[newRootObject.warehouse.Length];
         for (int i = 0; i < rootObject.warehouse.Length; i++)
         {
@@ -176,38 +201,63 @@ public class JsonDataAnylize : MonoBehaviour
             //rootObject.warehouse[i].shelf = newRootObject.warehouse[i].shelf;
             //rootObject.warehouse[i].shelf = new List<Shelf>()[newRootObject.warehouse[i].bin.Count];
             rootObject.warehouse[i].shelf = new List<Shelf>();
+            rootObject.warehouse[i].bin = new List<Bin>();
             for (int j = 0; j < newRootObject.warehouse[i].bin.Count; j++)
             {
-                Shelf newshelf = new Shelf();
-                newshelf.name = newRootObject.warehouse[i].bin[j].name;
-                newshelf.position = newRootObject.warehouse[i].bin[j].position;
-                newshelf.floor = new List<Floor>();
-                for (int k = 0;k< newRootObject.warehouse[i].bin[j].floor;k++)
+                if(newRootObject.warehouse[i].bin[j].floor!=0)
                 {
-                    Floor floor = new Floor();
-                    floor.floor_num = k + 1;
-                    floor.material = new List<material>();
-                    newshelf.floor.Add(floor);
+                    Shelf newshelf = new Shelf();
+                    newshelf.name = newRootObject.warehouse[i].bin[j].name;
+                    newshelf.position = newRootObject.warehouse[i].bin[j].position;
+                    newshelf.floor = new List<Floor>();
+                    for (int k = 0; k < newRootObject.warehouse[i].bin[j].floor; k++)
+                    {
+                        Floor floor = new Floor();
+                        floor.floor_num = k + 1;
+                        floor.material = new List<material>();
+                        newshelf.floor.Add(floor);
+                    }
+                    rootObject.warehouse[i].shelf.Add(newshelf);
                 }
-                rootObject.warehouse[i].shelf.Add(newshelf);
+                else
+                {
+                    Bin newshelf = new Bin();
+                    newshelf.name = newRootObject.warehouse[i].bin[j].name;
+                    newshelf.position = newRootObject.warehouse[i].bin[j].position;
+                    newshelf.material = new List<material>();
+                    rootObject.warehouse[i].bin.Add(newshelf);
+                }
+                
             }
-            rootObject.warehouse[i].bin = new List<Bin>();
             rootObject.warehouse[i].scannerlog = newRootObject.warehouse[i].scannerlog;
             for (int j = 0; j < newRootObject.warehouse[i].material.Count; j++)
             {
                 string Binnum = newRootObject.warehouse[i].material[j].bin.Split('-')[0];
                 int Floornum = 1;
                 if (newRootObject.warehouse[i].material[j].bin.Split('-').Length>1)
-                 Floornum = int.Parse(newRootObject.warehouse[i].material[j].bin.Split('-')[1]);
-                else
-                 Floornum = 1;//库位
-                for (int k = 0; k < newRootObject.warehouse[i].bin.Count; k++)
                 {
-                    if (Binnum == rootObject.warehouse[i].shelf[k].name)
+                    Floornum = int.Parse(newRootObject.warehouse[i].material[j].bin.Split('-')[1]);
+
+                    for (int k = 0; k < rootObject.warehouse[i].shelf.Count; k++)
                     {
-                        rootObject.warehouse[i].shelf[k].floor[Floornum - 1].material.Add(newRootObject.warehouse[i].material[j]);
+                        if (Binnum == rootObject.warehouse[i].shelf[k].name)
+                        {
+                            rootObject.warehouse[i].shelf[k].floor[Floornum - 1].material.Add(newRootObject.warehouse[i].material[j]);
+                        }
                     }
                 }
+                else
+                {
+                    Floornum = 1;//库位
+                    for (int k = 0; k < rootObject.warehouse[i].bin.Count; k++)
+                    {
+                        if (Binnum == rootObject.warehouse[i].bin[k].name)
+                        {
+                            rootObject.warehouse[i].bin[k].material.Add(newRootObject.warehouse[i].material[j]);
+                        }
+                    }
+                }
+
             }
            
         }
@@ -215,9 +265,9 @@ public class JsonDataAnylize : MonoBehaviour
         {
             for (int j = 0; j < JsonDataAnylize.instance.rootObject.warehouse[r].scannerlog.Count; j++)
             {
-                ShowLog.instance. GetLog("设备： " + JsonDataAnylize.instance.rootObject.warehouse[r].scannerlog[j].address);
-                ShowLog.instance.GetLog("时间： " + JsonDataAnylize.instance.rootObject.warehouse[r].scannerlog[j].time);
-                ShowLog.instance.GetLog("事件： " + JsonDataAnylize.instance.rootObject.warehouse[r].scannerlog[j].code);
+                ShowLog.instance. GetLog(template_info.event_info_display.title1 + " " + JsonDataAnylize.instance.rootObject.warehouse[r].scannerlog[j].address);    
+                ShowLog.instance.GetLog(template_info.event_info_display.title2 + " " + JsonDataAnylize.instance.rootObject.warehouse[r].scannerlog[j].time);
+                ShowLog.instance.GetLog(template_info.event_info_display.title3+" " + JsonDataAnylize.instance.rootObject.warehouse[r].scannerlog[j].code);
             }
         }
         //}
@@ -382,6 +432,7 @@ public class Warehouse
     public List<Bin> bin;
     public List<Shelf> shelf;
     public List<scannerlog> scannerlog;
+    
 }
 [System.Serializable]
 public class RootObject
@@ -405,6 +456,7 @@ public class NewWarehouse
     //public List<Shelf> shelf;
     public List<material> material;
     public List<scannerlog> scannerlog;
+    public TemplateInfo template_info;
 }
 [System.Serializable]
 public class scannerlog
@@ -413,5 +465,72 @@ public class scannerlog
     public string time;
     public string code;
 }
+[System.Serializable]
+public class ShelfInfo
+{
+    public string name;
+    public string name_info;
+    public string number_info;
+    public string level_info;
+}
 
+[System.Serializable]
+public class GoodsInfo
+{
+    public string name;
+    public string unit;
+    public List<string> initialization_info;
+    public int unit_determine;
+}
 
+[System.Serializable]
+public class GoodsInfoDisplay
+{
+    public string name;
+    public string close_button;
+    public string name_info;
+    public string num_info;
+    public string type_info;
+    public string number_info;
+    public string shelf_info;
+}
+
+[System.Serializable]
+public class EventInfoDisplay
+{
+    public string name;
+    public string title1;
+    public string title2;
+    public string title3;
+}
+
+[System.Serializable]
+public class TemplateInfo
+{
+    public string title_name;
+    public string reset_button;
+    public ShelfInfo shelf_info_display;
+    public GoodsInfo goods_info;
+    public GoodsInfoDisplay goods_info_display;
+    public EventInfoDisplay event_info_display;
+}
+[System.Serializable]
+public class TitleTText
+{
+    public Text title_name;
+    public Text reset_button;
+    public Text ShelfInfo_name;
+    public Text ShelfInfo_name_info;
+    public Text ShelfInfo_number_info;
+    public Text ShelfInfo_level_info;
+    public Text ShelfInfo_GoodsInfo_name;
+    public Text[] ShelfInfo_GoodsInfo_initialization_info;
+    public Text ShelfInfo_GoodsInfodisplay_name;
+    public Text ShelfInfo_GoodsInfodisplay_close_button;
+    public Text ShelfInfo_GoodsInfodisplay_name_info;
+    public Text ShelfInfo_GoodsInfodisplay_num_info;
+    public Text ShelfInfo_GoodsInfodisplay_type_info;
+    public Text ShelfInfo_GoodsInfodisplay_number_info;
+    public Text ShelfInfo_GoodsInfodisplay_shelf_info;
+    public Text ShelfInfo_Event_info_display_name;
+}
